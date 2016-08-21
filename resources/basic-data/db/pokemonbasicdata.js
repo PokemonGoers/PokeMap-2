@@ -154,3 +154,34 @@ var pokemons = [
   "Mew"
 ];
 
+function getPokemonBasicInfo(pokemonName) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			var pokemon = {};
+			pokemon.name = pokemonName;
+
+			var el = document.createElement( 'html' );
+			el.innerHTML = xhttp.responseText;
+
+			var evolutionsList = el.getElementsByClassName('evolution-profile')[0];
+			pokemon.evolution = [];
+			for(var i = 0; i < evolutionsList.children.length; i++) {
+				pokemon.evolution.push(evolutionsList.children[i].getElementsByTagName('a')[0].href.replace('file:///us/pokedex/', ''));
+				
+			}
+			console.log(pokemon);
+			
+
+		}
+	};
+
+	xhttp.open("GET", "http://www.pokemon.com/us/pokedex/" + pokemonName, true);
+	xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+	xhttp.setRequestHeader('Access-Control-Allow-Methods', 'GET');
+	xhttp.send();
+}
+
+for(i = 0; i < 2; i++) {
+	console.log(getPokemonBasicInfo(pokemons[i]));
+}
