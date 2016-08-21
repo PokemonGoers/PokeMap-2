@@ -162,10 +162,26 @@ function getPokemonBasicInfo(pokemonName) {
 			var el = document.createElement( 'html' );
 			el.innerHTML = xhttp.responseText;
 
+			// get evolution data
 			var evolutionsList = el.getElementsByClassName('evolution-profile')[0];
 			pokemon.evolution = [];
 			for(var i = 0; i < evolutionsList.children.length; i++) {
 				pokemon.evolution.push(evolutionsList.children[i].getElementsByTagName('a')[0].href.replace('file:///us/pokedex/', ''));
+				
+			}
+			// get weaknesses
+			var weaknessesList = el.getElementsByClassName('dtm-weaknesses')[0].children[1].getElementsByTagName('li');
+			pokemon.weaknesses = [];
+			for(var i = 0; i < weaknessesList.length; i++) {
+				pokemon.weaknesses.push(weaknessesList[i].innerText.trim());
+				
+			}
+			// get type
+			var typeList = el.getElementsByClassName('dtm-type')[0].children[1].getElementsByTagName('li');
+			pokemon.type = [];
+			
+			for(var i = 0; i < typeList.length; i++) {
+				pokemon.type.push(typeList[i].innerText.trim());
 				
 			}
 			console.log(pokemon);
@@ -178,6 +194,6 @@ function getPokemonBasicInfo(pokemonName) {
 	xhttp.send();
 }
 
-for(i = 0; i < 151; i++) {
+for(i = 0; i < 1; i++) {
 	console.log(getPokemonBasicInfo(pokemons[i]));
 }
