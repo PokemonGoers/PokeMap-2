@@ -1,5 +1,3 @@
-
-
 var pokemons = [
   "Bulbasaur",
   "Ivysaur",
@@ -171,8 +169,6 @@ function getPokemonBasicInfo(pokemonName) {
 				
 			}
 			console.log(pokemon);
-			
-
 		}
 	};
 
@@ -182,6 +178,6 @@ function getPokemonBasicInfo(pokemonName) {
 	xhttp.send();
 }
 
-for(i = 0; i < 2; i++) {
+for(i = 0; i < 151; i++) {
 	console.log(getPokemonBasicInfo(pokemons[i]));
 }
