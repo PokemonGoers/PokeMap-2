@@ -189,7 +189,6 @@ function getPokemonBasicInfo(pokemonName) {
 			// get stats
 			var statsList = el.getElementsByClassName('pokemon-stats-info active')[0].children[1].getElementsByTagName('ul');
 			alert(statsList.length);
-			console.log(statsList);
 			pokemon.stats = [];
 			pokemon.stats.HP = statsList[0].getElementsByTagName('li')[0].getAttribute('data-value');
 			pokemon.stats.Attack = statsList[1].getElementsByTagName('li')[0].getAttribute('data-value');
@@ -198,8 +197,15 @@ function getPokemonBasicInfo(pokemonName) {
 			pokemon.stats.SpecialDefense = statsList[4].getElementsByTagName('li')[0].getAttribute('data-value');
 			pokemon.stats.Speed = statsList[5].getElementsByTagName('li')[0].getAttribute('data-value');
 			
+			
+			// get basic data
+			var height = el.getElementsByClassName('pokemon-ability-info')[0].getElementsByClassName('column-7')[0].getElementsByTagName('li')[0].children[1].innerText;
+			pokemon.height = height;
 
-			console.log(pokemon);
+			var weight = el.getElementsByClassName('pokemon-ability-info')[0].getElementsByClassName('column-7')[0].getElementsByTagName('li')[1].children[1].innerText;
+			pokemon.weight = weight;
+			
+			console.log(weight);
 		}
 	};
 
