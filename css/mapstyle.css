@@ -1,0 +1,61 @@
+#map { 
+	height: 540px; 
+	width:100%; 
+	background-color:gray;
+}
+
+#pokemonname
+{
+	width:80px;
+	color:gray;
+	font-size:17px;
+	float:left;
+}
+
+#pokemontype
+{
+	width:100px;
+}
+
+#pokemonevolution
+{
+
+}
+
+#poklabel
+{
+	color:gray;
+}
+
+#pokemonmore
+{
+	width:20px;
+	height: 20px;
+	background-image: url('../img/moreinfo.png');
+	background-size: 20px 20px;
+	float:right;
+}
+
+#pokemonInfo
+{
+	height:30px;
+}
+
+#pokemonprobability
+{
+	font-size:25px;
+	color:rgb(14, 165, 205);
+	border:solid 1px rgb(14, 165, 205);
+	display:table-cell;
+	text-align: center;
+	vertical-align: middle;
+	width:60px;
+	height:60px;
+	border-radius: 50px;
+}
+
+#pokemonbox
+{
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
