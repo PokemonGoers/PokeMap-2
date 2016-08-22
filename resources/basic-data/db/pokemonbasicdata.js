@@ -184,6 +184,21 @@ function getPokemonBasicInfo(pokemonName) {
 				pokemon.type.push(typeList[i].innerText.trim());
 				
 			}
+
+			
+			// get stats
+			var statsList = el.getElementsByClassName('pokemon-stats-info active')[0].children[1].getElementsByTagName('ul');
+			alert(statsList.length);
+			console.log(statsList);
+			pokemon.stats = [];
+			pokemon.stats.HP = statsList[0].getElementsByTagName('li')[0].getAttribute('data-value');
+			pokemon.stats.Attack = statsList[1].getElementsByTagName('li')[0].getAttribute('data-value');
+			pokemon.stats.Defense = statsList[2].getElementsByTagName('li')[0].getAttribute('data-value');
+			pokemon.stats.SpecialAttack = statsList[3].getElementsByTagName('li')[0].getAttribute('data-value');
+			pokemon.stats.SpecialDefense = statsList[4].getElementsByTagName('li')[0].getAttribute('data-value');
+			pokemon.stats.Speed = statsList[5].getElementsByTagName('li')[0].getAttribute('data-value');
+			
+
 			console.log(pokemon);
 		}
 	};
