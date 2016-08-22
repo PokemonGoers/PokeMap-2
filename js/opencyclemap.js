@@ -5,8 +5,7 @@
 
 		var mymap=null;
 
-		function setUpMap(x,y)
-		{
+		function setUpMap(x,y) {
 			mymap = L.map('map').setView([x, y], 17);
 			window.map = mymap; // Set map as a global variable
 
@@ -31,8 +30,7 @@
 			mymap.on('click', onMapClick);*/
 		}
 
-		function setUpLocation(x,y)
-		{
+		function setUpLocation(x,y) {
 			if(mymap==null) return;
 
 			L.marker([x,y]).addTo(mymap).bindPopup("Your location.");
@@ -44,8 +42,76 @@
 			}).addTo(mymap).bindPopup("Pokemons appear here!");
 		}
 
-		function setPokemonsOnMap(dummyData)
-		{
+		/* filter Pokemon by passing from & to as date-objects */
+		function loadPokemonData(callback, from, to) {
+			if(typeof from === "undefined" || !(from instanceof Date)) {
+				from = new Date();
+				console.log("parameter 'from' is no date-object and will be changed to " + from.toString());
+			}
+			if(typeof to === "undefined" || !(to instanceof Date)) {
+				to = new Date(from.getTime());
+				to.setMonth(to.getMonth() + 1);
+				console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
+			}
+			loadJson("json/predicted-data.json", function(response) {
+				var predictedData = JSON.parse(response);
+				console.log("loaded predicted pokemon (" + predictedData.length + " found)");
+				loadJson("json/static-data.json", function(response) {
+					var staticData = JSON.parse(response);
+					for(var i = 0, n = predictedData.length; i < n; ++i) {
+						for(var j = 0, m = staticData.length; j < m; ++j) {
+							if(predictedData[i].name === staticData[j].name) {
+								for(var property in staticData[j]) {
+									if(!staticData[j].hasOwnProperty(property)) continue;
+									predictedData[i][property] = staticData[j][property];
+								}
+								console.log("added static data for " + predictedData[i].name);
+							}
+						}
+					}
+					predictedData = predictedData.filter(function(pokemon) {
+						var pokemonTime = new Date(pokemon.time);
+						if(pokemonTime < from) return false;
+						if(to < pokemonTime) return false;
+						return true;
+					});
+					console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
+					callback(predictedData);
+				});
+			});
+		}
+
+		function generatePokemonMapData(predictedData) {
+			var id = 0;
+			var pokemonMapData = {
+				"type": "FeatureCollection",
+				"features": []
+			};
+			for(var i = 0, x = predictedData.length; i < x; ++i) {
+				pokemonMapData.features.push({
+					"id": i,
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [predictedData[i].longitude, predictedData[i].latitude]
+					},
+					"properties": {
+						"name": predictedData[i].name,
+						"type": predictedData[i].type,
+						"evolution": predictedData[i].evolution,
+						"probability": predictedData[i].probability,
+						"img": "img/" + predictedData[i].name + ".png",
+					}
+				});
+				console.log("generated map data for " + predictedData[i].name);
+				id++;
+			}
+			return pokemonMapData
+		}
+
+
+		function setPokemonOnMap(predictedData) {
+			var pokemonMapData = generatePokemonMapData(predictedData);
 			if(mymap==null) return;
 
 			var pokemonIcon = L.Icon.extend(
@@ -57,7 +123,7 @@
 
 			function onEachFeature(feature, layer) {
 				var pokemonName = feature.properties.name;
-				var pokemonType = feature.properties.poktype;
+				var pokemonType = feature.properties.type;
 				var pokemonEvolution = feature.properties.evolution;
 				var pokemonProbability = feature.properties.probability;
 
@@ -70,7 +136,7 @@
 				layer.bindPopup(popupContent);
 			}
 
-			L.geoJson(dummyData, {
+			L.geoJson(pokemonMapData, {
 
 				onEachFeature: onEachFeature,
 

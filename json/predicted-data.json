@@ -1,0 +1,37 @@
+[
+  {
+    "name": "rattata",
+    "latitude": 48.262457,
+    "longitude": 11.669183,
+    "probability": 0.77,
+    "time": "2016-08-23T19:14:12.825Z"
+  },
+  {
+    "name": "pikachu",
+    "latitude": 48.265882,
+    "longitude": 11.674327,
+    "probability": 0.64,
+    "time": "2016-08-25T17:25:36.134Z"
+  },
+  {
+    "name": "bulbasaur",
+    "latitude": 48.263472,
+    "longitude": 11.669298,
+    "probability": 0.54,
+    "time": "2016-08-21T17:23:47.364Z"
+  },
+  {
+    "name": "charmander",
+    "latitude": 48.262535,
+    "longitude": 11.666896,
+    "probability": 0.34,
+    "time": "2016-08-17T18:43:07.346Z"
+  },
+  {
+    "name": "pidgey",
+    "latitude": 48.267506,
+    "longitude": 11.671386,
+    "probability": 0.99,
+    "time": "2016-08-28T15:56:43.453Z"
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "rattata",
+    "type": "normal",
+    "evolution": "raticate"
+  },
+  {
+    "name": "pikachu",
+    "type": "electric",
+    "evolution": "raichu"
+  },
+  {
+    "name": "bulbasaur",
+    "type": "grass, poison",
+    "evolution": "ivysaur"
+  },
+  {
+    "name": "charmander",
+    "type": "fire",
+    "evolution": "charmeleon"
+  },
+  {
+    "name": "pidgey",
+    "type": "normal, flying",
+    "evolution": "pidgeotto"
+  },
+  {
+    "name":"vulpix",
+    "type":"fire",
+    "evolution":"ninetales",
+    "abilities":"flash fire, drought"
+  },
+  {
+    "name":"butterfree",
+    "type":"bug, flying",
+    "abbilities":"compound eyes, tinted lens",
+    "evolution":"caterpie"
+  }
+]
