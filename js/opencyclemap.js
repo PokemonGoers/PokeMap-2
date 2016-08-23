@@ -60,7 +60,6 @@
 					var staticData = JSON.parse(response);
 					for(var i = 0, n = predictedData.length; i < n; ++i) {
 						predictedData[i] = mergeObjects(predictedData[i], staticData[predictedData[i].name]);
-						//console.log(predictedData[i].height);
 						console.log("added static data for " + predictedData[i].name);
 					}
 					predictedData = predictedData.filter(function(pokemon) {
@@ -91,8 +90,8 @@
 					},
 					"properties": {
 						"name": predictedData[i].name,
-						//"type": predictedData[i].type.toString(),
-						"evolution": predictedData[i].evolution,
+						"type": typeToString(predictedData[i].type),
+						"evolution": evolutionToString(predictedData[i].evolution),
 						"probability": predictedData[i].probability,
 						"img": "img/" + predictedData[i].name.toLowerCase() + ".png",
 					}

@@ -12,13 +12,32 @@ function loadJson(file, callback) {
 
 function mergeObjects(object_1, object_2) {
     for(var property in object_2) {
-        if(object_2.hasOwnProperty(property)) continue;
-        console.log("konstruktor: " + object_2[property].constructor);
-        if(object_2[property].constructor == Object) {
-            object_1[property] = mergeObjects(object_1[property], object_2[property]);
-        } else {
+        try {
+            if (object_2[property].constructor == Object) {
+                object_1[property] = mergeObjects(object_1[property], object_2[property]);
+            } else {
+                object_1[property] = object_2[property];
+            }
+       } catch(e) {
             object_1[property] = object_2[property];
+
         }
     }
     return object_1;
+}
+
+function typeToString(object) {
+    var string = "";
+    for(var property in object) {
+        string += object[property] + ", ";
+    }
+    return string.slice(0, -2);
+}
+
+function evolutionToString(object) {
+    var string = "";
+    for(var property in object) {
+        string += object[property] + " &rarr; ";
+    }
+    return string.slice(0, -8);
 }
