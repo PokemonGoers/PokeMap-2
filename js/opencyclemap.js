@@ -35,7 +35,7 @@
 
 			L.marker([x,y]).addTo(mymap).bindPopup("Your location.");
 
-			L.circle([x, y], 100, {
+			L.circle([x, y], 200, {
 				color: '#808080',
 				fillColor: 'red',
 				fillOpacity: 0.1
@@ -56,18 +56,12 @@
 			loadJson("json/predicted-data.json", function(response) {
 				var predictedData = JSON.parse(response);
 				console.log("loaded predicted pokemon (" + predictedData.length + " found)");
-				loadJson("json/static-data.json", function(response) {
+				loadJson("json/pokemonbasicinfo.json", function(response) {
 					var staticData = JSON.parse(response);
 					for(var i = 0, n = predictedData.length; i < n; ++i) {
-						for(var j = 0, m = staticData.length; j < m; ++j) {
-							if(predictedData[i].name === staticData[j].name) {
-								for(var property in staticData[j]) {
-									if(!staticData[j].hasOwnProperty(property)) continue;
-									predictedData[i][property] = staticData[j][property];
-								}
-								console.log("added static data for " + predictedData[i].name);
-							}
-						}
+						predictedData[i] = mergeObjects(predictedData[i], staticData[predictedData[i].name]);
+						//console.log(predictedData[i].height);
+						console.log("added static data for " + predictedData[i].name);
 					}
 					predictedData = predictedData.filter(function(pokemon) {
 						var pokemonTime = new Date(pokemon.time);
@@ -97,10 +91,10 @@
 					},
 					"properties": {
 						"name": predictedData[i].name,
-						"type": predictedData[i].type,
+						//"type": predictedData[i].type.toString(),
 						"evolution": predictedData[i].evolution,
 						"probability": predictedData[i].probability,
-						"img": "img/" + predictedData[i].name + ".png",
+						"img": "img/" + predictedData[i].name.toLowerCase() + ".png",
 					}
 				});
 				console.log("generated map data for " + predictedData[i].name);
@@ -128,7 +122,7 @@
 				var pokemonProbability = feature.properties.probability;
 
 				var popupContent = "<div id='pokemonInfo'><div id='pokemonname'>"+ pokemonName + "</div>" + "<a href='#' id='pokemonmore'></a></div>";
-				popupContent += "<div id='pokemonbox'><div id='pokemonprobability'>" + pokemonProbability + "</div></div>";
+				popupContent += "<div id='pokemonbox'><div id='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div>";
 				popupContent += "<div id='pokemontype'><span id='poklabel'>Type: </span>" + pokemonType + "</div>";
 				popupContent += "<div id='pokemonevolution'><span id='poklabel'>Evolution: </span>" + pokemonEvolution + "</div>";
 
