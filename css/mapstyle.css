@@ -59,3 +59,8 @@
 	margin-left: 20px;
 	margin-bottom: 5px;
 }
+
+.a::before {
+	content: "↝";
+	vertical-align: 10%;
+}

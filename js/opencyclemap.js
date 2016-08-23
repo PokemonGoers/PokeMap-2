@@ -56,31 +56,37 @@
 			loadJson("json/predicted-data.json", function(response) {
 				var predictedData = JSON.parse(response);
 				console.log("loaded predicted pokemon (" + predictedData.length + " found)");
+				var predictedData = predictedData.filter(function(pokemon) {
+					var pokemonTime = new Date(pokemon.time);
+					if(pokemonTime < from) return false;
+					if(to < pokemonTime) return false;
+					return true;
+				});
+				console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
 				loadJson("json/pokemonbasicinfo.json", function(response) {
 					var staticData = JSON.parse(response);
 					for(var i = 0, n = predictedData.length; i < n; ++i) {
 						predictedData[i] = mergeObjects(predictedData[i], staticData[predictedData[i].name]);
 						console.log("added static data for " + predictedData[i].name);
 					}
-					predictedData = predictedData.filter(function(pokemon) {
-						var pokemonTime = new Date(pokemon.time);
-						if(pokemonTime < from) return false;
-						if(to < pokemonTime) return false;
-						return true;
-					});
-					console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
 					callback(predictedData);
 				});
 			});
 		}
 
 		function generatePokemonMapData(predictedData) {
-			var id = 0;
 			var pokemonMapData = {
 				"type": "FeatureCollection",
 				"features": []
 			};
-			for(var i = 0, x = predictedData.length; i < x; ++i) {
+			for(var i = 0, n = predictedData.length; i < n; ++i) {
+				var type = "", evolution = "";
+				for(var property in predictedData[i].type) {
+					type += predictedData[i].type[property] + ", ";
+				}
+				for(var property in predictedData[i].evolution) {
+					evolution += predictedData[i].evolution[property] + " <span class='a'></span> ";
+				}
 				pokemonMapData.features.push({
 					"id": i,
 					"type": "Feature",
@@ -90,14 +96,14 @@
 					},
 					"properties": {
 						"name": predictedData[i].name,
-						"type": typeToString(predictedData[i].type),
-						"evolution": evolutionToString(predictedData[i].evolution),
-						"probability": predictedData[i].probability,
+						"time": predictedData[i].time,
+						"type": type.slice(0, -2),
+						"evolution": evolution.slice(0, -25),
+						"probability": predictedData[i].probability * 100 + "%",
 						"img": "img/" + predictedData[i].name.toLowerCase() + ".png",
 					}
 				});
 				console.log("generated map data for " + predictedData[i].name);
-				id++;
 			}
 			return pokemonMapData
 		}
@@ -119,14 +125,19 @@
 				var pokemonType = feature.properties.type;
 				var pokemonEvolution = feature.properties.evolution;
 				var pokemonProbability = feature.properties.probability;
+				var pokemonTime = new Date(feature.properties.time);
 
 				var popupContent = "<div id='pokemonInfo'><div id='pokemonname'>"+ pokemonName + "</div>" + "<a href='#' id='pokemonmore'></a></div>";
-				popupContent += "<div id='pokemonbox'><div id='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div>";
+				popupContent += "<div id='pokemonbox'><div id='pokemonprobability'>" + pokemonProbability + "</div></div>";
 				popupContent += "<div id='pokemontype'><span id='poklabel'>Type: </span>" + pokemonType + "</div>";
 				popupContent += "<div id='pokemonevolution'><span id='poklabel'>Evolution: </span>" + pokemonEvolution + "</div>";
-
+				popupContent += "<div id='pokemontime'><span id='poklabel'>Time of appearance: </span> " + pokemonTime.toString() + "</div>";
+				//popupContent += "<div id='pokemontime'><span id='poklabel'>Time until appearance: </span> <span id='countdown" + pokemonName + "'></span></div>";
 
 				layer.bindPopup(popupContent);
+
+				//initializeCountdown("countdown" + pokemonName, pokemonTime);
+
 			}
 
 			L.geoJson(pokemonMapData, {
