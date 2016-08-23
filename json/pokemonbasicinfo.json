@@ -1,6 +1,5 @@
 {
-  "0": {
-    "name": "Bulbasaur",
+  "Bulbasaur": {
     "evolution": {
       "0": "bulbasaur",
       "1": "ivysaur",
@@ -36,8 +35,7 @@
       }
     }
   },
-  "1": {
-    "name": "Ivysaur",
+  "Ivysaur": {
     "evolution": {
       "0": "bulbasaur",
       "1": "ivysaur",
@@ -73,8 +71,7 @@
       }
     }
   },
-  "2": {
-    "name": "Venusaur",
+  "Venusaur": {
     "evolution": {
       "0": "bulbasaur",
       "1": "ivysaur",
@@ -114,8 +111,7 @@
       }
     }
   },
-  "3": {
-    "name": "Charmander",
+  "Charmander": {
     "evolution": {
       "0": "charmander",
       "1": "charmeleon",
@@ -149,8 +145,7 @@
       }
     }
   },
-  "4": {
-    "name": "Charmeleon",
+  "Charmeleon": {
     "evolution": {
       "0": "charmander",
       "1": "charmeleon",
@@ -184,8 +179,7 @@
       }
     }
   },
-  "5": {
-    "name": "Charizard",
+  "Charizard": {
     "evolution": {
       "0": "charmander",
       "1": "charmeleon",
@@ -228,8 +222,7 @@
       }
     }
   },
-  "6": {
-    "name": "Squirtle",
+  "Squirtle": {
     "evolution": {
       "0": "squirtle",
       "1": "wartortle",
@@ -262,8 +255,7 @@
       }
     }
   },
-  "7": {
-    "name": "Wartortle",
+  "Wartortle": {
     "evolution": {
       "0": "squirtle",
       "1": "wartortle",
@@ -296,8 +288,7 @@
       }
     }
   },
-  "8": {
-    "name": "Blastoise",
+  "Blastoise": {
     "evolution": {
       "0": "squirtle",
       "1": "wartortle",
@@ -334,8 +325,7 @@
       }
     }
   },
-  "9": {
-    "name": "Caterpie",
+  "Caterpie": {
     "evolution": {
       "0": "caterpie",
       "1": "metapod",
@@ -369,8 +359,7 @@
       }
     }
   },
-  "10": {
-    "name": "Metapod",
+  "Metapod": {
     "evolution": {
       "0": "caterpie",
       "1": "metapod",
@@ -404,8 +393,7 @@
       }
     }
   },
-  "11": {
-    "name": "Butterfree",
+  "Butterfree": {
     "evolution": {
       "0": "caterpie",
       "1": "metapod",
@@ -442,8 +430,7 @@
       }
     }
   },
-  "12": {
-    "name": "Weedle",
+  "Weedle": {
     "evolution": {
       "0": "weedle",
       "1": "kakuna",
@@ -479,8 +466,7 @@
       }
     }
   },
-  "13": {
-    "name": "Kakuna",
+  "Kakuna": {
     "evolution": {
       "0": "weedle",
       "1": "kakuna",
@@ -516,8 +502,7 @@
       }
     }
   },
-  "14": {
-    "name": "Beedrill",
+  "Beedrill": {
     "evolution": {
       "0": "weedle",
       "1": "kakuna",
@@ -557,8 +542,7 @@
       }
     }
   },
-  "15": {
-    "name": "Pidgey",
+  "Pidgey": {
     "evolution": {
       "0": "pidgey",
       "1": "pidgeotto",
@@ -597,8 +581,7 @@
       }
     }
   },
-  "16": {
-    "name": "Pidgeotto",
+  "Pidgeotto": {
     "evolution": {
       "0": "pidgey",
       "1": "pidgeotto",
@@ -637,8 +620,7 @@
       }
     }
   },
-  "17": {
-    "name": "Pidgeot",
+  "Pidgeot": {
     "evolution": {
       "0": "pidgey",
       "1": "pidgeotto",
@@ -681,8 +663,7 @@
       }
     }
   },
-  "18": {
-    "name": "Rattata",
+  "Rattata": {
     "evolution": {
       "0": "rattata",
       "1": "raticate"
@@ -717,8 +698,7 @@
       }
     }
   },
-  "19": {
-    "name": "Raticate",
+  "Raticate": {
     "evolution": {
       "0": "rattata",
       "1": "raticate"
@@ -753,8 +733,7 @@
       }
     }
   },
-  "20": {
-    "name": "Spearow",
+  "Spearow": {
     "evolution": {
       "0": "spearow",
       "1": "fearow"
@@ -788,8 +767,7 @@
       }
     }
   },
-  "21": {
-    "name": "Fearow",
+  "Fearow": {
     "evolution": {
       "0": "spearow",
       "1": "fearow"
@@ -823,8 +801,7 @@
       }
     }
   },
-  "22": {
-    "name": "Ekans",
+  "Ekans": {
     "evolution": {
       "0": "ekans",
       "1": "arbok"
@@ -860,8 +837,7 @@
       }
     }
   },
-  "23": {
-    "name": "Arbok",
+  "Arbok": {
     "evolution": {
       "0": "ekans",
       "1": "arbok"
@@ -897,8 +873,7 @@
       }
     }
   },
-  "24": {
-    "name": "Pikachu",
+  "Pikachu": {
     "evolution": {
       "0": "pichu",
       "1": "pikachu",
@@ -930,8 +905,7 @@
       }
     }
   },
-  "25": {
-    "name": "Raichu",
+  "Raichu": {
     "evolution": {
       "0": "pichu",
       "1": "pikachu",
@@ -963,8 +937,7 @@
       }
     }
   },
-  "26": {
-    "name": "Sandshrew",
+  "Sandshrew": {
     "evolution": {
       "0": "sandshrew",
       "1": "sandslash"
@@ -997,8 +970,7 @@
       }
     }
   },
-  "27": {
-    "name": "Sandslash",
+  "Sandslash": {
     "evolution": {
       "0": "sandshrew",
       "1": "sandslash"
@@ -1031,8 +1003,7 @@
       }
     }
   },
-  "28": {
-    "name": "Nidoran-male",
+  "Nidoran-male": {
     "evolution": {
       "0": "nidoran-male",
       "1": "nidorino",
@@ -1069,8 +1040,7 @@
       }
     }
   },
-  "29": {
-    "name": "Nidorina",
+  "Nidorina": {
     "evolution": {
       "0": "nidoran-female",
       "1": "nidorina",
@@ -1107,8 +1077,7 @@
       }
     }
   },
-  "30": {
-    "name": "Nidoqueen",
+  "Nidoqueen": {
     "evolution": {
       "0": "nidoran-female",
       "1": "nidorina",
@@ -1148,8 +1117,7 @@
       }
     }
   },
-  "31": {
-    "name": "Nidoran-female",
+  "Nidoran-female": {
     "evolution": {
       "0": "nidoran-female",
       "1": "nidorina",
@@ -1186,8 +1154,7 @@
       }
     }
   },
-  "32": {
-    "name": "Nidorino",
+  "Nidorino": {
     "evolution": {
       "0": "nidoran-male",
       "1": "nidorino",
@@ -1224,8 +1191,7 @@
       }
     }
   },
-  "33": {
-    "name": "Nidoking",
+  "Nidoking": {
     "evolution": {
       "0": "nidoran-male",
       "1": "nidorino",
@@ -1265,8 +1231,7 @@
       }
     }
   },
-  "34": {
-    "name": "Clefairy",
+  "Clefairy": {
     "evolution": {
       "0": "cleffa",
       "1": "clefairy",
@@ -1303,8 +1268,7 @@
       }
     }
   },
-  "35": {
-    "name": "Clefable",
+  "Clefable": {
     "evolution": {
       "0": "cleffa",
       "1": "clefairy",
@@ -1341,8 +1305,7 @@
       }
     }
   },
-  "36": {
-    "name": "Vulpix",
+  "Vulpix": {
     "evolution": {
       "0": "vulpix",
       "1": "ninetales"
@@ -1375,8 +1338,7 @@
       }
     }
   },
-  "37": {
-    "name": "Ninetales",
+  "Ninetales": {
     "evolution": {
       "0": "vulpix",
       "1": "ninetales"
@@ -1409,8 +1371,7 @@
       }
     }
   },
-  "38": {
-    "name": "Jigglypuff",
+  "Jigglypuff": {
     "evolution": {
       "0": "igglybuff",
       "1": "jigglypuff",
@@ -1448,8 +1409,7 @@
       }
     }
   },
-  "39": {
-    "name": "Wigglytuff",
+  "Wigglytuff": {
     "evolution": {
       "0": "igglybuff",
       "1": "jigglypuff",
@@ -1487,8 +1447,7 @@
       }
     }
   },
-  "40": {
-    "name": "Zubat",
+  "Zubat": {
     "evolution": {
       "0": "zubat",
       "1": "golbat",
@@ -1524,8 +1483,7 @@
       }
     }
   },
-  "41": {
-    "name": "Golbat",
+  "Golbat": {
     "evolution": {
       "0": "zubat",
       "1": "golbat",
@@ -1561,8 +1519,7 @@
       }
     }
   },
-  "42": {
-    "name": "Oddish",
+  "Oddish": {
     "evolution": {
       "0": "oddish",
       "1": "gloom",
@@ -1598,8 +1555,7 @@
       }
     }
   },
-  "43": {
-    "name": "Gloom",
+  "Gloom": {
     "evolution": {
       "0": "oddish",
       "1": "gloom",
@@ -1635,8 +1591,7 @@
       }
     }
   },
-  "44": {
-    "name": "Vileplume",
+  "Vileplume": {
     "evolution": {
       "0": "oddish",
       "1": "gloom",
@@ -1672,8 +1627,7 @@
       }
     }
   },
-  "45": {
-    "name": "Paras",
+  "Paras": {
     "evolution": {
       "0": "paras",
       "1": "parasect"
@@ -1714,8 +1668,7 @@
       }
     }
   },
-  "46": {
-    "name": "Parasect",
+  "Parasect": {
     "evolution": {
       "0": "paras",
       "1": "parasect"
@@ -1756,8 +1709,7 @@
       }
     }
   },
-  "47": {
-    "name": "Venonat",
+  "Venonat": {
     "evolution": {
       "0": "venonat",
       "1": "venomoth"
@@ -1796,8 +1748,7 @@
       }
     }
   },
-  "48": {
-    "name": "Venomoth",
+  "Venomoth": {
     "evolution": {
       "0": "venonat",
       "1": "venomoth"
@@ -1836,8 +1787,7 @@
       }
     }
   },
-  "49": {
-    "name": "Diglett",
+  "Diglett": {
     "evolution": {
       "0": "diglett",
       "1": "dugtrio"
@@ -1874,8 +1824,7 @@
       }
     }
   },
-  "50": {
-    "name": "Dugtrio",
+  "Dugtrio": {
     "evolution": {
       "0": "diglett",
       "1": "dugtrio"
@@ -1912,8 +1861,7 @@
       }
     }
   },
-  "51": {
-    "name": "Meowth",
+  "Meowth": {
     "evolution": {
       "0": "meowth",
       "1": "persian"
@@ -1948,8 +1896,7 @@
       }
     }
   },
-  "52": {
-    "name": "Persian",
+  "Persian": {
     "evolution": {
       "0": "meowth",
       "1": "persian"
@@ -1984,8 +1931,7 @@
       }
     }
   },
-  "53": {
-    "name": "Psyduck",
+  "Psyduck": {
     "evolution": {
       "0": "psyduck",
       "1": "golduck"
@@ -2021,8 +1967,7 @@
       }
     }
   },
-  "54": {
-    "name": "Golduck",
+  "Golduck": {
     "evolution": {
       "0": "psyduck",
       "1": "golduck"
@@ -2058,8 +2003,7 @@
       }
     }
   },
-  "55": {
-    "name": "Mankey",
+  "Mankey": {
     "evolution": {
       "0": "mankey",
       "1": "primeape"
@@ -2096,8 +2040,7 @@
       }
     }
   },
-  "56": {
-    "name": "Primeape",
+  "Primeape": {
     "evolution": {
       "0": "mankey",
       "1": "primeape"
@@ -2134,8 +2077,7 @@
       }
     }
   },
-  "57": {
-    "name": "Growlithe",
+  "Growlithe": {
     "evolution": {
       "0": "growlithe",
       "1": "arcanine"
@@ -2172,8 +2114,7 @@
       }
     }
   },
-  "58": {
-    "name": "Arcanine",
+  "Arcanine": {
     "evolution": {
       "0": "growlithe",
       "1": "arcanine"
@@ -2210,8 +2151,7 @@
       }
     }
   },
-  "59": {
-    "name": "Poliwag",
+  "Poliwag": {
     "evolution": {
       "0": "poliwag",
       "1": "poliwhirl",
@@ -2248,8 +2188,7 @@
       }
     }
   },
-  "60": {
-    "name": "Poliwhirl",
+  "Poliwhirl": {
     "evolution": {
       "0": "poliwag",
       "1": "poliwhirl",
@@ -2286,8 +2225,7 @@
       }
     }
   },
-  "61": {
-    "name": "Poliwrath",
+  "Poliwrath": {
     "evolution": {
       "0": "poliwag",
       "1": "poliwhirl",
@@ -2328,8 +2266,7 @@
       }
     }
   },
-  "62": {
-    "name": "Abra",
+  "Abra": {
     "evolution": {
       "0": "abra",
       "1": "kadabra",
@@ -2367,8 +2304,7 @@
       }
     }
   },
-  "63": {
-    "name": "Kadabra",
+  "Kadabra": {
     "evolution": {
       "0": "abra",
       "1": "kadabra",
@@ -2406,8 +2342,7 @@
       }
     }
   },
-  "64": {
-    "name": "Alakazam",
+  "Alakazam": {
     "evolution": {
       "0": "abra",
       "1": "kadabra",
@@ -2449,8 +2384,7 @@
       }
     }
   },
-  "65": {
-    "name": "Machop",
+  "Machop": {
     "evolution": {
       "0": "machop",
       "1": "machoke",
@@ -2488,8 +2422,7 @@
       }
     }
   },
-  "66": {
-    "name": "Machoke",
+  "Machoke": {
     "evolution": {
       "0": "machop",
       "1": "machoke",
@@ -2527,8 +2460,7 @@
       }
     }
   },
-  "67": {
-    "name": "Machamp",
+  "Machamp": {
     "evolution": {
       "0": "machop",
       "1": "machoke",
@@ -2566,8 +2498,7 @@
       }
     }
   },
-  "68": {
-    "name": "Bellsprout",
+  "Bellsprout": {
     "evolution": {
       "0": "bellsprout",
       "1": "weepinbell",
@@ -2603,8 +2534,7 @@
       }
     }
   },
-  "69": {
-    "name": "Weepinbell",
+  "Weepinbell": {
     "evolution": {
       "0": "bellsprout",
       "1": "weepinbell",
@@ -2640,8 +2570,7 @@
       }
     }
   },
-  "70": {
-    "name": "Victreebel",
+  "Victreebel": {
     "evolution": {
       "0": "bellsprout",
       "1": "weepinbell",
@@ -2677,8 +2606,7 @@
       }
     }
   },
-  "71": {
-    "name": "Tentacool",
+  "Tentacool": {
     "evolution": {
       "0": "tentacool",
       "1": "tentacruel"
@@ -2716,8 +2644,7 @@
       }
     }
   },
-  "72": {
-    "name": "Tentacruel",
+  "Tentacruel": {
     "evolution": {
       "0": "tentacool",
       "1": "tentacruel"
@@ -2755,8 +2682,7 @@
       }
     }
   },
-  "73": {
-    "name": "Geodude",
+  "Geodude": {
     "evolution": {
       "0": "geodude",
       "1": "graveler",
@@ -2798,8 +2724,7 @@
       }
     }
   },
-  "74": {
-    "name": "Graveler",
+  "Graveler": {
     "evolution": {
       "0": "geodude",
       "1": "graveler",
@@ -2841,8 +2766,7 @@
       }
     }
   },
-  "75": {
-    "name": "Golem",
+  "Golem": {
     "evolution": {
       "0": "geodude",
       "1": "graveler",
@@ -2884,8 +2808,7 @@
       }
     }
   },
-  "76": {
-    "name": "Ponyta",
+  "Ponyta": {
     "evolution": {
       "0": "ponyta",
       "1": "rapidash"
@@ -2922,8 +2845,7 @@
       }
     }
   },
-  "77": {
-    "name": "Rapidash",
+  "Rapidash": {
     "evolution": {
       "0": "ponyta",
       "1": "rapidash"
@@ -2960,8 +2882,7 @@
       }
     }
   },
-  "78": {
-    "name": "Slowpoke",
+  "Slowpoke": {
     "evolution": {
       "0": "slowpoke",
       "1": "slowbro"
@@ -3001,8 +2922,7 @@
       }
     }
   },
-  "79": {
-    "name": "Slowbro",
+  "Slowbro": {
     "evolution": {
       "0": "slowpoke",
       "1": "slowbro"
@@ -3046,8 +2966,7 @@
       }
     }
   },
-  "80": {
-    "name": "Magnemite",
+  "Magnemite": {
     "evolution": {
       "0": "magnemite",
       "1": "magneton",
@@ -3086,8 +3005,7 @@
       }
     }
   },
-  "81": {
-    "name": "Magneton",
+  "Magneton": {
     "evolution": {
       "0": "magnemite",
       "1": "magneton",
@@ -3126,8 +3044,7 @@
       }
     }
   },
-  "82": {
-    "name": "Farfetchd",
+  "Farfetchd": {
     "evolution": {
       "0": "farfetchd"
     },
@@ -3164,8 +3081,7 @@
       }
     }
   },
-  "83": {
-    "name": "Doduo",
+  "Doduo": {
     "evolution": {
       "0": "doduo",
       "1": "dodrio"
@@ -3203,8 +3119,7 @@
       }
     }
   },
-  "84": {
-    "name": "Dodrio",
+  "Dodrio": {
     "evolution": {
       "0": "doduo",
       "1": "dodrio"
@@ -3242,8 +3157,7 @@
       }
     }
   },
-  "85": {
-    "name": "Seel",
+  "Seel": {
     "evolution": {
       "0": "seel",
       "1": "dewgong"
@@ -3279,8 +3193,7 @@
       }
     }
   },
-  "86": {
-    "name": "Dewgong",
+  "Dewgong": {
     "evolution": {
       "0": "seel",
       "1": "dewgong"
@@ -3319,8 +3232,7 @@
       }
     }
   },
-  "87": {
-    "name": "Grimer",
+  "Grimer": {
     "evolution": {
       "0": "grimer",
       "1": "muk"
@@ -3356,8 +3268,7 @@
       }
     }
   },
-  "88": {
-    "name": "Muk",
+  "Muk": {
     "evolution": {
       "0": "grimer",
       "1": "muk"
@@ -3393,8 +3304,7 @@
       }
     }
   },
-  "89": {
-    "name": "Shellder",
+  "Shellder": {
     "evolution": {
       "0": "shellder",
       "1": "cloyster"
@@ -3430,8 +3340,7 @@
       }
     }
   },
-  "90": {
-    "name": "Cloyster",
+  "Cloyster": {
     "evolution": {
       "0": "shellder",
       "1": "cloyster"
@@ -3470,8 +3379,7 @@
       }
     }
   },
-  "91": {
-    "name": "Gastly",
+  "Gastly": {
     "evolution": {
       "0": "gastly",
       "1": "haunter",
@@ -3506,8 +3414,7 @@
       }
     }
   },
-  "92": {
-    "name": "Haunter",
+  "Haunter": {
     "evolution": {
       "0": "gastly",
       "1": "haunter",
@@ -3542,8 +3449,7 @@
       }
     }
   },
-  "93": {
-    "name": "Gengar",
+  "Gengar": {
     "evolution": {
       "0": "gastly",
       "1": "haunter",
@@ -3582,8 +3488,7 @@
       }
     }
   },
-  "94": {
-    "name": "Onix",
+  "Onix": {
     "evolution": {
       "0": "onix",
       "1": "steelix"
@@ -3624,8 +3529,7 @@
       }
     }
   },
-  "95": {
-    "name": "Drowzee",
+  "Drowzee": {
     "evolution": {
       "0": "drowzee",
       "1": "hypno"
@@ -3662,8 +3566,7 @@
       }
     }
   },
-  "96": {
-    "name": "Hypno",
+  "Hypno": {
     "evolution": {
       "0": "drowzee",
       "1": "hypno"
@@ -3700,8 +3603,7 @@
       }
     }
   },
-  "97": {
-    "name": "Krabby",
+  "Krabby": {
     "evolution": {
       "0": "krabby",
       "1": "kingler"
@@ -3737,8 +3639,7 @@
       }
     }
   },
-  "98": {
-    "name": "Kingler",
+  "Kingler": {
     "evolution": {
       "0": "krabby",
       "1": "kingler"
@@ -3774,8 +3675,7 @@
       }
     }
   },
-  "99": {
-    "name": "Voltorb",
+  "Voltorb": {
     "evolution": {
       "0": "voltorb",
       "1": "electrode"
@@ -3810,8 +3710,7 @@
       }
     }
   },
-  "100": {
-    "name": "Electrode",
+  "Electrode": {
     "evolution": {
       "0": "voltorb",
       "1": "electrode"
@@ -3846,8 +3745,7 @@
       }
     }
   },
-  "101": {
-    "name": "Exeggcute",
+  "Exeggcute": {
     "evolution": {
       "0": "exeggcute",
       "1": "exeggutor"
@@ -3885,8 +3783,7 @@
       }
     }
   },
-  "102": {
-    "name": "Exeggutor",
+  "Exeggutor": {
     "evolution": {
       "0": "exeggcute",
       "1": "exeggutor"
@@ -3924,8 +3821,7 @@
       }
     }
   },
-  "103": {
-    "name": "Cubone",
+  "Cubone": {
     "evolution": {
       "0": "cubone",
       "1": "marowak"
@@ -3962,8 +3858,7 @@
       }
     }
   },
-  "104": {
-    "name": "Marowak",
+  "Marowak": {
     "evolution": {
       "0": "cubone",
       "1": "marowak"
@@ -4000,8 +3895,7 @@
       }
     }
   },
-  "105": {
-    "name": "Hitmonlee",
+  "Hitmonlee": {
     "evolution": {
       "0": "tyrogue",
       "1": "hitmonlee"
@@ -4038,8 +3932,7 @@
       }
     }
   },
-  "106": {
-    "name": "Hitmonchan",
+  "Hitmonchan": {
     "evolution": {
       "0": "tyrogue",
       "1": "hitmonlee"
@@ -4076,8 +3969,7 @@
       }
     }
   },
-  "107": {
-    "name": "Lickitung",
+  "Lickitung": {
     "evolution": {
       "0": "lickitung",
       "1": "lickilicky"
@@ -4112,8 +4004,7 @@
       }
     }
   },
-  "108": {
-    "name": "Koffing",
+  "Koffing": {
     "evolution": {
       "0": "koffing",
       "1": "weezing"
@@ -4144,8 +4035,7 @@
       }
     }
   },
-  "109": {
-    "name": "Weezing",
+  "Weezing": {
     "evolution": {
       "0": "koffing",
       "1": "weezing"
@@ -4176,8 +4066,7 @@
       }
     }
   },
-  "110": {
-    "name": "Rhyhorn",
+  "Rhyhorn": {
     "evolution": {
       "0": "rhyhorn",
       "1": "rhydon",
@@ -4219,8 +4108,7 @@
       }
     }
   },
-  "111": {
-    "name": "Rhydon",
+  "Rhydon": {
     "evolution": {
       "0": "rhyhorn",
       "1": "rhydon",
@@ -4262,8 +4150,7 @@
       }
     }
   },
-  "112": {
-    "name": "Chansey",
+  "Chansey": {
     "evolution": {
       "0": "happiny",
       "1": "chansey",
@@ -4299,8 +4186,7 @@
       }
     }
   },
-  "113": {
-    "name": "Tangela",
+  "Tangela": {
     "evolution": {
       "0": "tangela",
       "1": "tangrowth"
@@ -4339,8 +4225,7 @@
       }
     }
   },
-  "114": {
-    "name": "Kangaskhan",
+  "Kangaskhan": {
     "evolution": {
       "0": "kangaskhan"
     },
@@ -4378,8 +4263,7 @@
       }
     }
   },
-  "115": {
-    "name": "Horsea",
+  "Horsea": {
     "evolution": {
       "0": "horsea",
       "1": "seadra",
@@ -4416,8 +4300,7 @@
       }
     }
   },
-  "116": {
-    "name": "Seadra",
+  "Seadra": {
     "evolution": {
       "0": "horsea",
       "1": "seadra",
@@ -4454,8 +4337,7 @@
       }
     }
   },
-  "117": {
-    "name": "Goldeen",
+  "Goldeen": {
     "evolution": {
       "0": "goldeen",
       "1": "seaking"
@@ -4491,8 +4373,7 @@
       }
     }
   },
-  "118": {
-    "name": "Seaking",
+  "Seaking": {
     "evolution": {
       "0": "goldeen",
       "1": "seaking"
@@ -4528,8 +4409,7 @@
       }
     }
   },
-  "119": {
-    "name": "Staryu",
+  "Staryu": {
     "evolution": {
       "0": "staryu",
       "1": "starmie"
@@ -4565,8 +4445,7 @@
       }
     }
   },
-  "120": {
-    "name": "Starmie",
+  "Starmie": {
     "evolution": {
       "0": "staryu",
       "1": "starmie"
@@ -4606,8 +4485,7 @@
       }
     }
   },
-  "121": {
-    "name": "Mr-Mime",
+  "Mr-Mime": {
     "evolution": {
       "0": "mime-jr",
       "1": "mr-mime"
@@ -4645,8 +4523,7 @@
       }
     }
   },
-  "122": {
-    "name": "Scyther",
+  "Scyther": {
     "evolution": {
       "0": "scyther",
       "1": "scizor"
@@ -4686,8 +4563,7 @@
       }
     }
   },
-  "123": {
-    "name": "Jynx",
+  "Jynx": {
     "evolution": {
       "0": "smoochum",
       "1": "jynx"
@@ -4728,8 +4604,7 @@
       }
     }
   },
-  "124": {
-    "name": "Electabuzz",
+  "Electabuzz": {
     "evolution": {
       "0": "elekid",
       "1": "electabuzz",
@@ -4761,8 +4636,7 @@
       }
     }
   },
-  "125": {
-    "name": "Magmar",
+  "Magmar": {
     "evolution": {
       "0": "magby",
       "1": "magmar",
@@ -4796,8 +4670,7 @@
       }
     }
   },
-  "126": {
-    "name": "Pinsir",
+  "Pinsir": {
     "evolution": {
       "0": "pinsir"
     },
@@ -4837,8 +4710,7 @@
       }
     }
   },
-  "127": {
-    "name": "Tauros",
+  "Tauros": {
     "evolution": {
       "0": "tauros"
     },
@@ -4872,8 +4744,7 @@
       }
     }
   },
-  "128": {
-    "name": "Magikarp",
+  "Magikarp": {
     "evolution": {
       "0": "magikarp",
       "1": "gyarados"
@@ -4905,8 +4776,7 @@
       }
     }
   },
-  "129": {
-    "name": "Gyarados",
+  "Gyarados": {
     "evolution": {
       "0": "magikarp",
       "1": "gyarados"
@@ -4943,8 +4813,7 @@
       }
     }
   },
-  "130": {
-    "name": "Lapras",
+  "Lapras": {
     "evolution": {
       "0": "lapras"
     },
@@ -4982,8 +4851,7 @@
       }
     }
   },
-  "131": {
-    "name": "Ditto",
+  "Ditto": {
     "evolution": {
       "0": "ditto"
     },
@@ -5013,8 +4881,7 @@
       }
     }
   },
-  "132": {
-    "name": "Eevee",
+  "Eevee": {
     "evolution": {
       "0": "eevee",
       "1": "vaporeon"
@@ -5049,8 +4916,7 @@
       }
     }
   },
-  "133": {
-    "name": "Vaporeon",
+  "Vaporeon": {
     "evolution": {
       "0": "eevee",
       "1": "vaporeon"
@@ -5082,8 +4948,7 @@
       }
     }
   },
-  "134": {
-    "name": "Jolteon",
+  "Jolteon": {
     "evolution": {
       "0": "eevee",
       "1": "vaporeon"
@@ -5114,8 +4979,7 @@
       }
     }
   },
-  "135": {
-    "name": "Flareon",
+  "Flareon": {
     "evolution": {
       "0": "eevee",
       "1": "vaporeon"
@@ -5148,8 +5012,7 @@
       }
     }
   },
-  "136": {
-    "name": "Porygon",
+  "Porygon": {
     "evolution": {
       "0": "porygon",
       "1": "porygon2",
@@ -5185,8 +5048,7 @@
       }
     }
   },
-  "137": {
-    "name": "Omanyte",
+  "Omanyte": {
     "evolution": {
       "0": "omanyte",
       "1": "omastar"
@@ -5225,8 +5087,7 @@
       }
     }
   },
-  "138": {
-    "name": "Omastar",
+  "Omastar": {
     "evolution": {
       "0": "omanyte",
       "1": "omastar"
@@ -5265,8 +5126,7 @@
       }
     }
   },
-  "139": {
-    "name": "Kabuto",
+  "Kabuto": {
     "evolution": {
       "0": "kabuto",
       "1": "kabutops"
@@ -5305,8 +5165,7 @@
       }
     }
   },
-  "140": {
-    "name": "Kabutops",
+  "Kabutops": {
     "evolution": {
       "0": "kabuto",
       "1": "kabutops"
@@ -5345,8 +5204,7 @@
       }
     }
   },
-  "141": {
-    "name": "Aerodactyl",
+  "Aerodactyl": {
     "evolution": {
       "0": "aerodactyl"
     },
@@ -5389,8 +5247,7 @@
       }
     }
   },
-  "142": {
-    "name": "Snorlax",
+  "Snorlax": {
     "evolution": {
       "0": "munchlax",
       "1": "snorlax"
@@ -5425,8 +5282,7 @@
       }
     }
   },
-  "143": {
-    "name": "Articuno",
+  "Articuno": {
     "evolution": {
       "0": "articuno"
     },
@@ -5460,8 +5316,7 @@
       }
     }
   },
-  "144": {
-    "name": "Zapdos",
+  "Zapdos": {
     "evolution": {
       "0": "zapdos"
     },
@@ -5493,8 +5348,7 @@
       }
     }
   },
-  "145": {
-    "name": "Moltres",
+  "Moltres": {
     "evolution": {
       "0": "moltres"
     },
@@ -5527,8 +5381,7 @@
       }
     }
   },
-  "146": {
-    "name": "Dratini",
+  "Dratini": {
     "evolution": {
       "0": "dratini",
       "1": "dragonair",
@@ -5562,8 +5415,7 @@
       }
     }
   },
-  "147": {
-    "name": "Dragonair",
+  "Dragonair": {
     "evolution": {
       "0": "dratini",
       "1": "dragonair",
@@ -5597,8 +5449,7 @@
       }
     }
   },
-  "148": {
-    "name": "Dragonite",
+  "Dragonite": {
     "evolution": {
       "0": "dratini",
       "1": "dragonair",
@@ -5634,8 +5485,7 @@
       }
     }
   },
-  "149": {
-    "name": "Mewtwo",
+  "Mewtwo": {
     "evolution": {
       "0": "mewtwo"
     },
@@ -5675,8 +5525,7 @@
       }
     }
   },
-  "150": {
-    "name": "Mew",
+  "Mew": {
     "evolution": {
       "0": "mew"
     },

@@ -173,7 +173,6 @@ var pokemons = [
 })();
 
 var pokemonInfo = Array();
-var counter = 0;
 
 function getPokemonBasicInfo(pokemonName) {
 	var xhttp = new XMLHttpRequest();
@@ -181,8 +180,6 @@ function getPokemonBasicInfo(pokemonName) {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			var pokemon = Array();
       
-			pokemon['name'] = pokemonName;
-
 			var el = document.createElement( 'html' );
 			el.innerHTML = xhttp.responseText;
 
@@ -244,7 +241,7 @@ function getPokemonBasicInfo(pokemonName) {
 				pokemon['ability'][i] = {name: abilityName, description: abilityDescription};
 				
 			}
-			pokemonInfo[counter++] = pokemon;
+			pokemonInfo[pokemonName] = pokemon;
 		}
 	};
 
