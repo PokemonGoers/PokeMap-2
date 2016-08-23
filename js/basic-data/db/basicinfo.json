@@ -1,0 +1,5711 @@
+{
+  "0": {
+    "name": "Bulbasaur",
+    "evolution": {
+      "0": "bulbasaur",
+      "1": "ivysaur",
+      "2": "venusaur"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "2' 04\"",
+    "weight": "15.2 lbs",
+    "category": {
+      "1": "Seed"
+    },
+    "ability": {
+      "0": {
+        "name": "Overgrow",
+        "description": "Powers up Grass-type moves when the Pokémon is in trouble."
+      }
+    }
+  },
+  "1": {
+    "name": "Ivysaur",
+    "evolution": {
+      "0": "bulbasaur",
+      "1": "ivysaur",
+      "2": "venusaur"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "28.7 lbs",
+    "category": {
+      "1": "Seed"
+    },
+    "ability": {
+      "0": {
+        "name": "Overgrow",
+        "description": "Powers up Grass-type moves when the Pokémon is in trouble."
+      }
+    }
+  },
+  "2": {
+    "name": "Venusaur",
+    "evolution": {
+      "0": "bulbasaur",
+      "1": "ivysaur",
+      "2": "venusaur"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "6' 07\"",
+    "weight": "220.5 lbs",
+    "category": {
+      "1": "Seed"
+    },
+    "ability": {
+      "0": {
+        "name": "Overgrow",
+        "description": "Powers up Grass-type moves when the Pokémon is in trouble."
+      },
+      "1": {
+        "name": "Thick Fat",
+        "description": "Boosts resistance to Fire- and Ice-type moves."
+      }
+    }
+  },
+  "3": {
+    "name": "Charmander",
+    "evolution": {
+      "0": "charmander",
+      "1": "charmeleon",
+      "2": "charizard"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "2' 00\"",
+    "weight": "18.7 lbs",
+    "category": {
+      "1": "Lizard"
+    },
+    "ability": {
+      "0": {
+        "name": "Blaze",
+        "description": "Powers up Fire-type moves when the Pokémon is in trouble."
+      }
+    }
+  },
+  "4": {
+    "name": "Charmeleon",
+    "evolution": {
+      "0": "charmander",
+      "1": "charmeleon",
+      "2": "charizard"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "3' 07\"",
+    "weight": "41.9 lbs",
+    "category": {
+      "1": "Flame"
+    },
+    "ability": {
+      "0": {
+        "name": "Blaze",
+        "description": "Powers up Fire-type moves when the Pokémon is in trouble."
+      }
+    }
+  },
+  "5": {
+    "name": "Charizard",
+    "evolution": {
+      "0": "charmander",
+      "1": "charmeleon",
+      "2": "charizard"
+    },
+    "weaknesses": {
+      "0": "Rock",
+      "1": "Electric",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "5' 07\"",
+    "weight": "199.5 lbs",
+    "category": {
+      "1": "Flame"
+    },
+    "ability": {
+      "0": {
+        "name": "Blaze",
+        "description": "Powers up Fire-type moves when the Pokémon is in trouble."
+      },
+      "1": {
+        "name": "Tough Claws",
+        "description": "Powers up moves that make direct contact."
+      },
+      "2": {
+        "name": "Drought",
+        "description": "Turns the sunlight harsh when the Pokémon enters a battle."
+      }
+    }
+  },
+  "6": {
+    "name": "Squirtle",
+    "evolution": {
+      "0": "squirtle",
+      "1": "wartortle",
+      "2": "blastoise"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "1' 08\"",
+    "weight": "19.8 lbs",
+    "category": {
+      "1": "Tiny Turtle"
+    },
+    "ability": {
+      "0": {
+        "name": "Torrent",
+        "description": "Powers up Water-type moves when the Pokémon is in trouble."
+      }
+    }
+  },
+  "7": {
+    "name": "Wartortle",
+    "evolution": {
+      "0": "squirtle",
+      "1": "wartortle",
+      "2": "blastoise"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "49.6 lbs",
+    "category": {
+      "1": "Turtle"
+    },
+    "ability": {
+      "0": {
+        "name": "Torrent",
+        "description": "Powers up Water-type moves when the Pokémon is in trouble."
+      }
+    }
+  },
+  "8": {
+    "name": "Blastoise",
+    "evolution": {
+      "0": "squirtle",
+      "1": "wartortle",
+      "2": "blastoise"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "4",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "5' 03\"",
+    "weight": "188.5 lbs",
+    "category": {
+      "1": "Shellfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Torrent",
+        "description": "Powers up Water-type moves when the Pokémon is in trouble."
+      },
+      "1": {
+        "name": "Mega Launcher",
+        "description": "Powers up aura and pulse moves."
+      }
+    }
+  },
+  "9": {
+    "name": "Caterpie",
+    "evolution": {
+      "0": "caterpie",
+      "1": "metapod",
+      "2": "butterfree"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Bug"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "3"
+    },
+    "height": "1' 00\"",
+    "weight": "6.4 lbs",
+    "category": {
+      "1": "Worm"
+    },
+    "ability": {
+      "0": {
+        "name": "Shield Dust",
+        "description": "Blocks the additional effects of attacks taken."
+      }
+    }
+  },
+  "10": {
+    "name": "Metapod",
+    "evolution": {
+      "0": "caterpie",
+      "1": "metapod",
+      "2": "butterfree"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Bug"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "1",
+      "Defense": "3",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "2"
+    },
+    "height": "2' 04\"",
+    "weight": "21.8 lbs",
+    "category": {
+      "1": "Cocoon"
+    },
+    "ability": {
+      "0": {
+        "name": "Shed Skin",
+        "description": "The Pokémon may heal its own status conditions."
+      }
+    }
+  },
+  "11": {
+    "name": "Butterfree",
+    "evolution": {
+      "0": "caterpie",
+      "1": "metapod",
+      "2": "butterfree"
+    },
+    "weaknesses": {
+      "0": "Rock",
+      "1": "Electric",
+      "2": "Fire",
+      "3": "Flying",
+      "4": "Ice"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "3' 07\"",
+    "weight": "70.5 lbs",
+    "category": {
+      "1": "Butterfly"
+    },
+    "ability": {
+      "0": {
+        "name": "Compound Eyes",
+        "description": "Boosts the Pokémon's accuracy."
+      }
+    }
+  },
+  "12": {
+    "name": "Weedle",
+    "evolution": {
+      "0": "weedle",
+      "1": "kakuna",
+      "2": "beedrill"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "3"
+    },
+    "height": "1' 00\"",
+    "weight": "7.1 lbs",
+    "category": {
+      "1": "Hairy Bug"
+    },
+    "ability": {
+      "0": {
+        "name": "Shield Dust",
+        "description": "Blocks the additional effects of attacks taken."
+      }
+    }
+  },
+  "13": {
+    "name": "Kakuna",
+    "evolution": {
+      "0": "weedle",
+      "1": "kakuna",
+      "2": "beedrill"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "1",
+      "Defense": "2",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "2"
+    },
+    "height": "2' 00\"",
+    "weight": "22.0 lbs",
+    "category": {
+      "1": "Cocoon"
+    },
+    "ability": {
+      "0": {
+        "name": "Shed Skin",
+        "description": "The Pokémon may heal its own status conditions."
+      }
+    }
+  },
+  "14": {
+    "name": "Beedrill",
+    "evolution": {
+      "0": "weedle",
+      "1": "kakuna",
+      "2": "beedrill"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "3' 03\"",
+    "weight": "65.0 lbs",
+    "category": {
+      "1": "Poison Bee"
+    },
+    "ability": {
+      "0": {
+        "name": "Swarm",
+        "description": "Powers up Bug-type moves when the Pokémon is in trouble."
+      },
+      "1": {
+        "name": "Adaptability",
+        "description": "Powers up moves of the same type as the Pokémon."
+      }
+    }
+  },
+  "15": {
+    "name": "Pidgey",
+    "evolution": {
+      "0": "pidgey",
+      "1": "pidgeotto",
+      "2": "pidgeot"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "1' 00\"",
+    "weight": "4.0 lbs",
+    "category": {
+      "1": "Tiny Bird"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      },
+      "1": {
+        "name": "Tangled Feet",
+        "description": "Raises evasion if the Pokémon is confused."
+      }
+    }
+  },
+  "16": {
+    "name": "Pidgeotto",
+    "evolution": {
+      "0": "pidgey",
+      "1": "pidgeotto",
+      "2": "pidgeot"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "3' 07\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Bird"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      },
+      "1": {
+        "name": "Tangled Feet",
+        "description": "Raises evasion if the Pokémon is confused."
+      }
+    }
+  },
+  "17": {
+    "name": "Pidgeot",
+    "evolution": {
+      "0": "pidgey",
+      "1": "pidgeotto",
+      "2": "pidgeot"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "4' 11\"",
+    "weight": "87.1 lbs",
+    "category": {
+      "1": "Bird"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      },
+      "1": {
+        "name": "Tangled Feet",
+        "description": "Raises evasion if the Pokémon is confused."
+      },
+      "2": {
+        "name": "No Guard",
+        "description": "Ensures attacks by or against the Pokémon land."
+      }
+    }
+  },
+  "18": {
+    "name": "Rattata",
+    "evolution": {
+      "0": "rattata",
+      "1": "raticate"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "1",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "1' 00\"",
+    "weight": "7.7 lbs",
+    "category": {
+      "1": "Mouse"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Guts",
+        "description": "Boosts the Attack stat if the Pokémon has a status condition."
+      }
+    }
+  },
+  "19": {
+    "name": "Raticate",
+    "evolution": {
+      "0": "rattata",
+      "1": "raticate"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "2' 04\"",
+    "weight": "40.8 lbs",
+    "category": {
+      "1": "Mouse"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Guts",
+        "description": "Boosts the Attack stat if the Pokémon has a status condition."
+      }
+    }
+  },
+  "20": {
+    "name": "Spearow",
+    "evolution": {
+      "0": "spearow",
+      "1": "fearow"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "1",
+      "Speed": "4"
+    },
+    "height": "1' 00\"",
+    "weight": "4.4 lbs",
+    "category": {
+      "1": "Tiny Bird"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      }
+    }
+  },
+  "21": {
+    "name": "Fearow",
+    "evolution": {
+      "0": "spearow",
+      "1": "fearow"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "3' 11\"",
+    "weight": "83.8 lbs",
+    "category": {
+      "1": "Beak"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      }
+    }
+  },
+  "22": {
+    "name": "Ekans",
+    "evolution": {
+      "0": "ekans",
+      "1": "arbok"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "6' 07\"",
+    "weight": "15.2 lbs",
+    "category": {
+      "1": "Snake"
+    },
+    "ability": {
+      "0": {
+        "name": "Shed Skin",
+        "description": "The Pokémon may heal its own status conditions."
+      },
+      "1": {
+        "name": "Intimidate",
+        "description": "Lowers the opposing Pokémon's Attack stat."
+      }
+    }
+  },
+  "23": {
+    "name": "Arbok",
+    "evolution": {
+      "0": "ekans",
+      "1": "arbok"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "11' 06\"",
+    "weight": "143.3 lbs",
+    "category": {
+      "1": "Cobra"
+    },
+    "ability": {
+      "0": {
+        "name": "Shed Skin",
+        "description": "The Pokémon may heal its own status conditions."
+      },
+      "1": {
+        "name": "Intimidate",
+        "description": "Lowers the opposing Pokémon's Attack stat."
+      }
+    }
+  },
+  "24": {
+    "name": "Pikachu",
+    "evolution": {
+      "0": "pichu",
+      "1": "pikachu",
+      "2": "raichu"
+    },
+    "weaknesses": {
+      "0": "Ground"
+    },
+    "type": {
+      "0": "Electric"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "1' 04\"",
+    "weight": "13.2 lbs",
+    "category": {
+      "1": "Mouse"
+    },
+    "ability": {
+      "0": {
+        "name": "Static",
+        "description": "Contact with the Pokémon may cause paralysis."
+      }
+    }
+  },
+  "25": {
+    "name": "Raichu",
+    "evolution": {
+      "0": "pichu",
+      "1": "pikachu",
+      "2": "raichu"
+    },
+    "weaknesses": {
+      "0": "Ground"
+    },
+    "type": {
+      "0": "Electric"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "2' 07\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Mouse"
+    },
+    "ability": {
+      "0": {
+        "name": "Static",
+        "description": "Contact with the Pokémon may cause paralysis."
+      }
+    }
+  },
+  "26": {
+    "name": "Sandshrew",
+    "evolution": {
+      "0": "sandshrew",
+      "1": "sandslash"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Ice",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Ground"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "2"
+    },
+    "height": "2' 00\"",
+    "weight": "26.5 lbs",
+    "category": {
+      "1": "Mouse"
+    },
+    "ability": {
+      "0": {
+        "name": "Sand Veil",
+        "description": "Boosts the Pokémon's evasion in a sandstorm."
+      }
+    }
+  },
+  "27": {
+    "name": "Sandslash",
+    "evolution": {
+      "0": "sandshrew",
+      "1": "sandslash"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Ice",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Ground"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "5",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "3' 03\"",
+    "weight": "65.0 lbs",
+    "category": {
+      "1": "Mouse"
+    },
+    "ability": {
+      "0": {
+        "name": "Sand Veil",
+        "description": "Boosts the Pokémon's evasion in a sandstorm."
+      }
+    }
+  },
+  "28": {
+    "name": "Nidoran-male",
+    "evolution": {
+      "0": "nidoran-male",
+      "1": "nidorino",
+      "2": "nidoking"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "1' 08\"",
+    "weight": "19.8 lbs",
+    "category": {
+      "1": "Poison Pin"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Rivalry",
+        "description": "Deals more damage to Pokémon of the same gender."
+      }
+    }
+  },
+  "29": {
+    "name": "Nidorina",
+    "evolution": {
+      "0": "nidoran-female",
+      "1": "nidorina",
+      "2": "nidoqueen"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "2' 07\"",
+    "weight": "44.1 lbs",
+    "category": {
+      "1": "Poison Pin"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Rivalry",
+        "description": "Deals more damage to Pokémon of the same gender."
+      }
+    }
+  },
+  "30": {
+    "name": "Nidoqueen",
+    "evolution": {
+      "0": "nidoran-female",
+      "1": "nidorina",
+      "2": "nidoqueen"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Ice",
+      "2": "Psychic",
+      "3": "Water"
+    },
+    "type": {
+      "0": "Poison",
+      "1": "Ground"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "4",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "4' 03\"",
+    "weight": "132.3 lbs",
+    "category": {
+      "1": "Drill"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Rivalry",
+        "description": "Deals more damage to Pokémon of the same gender."
+      }
+    }
+  },
+  "31": {
+    "name": "Nidoran-female",
+    "evolution": {
+      "0": "nidoran-female",
+      "1": "nidorina",
+      "2": "nidoqueen"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "1' 04\"",
+    "weight": "15.4 lbs",
+    "category": {
+      "1": "Poison Pin"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Rivalry",
+        "description": "Deals more damage to Pokémon of the same gender."
+      }
+    }
+  },
+  "32": {
+    "name": "Nidorino",
+    "evolution": {
+      "0": "nidoran-male",
+      "1": "nidorino",
+      "2": "nidoking"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "2' 11\"",
+    "weight": "43.0 lbs",
+    "category": {
+      "1": "Poison Pin"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Rivalry",
+        "description": "Deals more damage to Pokémon of the same gender."
+      }
+    }
+  },
+  "33": {
+    "name": "Nidoking",
+    "evolution": {
+      "0": "nidoran-male",
+      "1": "nidorino",
+      "2": "nidoking"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Ice",
+      "2": "Psychic",
+      "3": "Water"
+    },
+    "type": {
+      "0": "Poison",
+      "1": "Ground"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "4' 07\"",
+    "weight": "136.7 lbs",
+    "category": {
+      "1": "Drill"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Rivalry",
+        "description": "Deals more damage to Pokémon of the same gender."
+      }
+    }
+  },
+  "34": {
+    "name": "Clefairy",
+    "evolution": {
+      "0": "cleffa",
+      "1": "clefairy",
+      "2": "clefable"
+    },
+    "weaknesses": {
+      "0": "Steel",
+      "1": "Poison"
+    },
+    "type": {
+      "0": "Fairy"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "2' 00\"",
+    "weight": "16.5 lbs",
+    "category": {
+      "1": "Fairy"
+    },
+    "ability": {
+      "0": {
+        "name": "Cute Charm",
+        "description": "Contact with the Pokémon may cause infatuation."
+      },
+      "1": {
+        "name": "Magic Guard",
+        "description": "The Pokémon only takes damage from attacks."
+      }
+    }
+  },
+  "35": {
+    "name": "Clefable",
+    "evolution": {
+      "0": "cleffa",
+      "1": "clefairy",
+      "2": "clefable"
+    },
+    "weaknesses": {
+      "0": "Steel",
+      "1": "Poison"
+    },
+    "type": {
+      "0": "Fairy"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "3"
+    },
+    "height": "4' 03\"",
+    "weight": "88.2 lbs",
+    "category": {
+      "1": "Fairy"
+    },
+    "ability": {
+      "0": {
+        "name": "Cute Charm",
+        "description": "Contact with the Pokémon may cause infatuation."
+      },
+      "1": {
+        "name": "Magic Guard",
+        "description": "The Pokémon only takes damage from attacks."
+      }
+    }
+  },
+  "36": {
+    "name": "Vulpix",
+    "evolution": {
+      "0": "vulpix",
+      "1": "ninetales"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "2' 00\"",
+    "weight": "21.8 lbs",
+    "category": {
+      "1": "Fox"
+    },
+    "ability": {
+      "0": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "37": {
+    "name": "Ninetales",
+    "evolution": {
+      "0": "vulpix",
+      "1": "ninetales"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "3' 07\"",
+    "weight": "43.9 lbs",
+    "category": {
+      "1": "Fox"
+    },
+    "ability": {
+      "0": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "38": {
+    "name": "Jigglypuff",
+    "evolution": {
+      "0": "igglybuff",
+      "1": "jigglypuff",
+      "2": "wigglytuff"
+    },
+    "weaknesses": {
+      "0": "Steel",
+      "1": "Poison"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Fairy"
+    },
+    "stats": {
+      "HP": "5",
+      "Attack": "2",
+      "Defense": "1",
+      "SpecialAttack": "2",
+      "SpecialDefense": "1",
+      "Speed": "1"
+    },
+    "height": "1' 08\"",
+    "weight": "12.1 lbs",
+    "category": {
+      "1": "Balloon"
+    },
+    "ability": {
+      "0": {
+        "name": "Cute Charm",
+        "description": "Contact with the Pokémon may cause infatuation."
+      },
+      "1": {
+        "name": "Competitive",
+        "description": "Boosts the Sp. Atk stat when a stat is lowered."
+      }
+    }
+  },
+  "39": {
+    "name": "Wigglytuff",
+    "evolution": {
+      "0": "igglybuff",
+      "1": "jigglypuff",
+      "2": "wigglytuff"
+    },
+    "weaknesses": {
+      "0": "Steel",
+      "1": "Poison"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Fairy"
+    },
+    "stats": {
+      "HP": "5",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "4",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "26.5 lbs",
+    "category": {
+      "1": "Balloon"
+    },
+    "ability": {
+      "0": {
+        "name": "Cute Charm",
+        "description": "Contact with the Pokémon may cause infatuation."
+      },
+      "1": {
+        "name": "Competitive",
+        "description": "Boosts the Sp. Atk stat when a stat is lowered."
+      }
+    }
+  },
+  "40": {
+    "name": "Zubat",
+    "evolution": {
+      "0": "zubat",
+      "1": "golbat",
+      "2": "crobat"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Poison",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "1",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "2' 07\"",
+    "weight": "16.5 lbs",
+    "category": {
+      "1": "Bat"
+    },
+    "ability": {
+      "0": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      }
+    }
+  },
+  "41": {
+    "name": "Golbat",
+    "evolution": {
+      "0": "zubat",
+      "1": "golbat",
+      "2": "crobat"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Poison",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "5' 03\"",
+    "weight": "121.3 lbs",
+    "category": {
+      "1": "Bat"
+    },
+    "ability": {
+      "0": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      }
+    }
+  },
+  "42": {
+    "name": "Oddish",
+    "evolution": {
+      "0": "oddish",
+      "1": "gloom",
+      "2": "vileplume"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "1' 08\"",
+    "weight": "11.9 lbs",
+    "category": {
+      "1": "Weed"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "43": {
+    "name": "Gloom",
+    "evolution": {
+      "0": "oddish",
+      "1": "gloom",
+      "2": "vileplume"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "2' 07\"",
+    "weight": "19.0 lbs",
+    "category": {
+      "1": "Weed"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "44": {
+    "name": "Vileplume",
+    "evolution": {
+      "0": "oddish",
+      "1": "gloom",
+      "2": "vileplume"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "3"
+    },
+    "height": "3' 11\"",
+    "weight": "41.0 lbs",
+    "category": {
+      "1": "Flower"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "45": {
+    "name": "Paras",
+    "evolution": {
+      "0": "paras",
+      "1": "parasect"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Bug",
+      "3": "Ice",
+      "4": "Poison",
+      "5": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Grass"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "1' 00\"",
+    "weight": "11.9 lbs",
+    "category": {
+      "1": "Mushroom"
+    },
+    "ability": {
+      "0": {
+        "name": "Effect Spore",
+        "description": "Contact may poison or cause paralysis or sleep."
+      },
+      "1": {
+        "name": "Dry Skin",
+        "description": "Reduces HP if it's hot. Water restores HP."
+      }
+    }
+  },
+  "46": {
+    "name": "Parasect",
+    "evolution": {
+      "0": "paras",
+      "1": "parasect"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Bug",
+      "3": "Ice",
+      "4": "Poison",
+      "5": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Grass"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "3' 03\"",
+    "weight": "65.0 lbs",
+    "category": {
+      "1": "Mushroom"
+    },
+    "ability": {
+      "0": {
+        "name": "Effect Spore",
+        "description": "Contact may poison or cause paralysis or sleep."
+      },
+      "1": {
+        "name": "Dry Skin",
+        "description": "Reduces HP if it's hot. Water restores HP."
+      }
+    }
+  },
+  "47": {
+    "name": "Venonat",
+    "evolution": {
+      "0": "venonat",
+      "1": "venomoth"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Insect"
+    },
+    "ability": {
+      "0": {
+        "name": "Compound Eyes",
+        "description": "Boosts the Pokémon's accuracy."
+      },
+      "1": {
+        "name": "Tinted Lens",
+        "description": "Powers up not very effective moves."
+      }
+    }
+  },
+  "48": {
+    "name": "Venomoth",
+    "evolution": {
+      "0": "venonat",
+      "1": "venomoth"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Psychic",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "4' 11\"",
+    "weight": "27.6 lbs",
+    "category": {
+      "1": "Poison Moth"
+    },
+    "ability": {
+      "0": {
+        "name": "Shield Dust",
+        "description": "Blocks the additional effects of attacks taken."
+      },
+      "1": {
+        "name": "Tinted Lens",
+        "description": "Powers up not very effective moves."
+      }
+    }
+  },
+  "49": {
+    "name": "Diglett",
+    "evolution": {
+      "0": "diglett",
+      "1": "dugtrio"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Ice",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Ground"
+    },
+    "stats": {
+      "HP": "1",
+      "Attack": "3",
+      "Defense": "1",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "0' 08\"",
+    "weight": "1.8 lbs",
+    "category": {
+      "1": "Mole"
+    },
+    "ability": {
+      "0": {
+        "name": "Sand Veil",
+        "description": "Boosts the Pokémon's evasion in a sandstorm."
+      },
+      "1": {
+        "name": "Arena Trap",
+        "description": "Prevents opposing Pokémon from fleeing."
+      }
+    }
+  },
+  "50": {
+    "name": "Dugtrio",
+    "evolution": {
+      "0": "diglett",
+      "1": "dugtrio"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Ice",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Ground"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "2' 04\"",
+    "weight": "73.4 lbs",
+    "category": {
+      "1": "Mole"
+    },
+    "ability": {
+      "0": {
+        "name": "Sand Veil",
+        "description": "Boosts the Pokémon's evasion in a sandstorm."
+      },
+      "1": {
+        "name": "Arena Trap",
+        "description": "Prevents opposing Pokémon from fleeing."
+      }
+    }
+  },
+  "51": {
+    "name": "Meowth",
+    "evolution": {
+      "0": "meowth",
+      "1": "persian"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "1' 04\"",
+    "weight": "9.3 lbs",
+    "category": {
+      "1": "Scratch Cat"
+    },
+    "ability": {
+      "0": {
+        "name": "Pickup",
+        "description": "The Pokémon may pick up items."
+      },
+      "1": {
+        "name": "Technician",
+        "description": "Powers up the Pokémon's weaker moves."
+      }
+    }
+  },
+  "52": {
+    "name": "Persian",
+    "evolution": {
+      "0": "meowth",
+      "1": "persian"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "3' 03\"",
+    "weight": "70.5 lbs",
+    "category": {
+      "1": "Classy Cat"
+    },
+    "ability": {
+      "0": {
+        "name": "Technician",
+        "description": "Powers up the Pokémon's weaker moves."
+      },
+      "1": {
+        "name": "Limber",
+        "description": "Protects the Pokémon from paralysis."
+      }
+    }
+  },
+  "53": {
+    "name": "Psyduck",
+    "evolution": {
+      "0": "psyduck",
+      "1": "golduck"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "2' 07\"",
+    "weight": "43.2 lbs",
+    "category": {
+      "1": "Duck"
+    },
+    "ability": {
+      "0": {
+        "name": "Damp",
+        "description": "Prevents the use of self-destructing moves."
+      },
+      "1": {
+        "name": "Cloud Nine",
+        "description": "Eliminates the effects of weather."
+      }
+    }
+  },
+  "54": {
+    "name": "Golduck",
+    "evolution": {
+      "0": "psyduck",
+      "1": "golduck"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "5' 07\"",
+    "weight": "168.9 lbs",
+    "category": {
+      "1": "Duck"
+    },
+    "ability": {
+      "0": {
+        "name": "Damp",
+        "description": "Prevents the use of self-destructing moves."
+      },
+      "1": {
+        "name": "Cloud Nine",
+        "description": "Eliminates the effects of weather."
+      }
+    }
+  },
+  "55": {
+    "name": "Mankey",
+    "evolution": {
+      "0": "mankey",
+      "1": "primeape"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "1' 08\"",
+    "weight": "61.7 lbs",
+    "category": {
+      "1": "Pig Monkey"
+    },
+    "ability": {
+      "0": {
+        "name": "Vital Spirit",
+        "description": "Prevents the Pokémon from falling asleep."
+      },
+      "1": {
+        "name": "Anger Point",
+        "description": "Maxes the Attack stat after the Pokémon takes a critical hit."
+      }
+    }
+  },
+  "56": {
+    "name": "Primeape",
+    "evolution": {
+      "0": "mankey",
+      "1": "primeape"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "3' 03\"",
+    "weight": "70.5 lbs",
+    "category": {
+      "1": "Pig Monkey"
+    },
+    "ability": {
+      "0": {
+        "name": "Vital Spirit",
+        "description": "Prevents the Pokémon from falling asleep."
+      },
+      "1": {
+        "name": "Anger Point",
+        "description": "Maxes the Attack stat after the Pokémon takes a critical hit."
+      }
+    }
+  },
+  "57": {
+    "name": "Growlithe",
+    "evolution": {
+      "0": "growlithe",
+      "1": "arcanine"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "2' 04\"",
+    "weight": "41.9 lbs",
+    "category": {
+      "1": "Puppy"
+    },
+    "ability": {
+      "0": {
+        "name": "Intimidate",
+        "description": "Lowers the opposing Pokémon's Attack stat."
+      },
+      "1": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "58": {
+    "name": "Arcanine",
+    "evolution": {
+      "0": "growlithe",
+      "1": "arcanine"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "6",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "6' 03\"",
+    "weight": "341.7 lbs",
+    "category": {
+      "1": "Legendary"
+    },
+    "ability": {
+      "0": {
+        "name": "Intimidate",
+        "description": "Lowers the opposing Pokémon's Attack stat."
+      },
+      "1": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "59": {
+    "name": "Poliwag",
+    "evolution": {
+      "0": "poliwag",
+      "1": "poliwhirl",
+      "2": "poliwrath"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "2' 00\"",
+    "weight": "27.3 lbs",
+    "category": {
+      "1": "Tadpole"
+    },
+    "ability": {
+      "0": {
+        "name": "Damp",
+        "description": "Prevents the use of self-destructing moves."
+      },
+      "1": {
+        "name": "Water Absorb",
+        "description": "Restores HP if hit by a Water-type move."
+      }
+    }
+  },
+  "60": {
+    "name": "Poliwhirl",
+    "evolution": {
+      "0": "poliwag",
+      "1": "poliwhirl",
+      "2": "poliwrath"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "3' 03\"",
+    "weight": "44.1 lbs",
+    "category": {
+      "1": "Tadpole"
+    },
+    "ability": {
+      "0": {
+        "name": "Damp",
+        "description": "Prevents the use of self-destructing moves."
+      },
+      "1": {
+        "name": "Water Absorb",
+        "description": "Restores HP if hit by a Water-type move."
+      }
+    }
+  },
+  "61": {
+    "name": "Poliwrath",
+    "evolution": {
+      "0": "poliwag",
+      "1": "poliwhirl",
+      "2": "poliwrath"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Flying",
+      "2": "Grass",
+      "3": "Psychic",
+      "4": "Fairy"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Fighting"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "4' 03\"",
+    "weight": "119.0 lbs",
+    "category": {
+      "1": "Tadpole"
+    },
+    "ability": {
+      "0": {
+        "name": "Damp",
+        "description": "Prevents the use of self-destructing moves."
+      },
+      "1": {
+        "name": "Water Absorb",
+        "description": "Restores HP if hit by a Water-type move."
+      }
+    }
+  },
+  "62": {
+    "name": "Abra",
+    "evolution": {
+      "0": "abra",
+      "1": "kadabra",
+      "2": "alakazam"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "1",
+      "Attack": "1",
+      "Defense": "1",
+      "SpecialAttack": "5",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "2' 11\"",
+    "weight": "43.0 lbs",
+    "category": {
+      "1": "Psi"
+    },
+    "ability": {
+      "0": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      },
+      "1": {
+        "name": "Synchronize",
+        "description": "Passes poison, paralyze, or burn to the Pokémon that inflicted it."
+      }
+    }
+  },
+  "63": {
+    "name": "Kadabra",
+    "evolution": {
+      "0": "abra",
+      "1": "kadabra",
+      "2": "alakazam"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "6",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "4' 03\"",
+    "weight": "124.6 lbs",
+    "category": {
+      "1": "Psi"
+    },
+    "ability": {
+      "0": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      },
+      "1": {
+        "name": "Synchronize",
+        "description": "Passes poison, paralyze, or burn to the Pokémon that inflicted it."
+      }
+    }
+  },
+  "64": {
+    "name": "Alakazam",
+    "evolution": {
+      "0": "abra",
+      "1": "kadabra",
+      "2": "alakazam"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "7",
+      "SpecialDefense": "4",
+      "Speed": "6"
+    },
+    "height": "4' 11\"",
+    "weight": "105.8 lbs",
+    "category": {
+      "1": "Psi"
+    },
+    "ability": {
+      "0": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      },
+      "1": {
+        "name": "Synchronize",
+        "description": "Passes poison, paralyze, or burn to the Pokémon that inflicted it."
+      },
+      "2": {
+        "name": "Trace",
+        "description": "The Pokémon copies an opposing Pokémon's Ability."
+      }
+    }
+  },
+  "65": {
+    "name": "Machop",
+    "evolution": {
+      "0": "machop",
+      "1": "machoke",
+      "2": "machamp"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "2' 07\"",
+    "weight": "43.0 lbs",
+    "category": {
+      "1": "Superpower"
+    },
+    "ability": {
+      "0": {
+        "name": "Guts",
+        "description": "Boosts the Attack stat if the Pokémon has a status condition."
+      },
+      "1": {
+        "name": "No Guard",
+        "description": "Ensures attacks by or against the Pokémon land."
+      }
+    }
+  },
+  "66": {
+    "name": "Machoke",
+    "evolution": {
+      "0": "machop",
+      "1": "machoke",
+      "2": "machamp"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "4' 11\"",
+    "weight": "155.4 lbs",
+    "category": {
+      "1": "Superpower"
+    },
+    "ability": {
+      "0": {
+        "name": "Guts",
+        "description": "Boosts the Attack stat if the Pokémon has a status condition."
+      },
+      "1": {
+        "name": "No Guard",
+        "description": "Ensures attacks by or against the Pokémon land."
+      }
+    }
+  },
+  "67": {
+    "name": "Machamp",
+    "evolution": {
+      "0": "machop",
+      "1": "machoke",
+      "2": "machamp"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "7",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "4",
+      "Speed": "3"
+    },
+    "height": "5' 03\"",
+    "weight": "286.6 lbs",
+    "category": {
+      "1": "Superpower"
+    },
+    "ability": {
+      "0": {
+        "name": "Guts",
+        "description": "Boosts the Attack stat if the Pokémon has a status condition."
+      },
+      "1": {
+        "name": "No Guard",
+        "description": "Ensures attacks by or against the Pokémon land."
+      }
+    }
+  },
+  "68": {
+    "name": "Bellsprout",
+    "evolution": {
+      "0": "bellsprout",
+      "1": "weepinbell",
+      "2": "victreebel"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "1",
+      "Speed": "2"
+    },
+    "height": "2' 04\"",
+    "weight": "8.8 lbs",
+    "category": {
+      "1": "Flower"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "69": {
+    "name": "Weepinbell",
+    "evolution": {
+      "0": "bellsprout",
+      "1": "weepinbell",
+      "2": "victreebel"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "2",
+      "SpecialAttack": "4",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "14.1 lbs",
+    "category": {
+      "1": "Flycatcher"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "70": {
+    "name": "Victreebel",
+    "evolution": {
+      "0": "bellsprout",
+      "1": "weepinbell",
+      "2": "victreebel"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Ice",
+      "3": "Psychic"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "5' 07\"",
+    "weight": "34.2 lbs",
+    "category": {
+      "1": "Flycatcher"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "71": {
+    "name": "Tentacool",
+    "evolution": {
+      "0": "tentacool",
+      "1": "tentacruel"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ground",
+      "2": "Psychic"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "2' 11\"",
+    "weight": "100.3 lbs",
+    "category": {
+      "1": "Jellyfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Clear Body",
+        "description": "Prevents other Pokémon from lowering its stats."
+      },
+      "1": {
+        "name": "Liquid Ooze",
+        "description": "Damages attackers using any draining move."
+      }
+    }
+  },
+  "72": {
+    "name": "Tentacruel",
+    "evolution": {
+      "0": "tentacool",
+      "1": "tentacruel"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ground",
+      "2": "Psychic"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "5",
+      "Speed": "5"
+    },
+    "height": "5' 03\"",
+    "weight": "121.3 lbs",
+    "category": {
+      "1": "Jellyfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Clear Body",
+        "description": "Prevents other Pokémon from lowering its stats."
+      },
+      "1": {
+        "name": "Liquid Ooze",
+        "description": "Damages attackers using any draining move."
+      }
+    }
+  },
+  "73": {
+    "name": "Geodude",
+    "evolution": {
+      "0": "geodude",
+      "1": "graveler",
+      "2": "golem"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Water",
+      "2": "Fighting",
+      "3": "Ground",
+      "4": "Ice",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Ground"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "1"
+    },
+    "height": "1' 04\"",
+    "weight": "44.1 lbs",
+    "category": {
+      "1": "Rock"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Sturdy",
+        "description": "It cannot be knocked out with one hit."
+      }
+    }
+  },
+  "74": {
+    "name": "Graveler",
+    "evolution": {
+      "0": "geodude",
+      "1": "graveler",
+      "2": "golem"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Water",
+      "2": "Fighting",
+      "3": "Ground",
+      "4": "Ice",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Ground"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "5",
+      "Defense": "5",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "3' 03\"",
+    "weight": "231.5 lbs",
+    "category": {
+      "1": "Rock"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Sturdy",
+        "description": "It cannot be knocked out with one hit."
+      }
+    }
+  },
+  "75": {
+    "name": "Golem",
+    "evolution": {
+      "0": "geodude",
+      "1": "graveler",
+      "2": "golem"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Water",
+      "2": "Fighting",
+      "3": "Ground",
+      "4": "Ice",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Ground"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "6",
+      "Defense": "6",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "4' 07\"",
+    "weight": "661.4 lbs",
+    "category": {
+      "1": "Megaton"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Sturdy",
+        "description": "It cannot be knocked out with one hit."
+      }
+    }
+  },
+  "76": {
+    "name": "Ponyta",
+    "evolution": {
+      "0": "ponyta",
+      "1": "rapidash"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "3' 03\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Fire Horse"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "77": {
+    "name": "Rapidash",
+    "evolution": {
+      "0": "ponyta",
+      "1": "rapidash"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "5' 07\"",
+    "weight": "209.4 lbs",
+    "category": {
+      "1": "Fire Horse"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "78": {
+    "name": "Slowpoke",
+    "evolution": {
+      "0": "slowpoke",
+      "1": "slowbro"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Electric",
+      "3": "Ghost",
+      "4": "Grass"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Psychic"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "1"
+    },
+    "height": "3' 11\"",
+    "weight": "79.4 lbs",
+    "category": {
+      "1": "Dopey"
+    },
+    "ability": {
+      "0": {
+        "name": "Oblivious",
+        "description": "Keeps the Pokémon from being infatuated or falling for taunts."
+      },
+      "1": {
+        "name": "Own Tempo",
+        "description": "Prevents the Pokémon from becoming confused."
+      }
+    }
+  },
+  "79": {
+    "name": "Slowbro",
+    "evolution": {
+      "0": "slowpoke",
+      "1": "slowbro"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Electric",
+      "3": "Ghost",
+      "4": "Grass"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Psychic"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "4",
+      "Defense": "5",
+      "SpecialAttack": "5",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "5' 03\"",
+    "weight": "173.1 lbs",
+    "category": {
+      "1": "Hermit Crab"
+    },
+    "ability": {
+      "0": {
+        "name": "Oblivious",
+        "description": "Keeps the Pokémon from being infatuated or falling for taunts."
+      },
+      "1": {
+        "name": "Own Tempo",
+        "description": "Prevents the Pokémon from becoming confused."
+      },
+      "2": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      }
+    }
+  },
+  "80": {
+    "name": "Magnemite",
+    "evolution": {
+      "0": "magnemite",
+      "1": "magneton",
+      "2": "magnezone"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Fire",
+      "2": "Fighting"
+    },
+    "type": {
+      "0": "Electric",
+      "1": "Steel"
+    },
+    "stats": {
+      "HP": "1",
+      "Attack": "2",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "1' 00\"",
+    "weight": "13.2 lbs",
+    "category": {
+      "1": "Magnet"
+    },
+    "ability": {
+      "0": {
+        "name": "Sturdy",
+        "description": "It cannot be knocked out with one hit."
+      },
+      "1": {
+        "name": "Magnet Pull",
+        "description": "Prevents Steel-type Pokémon from escaping."
+      }
+    }
+  },
+  "81": {
+    "name": "Magneton",
+    "evolution": {
+      "0": "magnemite",
+      "1": "magneton",
+      "2": "magnezone"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Fire",
+      "2": "Fighting"
+    },
+    "type": {
+      "0": "Electric",
+      "1": "Steel"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "4",
+      "SpecialAttack": "6",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "3' 03\"",
+    "weight": "132.3 lbs",
+    "category": {
+      "1": "Magnet"
+    },
+    "ability": {
+      "0": {
+        "name": "Sturdy",
+        "description": "It cannot be knocked out with one hit."
+      },
+      "1": {
+        "name": "Magnet Pull",
+        "description": "Prevents Steel-type Pokémon from escaping."
+      }
+    }
+  },
+  "82": {
+    "name": "Farfetchd",
+    "evolution": {
+      "0": "farfetchd"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "2' 07\"",
+    "weight": "33.1 lbs",
+    "category": {
+      "1": "Wild Duck"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      },
+      "1": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      }
+    }
+  },
+  "83": {
+    "name": "Doduo",
+    "evolution": {
+      "0": "doduo",
+      "1": "dodrio"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "4' 07\"",
+    "weight": "86.4 lbs",
+    "category": {
+      "1": "Twin Bird"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Early Bird",
+        "description": "The Pokémon awakens quickly from sleep."
+      }
+    }
+  },
+  "84": {
+    "name": "Dodrio",
+    "evolution": {
+      "0": "doduo",
+      "1": "dodrio"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Normal",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "6",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "5' 11\"",
+    "weight": "187.8 lbs",
+    "category": {
+      "1": "Triple Bird"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Early Bird",
+        "description": "The Pokémon awakens quickly from sleep."
+      }
+    }
+  },
+  "85": {
+    "name": "Seel",
+    "evolution": {
+      "0": "seel",
+      "1": "dewgong"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "2",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "3' 07\"",
+    "weight": "198.4 lbs",
+    "category": {
+      "1": "Sea Lion"
+    },
+    "ability": {
+      "0": {
+        "name": "Thick Fat",
+        "description": "Boosts resistance to Fire- and Ice-type moves."
+      },
+      "1": {
+        "name": "Hydration",
+        "description": "Heals status conditions if it's raining."
+      }
+    }
+  },
+  "86": {
+    "name": "Dewgong",
+    "evolution": {
+      "0": "seel",
+      "1": "dewgong"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Fighting",
+      "2": "Grass",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Ice"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "5' 07\"",
+    "weight": "264.6 lbs",
+    "category": {
+      "1": "Sea Lion"
+    },
+    "ability": {
+      "0": {
+        "name": "Thick Fat",
+        "description": "Boosts resistance to Fire- and Ice-type moves."
+      },
+      "1": {
+        "name": "Hydration",
+        "description": "Heals status conditions if it's raining."
+      }
+    }
+  },
+  "87": {
+    "name": "Grimer",
+    "evolution": {
+      "0": "grimer",
+      "1": "muk"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "2' 11\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Sludge"
+    },
+    "ability": {
+      "0": {
+        "name": "Stench",
+        "description": "The stench may cause the target to flinch."
+      },
+      "1": {
+        "name": "Sticky Hold",
+        "description": "Protects the Pokémon from item theft."
+      }
+    }
+  },
+  "88": {
+    "name": "Muk",
+    "evolution": {
+      "0": "grimer",
+      "1": "muk"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "4",
+      "Speed": "3"
+    },
+    "height": "3' 11\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Sludge"
+    },
+    "ability": {
+      "0": {
+        "name": "Stench",
+        "description": "The stench may cause the target to flinch."
+      },
+      "1": {
+        "name": "Sticky Hold",
+        "description": "Protects the Pokémon from item theft."
+      }
+    }
+  },
+  "89": {
+    "name": "Shellder",
+    "evolution": {
+      "0": "shellder",
+      "1": "cloyster"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "4",
+      "SpecialAttack": "2",
+      "SpecialDefense": "1",
+      "Speed": "2"
+    },
+    "height": "1' 00\"",
+    "weight": "8.8 lbs",
+    "category": {
+      "1": "Bivalve"
+    },
+    "ability": {
+      "0": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      },
+      "1": {
+        "name": "Skill Link",
+        "description": "Increases the number of times multi-strike moves hit."
+      }
+    }
+  },
+  "90": {
+    "name": "Cloyster",
+    "evolution": {
+      "0": "shellder",
+      "1": "cloyster"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Fighting",
+      "2": "Grass",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Ice"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "5",
+      "Defense": "8",
+      "SpecialAttack": "4",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "4' 11\"",
+    "weight": "292.1 lbs",
+    "category": {
+      "1": "Bivalve"
+    },
+    "ability": {
+      "0": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      },
+      "1": {
+        "name": "Skill Link",
+        "description": "Increases the number of times multi-strike moves hit."
+      }
+    }
+  },
+  "91": {
+    "name": "Gastly",
+    "evolution": {
+      "0": "gastly",
+      "1": "haunter",
+      "2": "gengar"
+    },
+    "weaknesses": {
+      "0": "Dark",
+      "1": "Ghost",
+      "2": "Psychic"
+    },
+    "type": {
+      "0": "Ghost",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "5",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "4' 03\"",
+    "weight": "0.2 lbs",
+    "category": {
+      "1": "Gas"
+    },
+    "ability": {
+      "0": {
+        "name": "Levitate",
+        "description": "Gives full immunity to all Ground-type moves."
+      }
+    }
+  },
+  "92": {
+    "name": "Haunter",
+    "evolution": {
+      "0": "gastly",
+      "1": "haunter",
+      "2": "gengar"
+    },
+    "weaknesses": {
+      "0": "Dark",
+      "1": "Ghost",
+      "2": "Psychic"
+    },
+    "type": {
+      "0": "Ghost",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "6",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "5' 03\"",
+    "weight": "0.2 lbs",
+    "category": {
+      "1": "Gas"
+    },
+    "ability": {
+      "0": {
+        "name": "Levitate",
+        "description": "Gives full immunity to all Ground-type moves."
+      }
+    }
+  },
+  "93": {
+    "name": "Gengar",
+    "evolution": {
+      "0": "gastly",
+      "1": "haunter",
+      "2": "gengar"
+    },
+    "weaknesses": {
+      "0": "Dark",
+      "1": "Ghost",
+      "2": "Psychic"
+    },
+    "type": {
+      "0": "Ghost",
+      "1": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "6",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "4' 11\"",
+    "weight": "89.3 lbs",
+    "category": {
+      "1": "Shadow"
+    },
+    "ability": {
+      "0": {
+        "name": "Levitate",
+        "description": "Gives full immunity to all Ground-type moves."
+      },
+      "1": {
+        "name": "Shadow Tag",
+        "description": "Prevents opposing Pokémon from escaping."
+      }
+    }
+  },
+  "94": {
+    "name": "Onix",
+    "evolution": {
+      "0": "onix",
+      "1": "steelix"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Water",
+      "2": "Fighting",
+      "3": "Ground",
+      "4": "Ice",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Ground"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "7",
+      "SpecialAttack": "1",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "28' 10\"",
+    "weight": "463.0 lbs",
+    "category": {
+      "1": "Rock Snake"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Sturdy",
+        "description": "It cannot be knocked out with one hit."
+      }
+    }
+  },
+  "95": {
+    "name": "Drowzee",
+    "evolution": {
+      "0": "drowzee",
+      "1": "hypno"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "4",
+      "Speed": "2"
+    },
+    "height": "3' 03\"",
+    "weight": "71.4 lbs",
+    "category": {
+      "1": "Hypnosis"
+    },
+    "ability": {
+      "0": {
+        "name": "Insomnia",
+        "description": "Prevents the Pokémon from falling asleep."
+      },
+      "1": {
+        "name": "Forewarn",
+        "description": "Determines what moves an opposing Pokémon has."
+      }
+    }
+  },
+  "96": {
+    "name": "Hypno",
+    "evolution": {
+      "0": "drowzee",
+      "1": "hypno"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "5",
+      "Speed": "4"
+    },
+    "height": "5' 03\"",
+    "weight": "166.7 lbs",
+    "category": {
+      "1": "Hypnosis"
+    },
+    "ability": {
+      "0": {
+        "name": "Insomnia",
+        "description": "Prevents the Pokémon from falling asleep."
+      },
+      "1": {
+        "name": "Forewarn",
+        "description": "Determines what moves an opposing Pokémon has."
+      }
+    }
+  },
+  "97": {
+    "name": "Krabby",
+    "evolution": {
+      "0": "krabby",
+      "1": "kingler"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "3"
+    },
+    "height": "1' 04\"",
+    "weight": "14.3 lbs",
+    "category": {
+      "1": "River Crab"
+    },
+    "ability": {
+      "0": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      },
+      "1": {
+        "name": "Hyper Cutter",
+        "description": "Prevents other Pokémon from lowering its Attack stat."
+      }
+    }
+  },
+  "98": {
+    "name": "Kingler",
+    "evolution": {
+      "0": "krabby",
+      "1": "kingler"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "7",
+      "Defense": "5",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "4"
+    },
+    "height": "4' 03\"",
+    "weight": "132.3 lbs",
+    "category": {
+      "1": "Pincer"
+    },
+    "ability": {
+      "0": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      },
+      "1": {
+        "name": "Hyper Cutter",
+        "description": "Prevents other Pokémon from lowering its Attack stat."
+      }
+    }
+  },
+  "99": {
+    "name": "Voltorb",
+    "evolution": {
+      "0": "voltorb",
+      "1": "electrode"
+    },
+    "weaknesses": {
+      "0": "Ground"
+    },
+    "type": {
+      "0": "Electric"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "2",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "1' 08\"",
+    "weight": "22.9 lbs",
+    "category": {
+      "1": "Ball"
+    },
+    "ability": {
+      "0": {
+        "name": "Static",
+        "description": "Contact with the Pokémon may cause paralysis."
+      },
+      "1": {
+        "name": "Soundproof",
+        "description": "Gives full immunity to all sound-based moves."
+      }
+    }
+  },
+  "100": {
+    "name": "Electrode",
+    "evolution": {
+      "0": "voltorb",
+      "1": "electrode"
+    },
+    "weaknesses": {
+      "0": "Ground"
+    },
+    "type": {
+      "0": "Electric"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "7"
+    },
+    "height": "3' 11\"",
+    "weight": "146.8 lbs",
+    "category": {
+      "1": "Ball"
+    },
+    "ability": {
+      "0": {
+        "name": "Static",
+        "description": "Contact with the Pokémon may cause paralysis."
+      },
+      "1": {
+        "name": "Soundproof",
+        "description": "Gives full immunity to all sound-based moves."
+      }
+    }
+  },
+  "101": {
+    "name": "Exeggcute",
+    "evolution": {
+      "0": "exeggcute",
+      "1": "exeggutor"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Fire",
+      "3": "Flying",
+      "4": "Ghost",
+      "5": "Ice",
+      "6": "Poison"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Psychic"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "2",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "1' 04\"",
+    "weight": "5.5 lbs",
+    "category": {
+      "1": "Egg"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "102": {
+    "name": "Exeggutor",
+    "evolution": {
+      "0": "exeggcute",
+      "1": "exeggutor"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Fire",
+      "3": "Flying",
+      "4": "Ghost",
+      "5": "Ice",
+      "6": "Poison"
+    },
+    "type": {
+      "0": "Grass",
+      "1": "Psychic"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "6",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "6' 07\"",
+    "weight": "264.6 lbs",
+    "category": {
+      "1": "Coconut"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      }
+    }
+  },
+  "103": {
+    "name": "Cubone",
+    "evolution": {
+      "0": "cubone",
+      "1": "marowak"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Ice",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Ground"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "4",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "1' 04\"",
+    "weight": "14.3 lbs",
+    "category": {
+      "1": "Lonely"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Lightning Rod",
+        "description": "Draws in all Electric-type moves to boost its Sp. Atk stat."
+      }
+    }
+  },
+  "104": {
+    "name": "Marowak",
+    "evolution": {
+      "0": "cubone",
+      "1": "marowak"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Ice",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Ground"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "5",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "99.2 lbs",
+    "category": {
+      "1": "Bone Keeper"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Lightning Rod",
+        "description": "Draws in all Electric-type moves to boost its Sp. Atk stat."
+      }
+    }
+  },
+  "105": {
+    "name": "Hitmonlee",
+    "evolution": {
+      "0": "tyrogue",
+      "1": "hitmonlee"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "6",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "5",
+      "Speed": "5"
+    },
+    "height": "4' 11\"",
+    "weight": "109.8 lbs",
+    "category": {
+      "1": "Kicking"
+    },
+    "ability": {
+      "0": {
+        "name": "Limber",
+        "description": "Protects the Pokémon from paralysis."
+      },
+      "1": {
+        "name": "Reckless",
+        "description": "Powers up moves that have recoil damage."
+      }
+    }
+  },
+  "106": {
+    "name": "Hitmonchan",
+    "evolution": {
+      "0": "tyrogue",
+      "1": "hitmonlee"
+    },
+    "weaknesses": {
+      "0": "Flying",
+      "1": "Psychic",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Fighting"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "5",
+      "Speed": "4"
+    },
+    "height": "4' 07\"",
+    "weight": "110.7 lbs",
+    "category": {
+      "1": "Punching"
+    },
+    "ability": {
+      "0": {
+        "name": "Keen Eye",
+        "description": "Prevents other Pokémon from lowering accuracy."
+      },
+      "1": {
+        "name": "Iron Fist",
+        "description": "Powers up punching moves."
+      }
+    }
+  },
+  "107": {
+    "name": "Lickitung",
+    "evolution": {
+      "0": "lickitung",
+      "1": "lickilicky"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "3' 11\"",
+    "weight": "144.4 lbs",
+    "category": {
+      "1": "Licking"
+    },
+    "ability": {
+      "0": {
+        "name": "Oblivious",
+        "description": "Keeps the Pokémon from being infatuated or falling for taunts."
+      },
+      "1": {
+        "name": "Own Tempo",
+        "description": "Prevents the Pokémon from becoming confused."
+      }
+    }
+  },
+  "108": {
+    "name": "Koffing",
+    "evolution": {
+      "0": "koffing",
+      "1": "weezing"
+    },
+    "weaknesses": {
+      "0": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "2' 00\"",
+    "weight": "2.2 lbs",
+    "category": {
+      "1": "Poison Gas"
+    },
+    "ability": {
+      "0": {
+        "name": "Levitate",
+        "description": "Gives full immunity to all Ground-type moves."
+      }
+    }
+  },
+  "109": {
+    "name": "Weezing",
+    "evolution": {
+      "0": "koffing",
+      "1": "weezing"
+    },
+    "weaknesses": {
+      "0": "Psychic"
+    },
+    "type": {
+      "0": "Poison"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "5",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "3' 11\"",
+    "weight": "20.9 lbs",
+    "category": {
+      "1": "Poison Gas"
+    },
+    "ability": {
+      "0": {
+        "name": "Levitate",
+        "description": "Gives full immunity to all Ground-type moves."
+      }
+    }
+  },
+  "110": {
+    "name": "Rhyhorn",
+    "evolution": {
+      "0": "rhyhorn",
+      "1": "rhydon",
+      "2": "rhyperior"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Water",
+      "2": "Fighting",
+      "3": "Ground",
+      "4": "Ice",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Ground",
+      "1": "Rock"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "2"
+    },
+    "height": "3' 03\"",
+    "weight": "253.5 lbs",
+    "category": {
+      "1": "Spikes"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Lightning Rod",
+        "description": "Draws in all Electric-type moves to boost its Sp. Atk stat."
+      }
+    }
+  },
+  "111": {
+    "name": "Rhydon",
+    "evolution": {
+      "0": "rhyhorn",
+      "1": "rhydon",
+      "2": "rhyperior"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Water",
+      "2": "Fighting",
+      "3": "Ground",
+      "4": "Ice",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Ground",
+      "1": "Rock"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "7",
+      "Defense": "5",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "6' 03\"",
+    "weight": "264.6 lbs",
+    "category": {
+      "1": "Drill"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Lightning Rod",
+        "description": "Draws in all Electric-type moves to boost its Sp. Atk stat."
+      }
+    }
+  },
+  "112": {
+    "name": "Chansey",
+    "evolution": {
+      "0": "happiny",
+      "1": "chansey",
+      "2": "blissey"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "9",
+      "Attack": "1",
+      "Defense": "1",
+      "SpecialAttack": "2",
+      "SpecialDefense": "4",
+      "Speed": "3"
+    },
+    "height": "3' 07\"",
+    "weight": "76.3 lbs",
+    "category": {
+      "1": "Egg"
+    },
+    "ability": {
+      "0": {
+        "name": "Natural Cure",
+        "description": "All status conditions heal when the Pokémon switches out."
+      },
+      "1": {
+        "name": "Serene Grace",
+        "description": "Boosts the likelihood of additional effects occurring."
+      }
+    }
+  },
+  "113": {
+    "name": "Tangela",
+    "evolution": {
+      "0": "tangela",
+      "1": "tangrowth"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Fire",
+      "2": "Flying",
+      "3": "Ice",
+      "4": "Poison"
+    },
+    "type": {
+      "0": "Grass"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "5",
+      "SpecialAttack": "5",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "77.2 lbs",
+    "category": {
+      "1": "Vine"
+    },
+    "ability": {
+      "0": {
+        "name": "Chlorophyll",
+        "description": "Boosts the Pokémon's Speed stat in sunshine."
+      },
+      "1": {
+        "name": "Leaf Guard",
+        "description": "Prevents status conditions in sunny weather."
+      }
+    }
+  },
+  "114": {
+    "name": "Kangaskhan",
+    "evolution": {
+      "0": "kangaskhan"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "7' 03\"",
+    "weight": "176.4 lbs",
+    "category": {
+      "1": "Parent"
+    },
+    "ability": {
+      "0": {
+        "name": "Early Bird",
+        "description": "The Pokémon awakens quickly from sleep."
+      },
+      "1": {
+        "name": "Scrappy",
+        "description": "Makes Normal- and Fighting-type moves hit Ghost-type Pokémon."
+      },
+      "2": {
+        "name": "Parental Bond",
+        "description": "Parent and child attack together."
+      }
+    }
+  },
+  "115": {
+    "name": "Horsea",
+    "evolution": {
+      "0": "horsea",
+      "1": "seadra",
+      "2": "kingdra"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "1",
+      "Speed": "3"
+    },
+    "height": "1' 04\"",
+    "weight": "17.6 lbs",
+    "category": {
+      "1": "Dragon"
+    },
+    "ability": {
+      "0": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      },
+      "1": {
+        "name": "Sniper",
+        "description": "Powers up moves if they become critical hits."
+      }
+    }
+  },
+  "116": {
+    "name": "Seadra",
+    "evolution": {
+      "0": "horsea",
+      "1": "seadra",
+      "2": "kingdra"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "3' 11\"",
+    "weight": "55.1 lbs",
+    "category": {
+      "1": "Dragon"
+    },
+    "ability": {
+      "0": {
+        "name": "Poison Point",
+        "description": "Contact with the Pokémon may poison the attacker."
+      },
+      "1": {
+        "name": "Sniper",
+        "description": "Powers up moves if they become critical hits."
+      }
+    }
+  },
+  "117": {
+    "name": "Goldeen",
+    "evolution": {
+      "0": "goldeen",
+      "1": "seaking"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "2' 00\"",
+    "weight": "33.1 lbs",
+    "category": {
+      "1": "Goldfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      },
+      "1": {
+        "name": "Water Veil",
+        "description": "Prevents the Pokémon from getting a burn."
+      }
+    }
+  },
+  "118": {
+    "name": "Seaking",
+    "evolution": {
+      "0": "goldeen",
+      "1": "seaking"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "4' 03\"",
+    "weight": "86.0 lbs",
+    "category": {
+      "1": "Goldfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      },
+      "1": {
+        "name": "Water Veil",
+        "description": "Prevents the Pokémon from getting a burn."
+      }
+    }
+  },
+  "119": {
+    "name": "Staryu",
+    "evolution": {
+      "0": "staryu",
+      "1": "starmie"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "5"
+    },
+    "height": "2' 07\"",
+    "weight": "76.1 lbs",
+    "category": {
+      "1": "Star Shape"
+    },
+    "ability": {
+      "0": {
+        "name": "Natural Cure",
+        "description": "All status conditions heal when the Pokémon switches out."
+      },
+      "1": {
+        "name": "Illuminate",
+        "description": "Raises the likelihood of meeting wild Pokémon."
+      }
+    }
+  },
+  "120": {
+    "name": "Starmie",
+    "evolution": {
+      "0": "staryu",
+      "1": "starmie"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Electric",
+      "3": "Ghost",
+      "4": "Grass"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Psychic"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "6"
+    },
+    "height": "3' 07\"",
+    "weight": "176.4 lbs",
+    "category": {
+      "1": "Mysterious"
+    },
+    "ability": {
+      "0": {
+        "name": "Natural Cure",
+        "description": "All status conditions heal when the Pokémon switches out."
+      },
+      "1": {
+        "name": "Illuminate",
+        "description": "Raises the likelihood of meeting wild Pokémon."
+      }
+    }
+  },
+  "121": {
+    "name": "Mr-Mime",
+    "evolution": {
+      "0": "mime-jr",
+      "1": "mr-mime"
+    },
+    "weaknesses": {
+      "0": "Ghost",
+      "1": "Steel",
+      "2": "Poison"
+    },
+    "type": {
+      "0": "Psychic",
+      "1": "Fairy"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "5",
+      "Speed": "5"
+    },
+    "height": "4' 03\"",
+    "weight": "120.1 lbs",
+    "category": {
+      "1": "Barrier"
+    },
+    "ability": {
+      "0": {
+        "name": "Soundproof",
+        "description": "Gives full immunity to all sound-based moves."
+      },
+      "1": {
+        "name": "Filter",
+        "description": "Reduces damage from supereffective attacks."
+      }
+    }
+  },
+  "122": {
+    "name": "Scyther",
+    "evolution": {
+      "0": "scyther",
+      "1": "scizor"
+    },
+    "weaknesses": {
+      "0": "Rock",
+      "1": "Electric",
+      "2": "Fire",
+      "3": "Flying",
+      "4": "Ice"
+    },
+    "type": {
+      "0": "Bug",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "6",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "4' 11\"",
+    "weight": "123.5 lbs",
+    "category": {
+      "1": "Mantis"
+    },
+    "ability": {
+      "0": {
+        "name": "Swarm",
+        "description": "Powers up Bug-type moves when the Pokémon is in trouble."
+      },
+      "1": {
+        "name": "Technician",
+        "description": "Powers up the Pokémon's weaker moves."
+      }
+    }
+  },
+  "123": {
+    "name": "Jynx",
+    "evolution": {
+      "0": "smoochum",
+      "1": "jynx"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Fire",
+      "3": "Ghost",
+      "4": "Rock",
+      "5": "Steel"
+    },
+    "type": {
+      "0": "Ice",
+      "1": "Psychic"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "6",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "4' 07\"",
+    "weight": "89.5 lbs",
+    "category": {
+      "1": "Human Shape"
+    },
+    "ability": {
+      "0": {
+        "name": "Oblivious",
+        "description": "Keeps the Pokémon from being infatuated or falling for taunts."
+      },
+      "1": {
+        "name": "Forewarn",
+        "description": "Determines what moves an opposing Pokémon has."
+      }
+    }
+  },
+  "124": {
+    "name": "Electabuzz",
+    "evolution": {
+      "0": "elekid",
+      "1": "electabuzz",
+      "2": "electivire"
+    },
+    "weaknesses": {
+      "0": "Ground"
+    },
+    "type": {
+      "0": "Electric"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "6"
+    },
+    "height": "3' 07\"",
+    "weight": "66.1 lbs",
+    "category": {
+      "1": "Electric"
+    },
+    "ability": {
+      "0": {
+        "name": "Static",
+        "description": "Contact with the Pokémon may cause paralysis."
+      }
+    }
+  },
+  "125": {
+    "name": "Magmar",
+    "evolution": {
+      "0": "magby",
+      "1": "magmar",
+      "2": "magmortar"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "4' 03\"",
+    "weight": "98.1 lbs",
+    "category": {
+      "1": "Spitfire"
+    },
+    "ability": {
+      "0": {
+        "name": "Flame Body",
+        "description": "Contact with the Pokémon may burn the attacker."
+      }
+    }
+  },
+  "126": {
+    "name": "Pinsir",
+    "evolution": {
+      "0": "pinsir"
+    },
+    "weaknesses": {
+      "0": "Fire",
+      "1": "Flying",
+      "2": "Rock"
+    },
+    "type": {
+      "0": "Bug"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "6",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "5"
+    },
+    "height": "4' 11\"",
+    "weight": "121.3 lbs",
+    "category": {
+      "1": "Stag Beetle"
+    },
+    "ability": {
+      "0": {
+        "name": "Hyper Cutter",
+        "description": "Prevents other Pokémon from lowering its Attack stat."
+      },
+      "1": {
+        "name": "Mold Breaker",
+        "description": "Moves can be used on the target regardless of its Abilities."
+      },
+      "2": {
+        "name": "Aerilate",
+        "description": "Normal-type moves become Flying-type moves."
+      }
+    }
+  },
+  "127": {
+    "name": "Tauros",
+    "evolution": {
+      "0": "tauros"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "6"
+    },
+    "height": "4' 07\"",
+    "weight": "194.9 lbs",
+    "category": {
+      "1": "Wild Bull"
+    },
+    "ability": {
+      "0": {
+        "name": "Intimidate",
+        "description": "Lowers the opposing Pokémon's Attack stat."
+      },
+      "1": {
+        "name": "Anger Point",
+        "description": "Maxes the Attack stat after the Pokémon takes a critical hit."
+      }
+    }
+  },
+  "128": {
+    "name": "Magikarp",
+    "evolution": {
+      "0": "magikarp",
+      "1": "gyarados"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "1",
+      "Attack": "1",
+      "Defense": "3",
+      "SpecialAttack": "1",
+      "SpecialDefense": "1",
+      "Speed": "4"
+    },
+    "height": "2' 11\"",
+    "weight": "22.0 lbs",
+    "category": {
+      "1": "Fish"
+    },
+    "ability": {
+      "0": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      }
+    }
+  },
+  "129": {
+    "name": "Gyarados",
+    "evolution": {
+      "0": "magikarp",
+      "1": "gyarados"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Rock"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "6",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "21' 04\"",
+    "weight": "518.1 lbs",
+    "category": {
+      "1": "Atrocious"
+    },
+    "ability": {
+      "0": {
+        "name": "Intimidate",
+        "description": "Lowers the opposing Pokémon's Attack stat."
+      },
+      "1": {
+        "name": "Mold Breaker",
+        "description": "Moves can be used on the target regardless of its Abilities."
+      }
+    }
+  },
+  "130": {
+    "name": "Lapras",
+    "evolution": {
+      "0": "lapras"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Fighting",
+      "2": "Grass",
+      "3": "Rock"
+    },
+    "type": {
+      "0": "Water",
+      "1": "Ice"
+    },
+    "stats": {
+      "HP": "5",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "4",
+      "SpecialDefense": "4",
+      "Speed": "3"
+    },
+    "height": "8' 02\"",
+    "weight": "485.0 lbs",
+    "category": {
+      "1": "Transport"
+    },
+    "ability": {
+      "0": {
+        "name": "Water Absorb",
+        "description": "Restores HP if hit by a Water-type move."
+      },
+      "1": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      }
+    }
+  },
+  "131": {
+    "name": "Ditto",
+    "evolution": {
+      "0": "ditto"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "1' 00\"",
+    "weight": "8.8 lbs",
+    "category": {
+      "1": "Transform"
+    },
+    "ability": {
+      "0": {
+        "name": "Limber",
+        "description": "Protects the Pokémon from paralysis."
+      }
+    }
+  },
+  "132": {
+    "name": "Eevee",
+    "evolution": {
+      "0": "eevee",
+      "1": "vaporeon"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "1' 00\"",
+    "weight": "14.3 lbs",
+    "category": {
+      "1": "Evolution"
+    },
+    "ability": {
+      "0": {
+        "name": "Run Away",
+        "description": "Enables a sure getaway from wild Pokémon."
+      },
+      "1": {
+        "name": "Adaptability",
+        "description": "Powers up moves of the same type as the Pokémon."
+      }
+    }
+  },
+  "133": {
+    "name": "Vaporeon",
+    "evolution": {
+      "0": "eevee",
+      "1": "vaporeon"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Grass"
+    },
+    "type": {
+      "0": "Water"
+    },
+    "stats": {
+      "HP": "5",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "3' 03\"",
+    "weight": "63.9 lbs",
+    "category": {
+      "1": "Bubble Jet"
+    },
+    "ability": {
+      "0": {
+        "name": "Water Absorb",
+        "description": "Restores HP if hit by a Water-type move."
+      }
+    }
+  },
+  "134": {
+    "name": "Jolteon",
+    "evolution": {
+      "0": "eevee",
+      "1": "vaporeon"
+    },
+    "weaknesses": {
+      "0": "Ground"
+    },
+    "type": {
+      "0": "Electric"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "7"
+    },
+    "height": "2' 07\"",
+    "weight": "54.0 lbs",
+    "category": {
+      "1": "Lightning"
+    },
+    "ability": {
+      "0": {
+        "name": "Volt Absorb",
+        "description": "Restores HP if hit by an Electric-type move."
+      }
+    }
+  },
+  "135": {
+    "name": "Flareon",
+    "evolution": {
+      "0": "eevee",
+      "1": "vaporeon"
+    },
+    "weaknesses": {
+      "0": "Ground",
+      "1": "Rock",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "7",
+      "Defense": "3",
+      "SpecialAttack": "5",
+      "SpecialDefense": "5",
+      "Speed": "4"
+    },
+    "height": "2' 11\"",
+    "weight": "55.1 lbs",
+    "category": {
+      "1": "Flame"
+    },
+    "ability": {
+      "0": {
+        "name": "Flash Fire",
+        "description": "Powers up the Pokémon's Fire- type moves if it's hit by one."
+      }
+    }
+  },
+  "136": {
+    "name": "Porygon",
+    "evolution": {
+      "0": "porygon",
+      "1": "porygon2",
+      "2": "porygon-z"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "3",
+      "SpecialAttack": "4",
+      "SpecialDefense": "3",
+      "Speed": "2"
+    },
+    "height": "2' 07\"",
+    "weight": "80.5 lbs",
+    "category": {
+      "1": "Virtual"
+    },
+    "ability": {
+      "0": {
+        "name": "Trace",
+        "description": "The Pokémon copies an opposing Pokémon's Ability."
+      },
+      "1": {
+        "name": "Download",
+        "description": "Adjusts power based on an  opposing Pokémon's stats."
+      }
+    }
+  },
+  "137": {
+    "name": "Omanyte",
+    "evolution": {
+      "0": "omanyte",
+      "1": "omastar"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Electric",
+      "2": "Fighting",
+      "3": "Ground"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "2",
+      "Defense": "4",
+      "SpecialAttack": "4",
+      "SpecialDefense": "2",
+      "Speed": "2"
+    },
+    "height": "1' 04\"",
+    "weight": "16.5 lbs",
+    "category": {
+      "1": "Spiral"
+    },
+    "ability": {
+      "0": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      },
+      "1": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      }
+    }
+  },
+  "138": {
+    "name": "Omastar",
+    "evolution": {
+      "0": "omanyte",
+      "1": "omastar"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Electric",
+      "2": "Fighting",
+      "3": "Ground"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "3",
+      "Defense": "5",
+      "SpecialAttack": "6",
+      "SpecialDefense": "3",
+      "Speed": "3"
+    },
+    "height": "3' 03\"",
+    "weight": "77.2 lbs",
+    "category": {
+      "1": "Spiral"
+    },
+    "ability": {
+      "0": {
+        "name": "Shell Armor",
+        "description": "Protects the Pokémon from critical hits."
+      },
+      "1": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      }
+    }
+  },
+  "139": {
+    "name": "Kabuto",
+    "evolution": {
+      "0": "kabuto",
+      "1": "kabutops"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Electric",
+      "2": "Fighting",
+      "3": "Ground"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Water"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "3",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "1' 08\"",
+    "weight": "25.4 lbs",
+    "category": {
+      "1": "Shellfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      },
+      "1": {
+        "name": "Battle Armor",
+        "description": "Protects the Pokémon from critical hits."
+      }
+    }
+  },
+  "140": {
+    "name": "Kabutops",
+    "evolution": {
+      "0": "kabuto",
+      "1": "kabutops"
+    },
+    "weaknesses": {
+      "0": "Grass",
+      "1": "Electric",
+      "2": "Fighting",
+      "3": "Ground"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Water"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "6",
+      "Defense": "5",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "4' 03\"",
+    "weight": "89.3 lbs",
+    "category": {
+      "1": "Shellfish"
+    },
+    "ability": {
+      "0": {
+        "name": "Swift Swim",
+        "description": "Boosts the Pokémon's Speed stat in rain."
+      },
+      "1": {
+        "name": "Battle Armor",
+        "description": "Protects the Pokémon from critical hits."
+      }
+    }
+  },
+  "141": {
+    "name": "Aerodactyl",
+    "evolution": {
+      "0": "aerodactyl"
+    },
+    "weaknesses": {
+      "0": "Electric",
+      "1": "Ice",
+      "2": "Rock",
+      "3": "Steel",
+      "4": "Water"
+    },
+    "type": {
+      "0": "Rock",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "5",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "7"
+    },
+    "height": "5' 11\"",
+    "weight": "130.1 lbs",
+    "category": {
+      "1": "Fossil"
+    },
+    "ability": {
+      "0": {
+        "name": "Rock Head",
+        "description": "Protects the Pokémon from recoil damage."
+      },
+      "1": {
+        "name": "Pressure",
+        "description": "The Pokémon raises opposing Pokémon's PP usage."
+      },
+      "2": {
+        "name": "Tough Claws",
+        "description": "Powers up moves that make direct contact."
+      }
+    }
+  },
+  "142": {
+    "name": "Snorlax",
+    "evolution": {
+      "0": "munchlax",
+      "1": "snorlax"
+    },
+    "weaknesses": {
+      "0": "Fighting"
+    },
+    "type": {
+      "0": "Normal"
+    },
+    "stats": {
+      "HP": "6",
+      "Attack": "6",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "5",
+      "Speed": "2"
+    },
+    "height": "6' 11\"",
+    "weight": "1014.1 lbs",
+    "category": {
+      "1": "Sleeping"
+    },
+    "ability": {
+      "0": {
+        "name": "Thick Fat",
+        "description": "Boosts resistance to Fire- and Ice-type moves."
+      },
+      "1": {
+        "name": "Immunity",
+        "description": "Prevents the Pokémon from getting poisoned."
+      }
+    }
+  },
+  "143": {
+    "name": "Articuno",
+    "evolution": {
+      "0": "articuno"
+    },
+    "weaknesses": {
+      "0": "Rock",
+      "1": "Electric",
+      "2": "Fire",
+      "3": "Steel"
+    },
+    "type": {
+      "0": "Ice",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "4",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "5",
+      "Speed": "5"
+    },
+    "height": "5' 07\"",
+    "weight": "122.1 lbs",
+    "category": {
+      "1": "Freeze"
+    },
+    "ability": {
+      "0": {
+        "name": "Pressure",
+        "description": "The Pokémon raises opposing Pokémon's PP usage."
+      }
+    }
+  },
+  "144": {
+    "name": "Zapdos",
+    "evolution": {
+      "0": "zapdos"
+    },
+    "weaknesses": {
+      "0": "Ice",
+      "1": "Rock"
+    },
+    "type": {
+      "0": "Electric",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "6",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "5' 03\"",
+    "weight": "116.0 lbs",
+    "category": {
+      "1": "Electric"
+    },
+    "ability": {
+      "0": {
+        "name": "Pressure",
+        "description": "The Pokémon raises opposing Pokémon's PP usage."
+      }
+    }
+  },
+  "145": {
+    "name": "Moltres",
+    "evolution": {
+      "0": "moltres"
+    },
+    "weaknesses": {
+      "0": "Rock",
+      "1": "Electric",
+      "2": "Water"
+    },
+    "type": {
+      "0": "Fire",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "6",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "6' 07\"",
+    "weight": "132.3 lbs",
+    "category": {
+      "1": "Flame"
+    },
+    "ability": {
+      "0": {
+        "name": "Pressure",
+        "description": "The Pokémon raises opposing Pokémon's PP usage."
+      }
+    }
+  },
+  "146": {
+    "name": "Dratini",
+    "evolution": {
+      "0": "dratini",
+      "1": "dragonair",
+      "2": "dragonite"
+    },
+    "weaknesses": {
+      "0": "Dragon",
+      "1": "Ice",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Dragon"
+    },
+    "stats": {
+      "HP": "2",
+      "Attack": "3",
+      "Defense": "2",
+      "SpecialAttack": "2",
+      "SpecialDefense": "2",
+      "Speed": "3"
+    },
+    "height": "5' 11\"",
+    "weight": "7.3 lbs",
+    "category": {
+      "1": "Dragon"
+    },
+    "ability": {
+      "0": {
+        "name": "Shed Skin",
+        "description": "The Pokémon may heal its own status conditions."
+      }
+    }
+  },
+  "147": {
+    "name": "Dragonair",
+    "evolution": {
+      "0": "dratini",
+      "1": "dragonair",
+      "2": "dragonite"
+    },
+    "weaknesses": {
+      "0": "Dragon",
+      "1": "Ice",
+      "2": "Fairy"
+    },
+    "type": {
+      "0": "Dragon"
+    },
+    "stats": {
+      "HP": "3",
+      "Attack": "4",
+      "Defense": "3",
+      "SpecialAttack": "3",
+      "SpecialDefense": "3",
+      "Speed": "4"
+    },
+    "height": "13' 01\"",
+    "weight": "36.4 lbs",
+    "category": {
+      "1": "Dragon"
+    },
+    "ability": {
+      "0": {
+        "name": "Shed Skin",
+        "description": "The Pokémon may heal its own status conditions."
+      }
+    }
+  },
+  "148": {
+    "name": "Dragonite",
+    "evolution": {
+      "0": "dratini",
+      "1": "dragonair",
+      "2": "dragonite"
+    },
+    "weaknesses": {
+      "0": "Ice",
+      "1": "Dragon",
+      "2": "Rock",
+      "3": "Fairy"
+    },
+    "type": {
+      "0": "Dragon",
+      "1": "Flying"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "7",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "4"
+    },
+    "height": "7' 03\"",
+    "weight": "463.0 lbs",
+    "category": {
+      "1": "Dragon"
+    },
+    "ability": {
+      "0": {
+        "name": "Inner Focus",
+        "description": "Protects the Pokémon from flinching."
+      }
+    }
+  },
+  "149": {
+    "name": "Mewtwo",
+    "evolution": {
+      "0": "mewtwo"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "6",
+      "Defense": "4",
+      "SpecialAttack": "8",
+      "SpecialDefense": "4",
+      "Speed": "7"
+    },
+    "height": "6' 07\"",
+    "weight": "269.0 lbs",
+    "category": {
+      "1": "Genetic"
+    },
+    "ability": {
+      "0": {
+        "name": "Pressure",
+        "description": "The Pokémon raises opposing Pokémon's PP usage."
+      },
+      "1": {
+        "name": "Steadfast",
+        "description": "Boosts the Speed stat each time the Pokémon flinches."
+      },
+      "2": {
+        "name": "Insomnia",
+        "description": "Prevents the Pokémon from falling asleep."
+      }
+    }
+  },
+  "150": {
+    "name": "Mew",
+    "evolution": {
+      "0": "mew"
+    },
+    "weaknesses": {
+      "0": "Bug",
+      "1": "Dark",
+      "2": "Ghost"
+    },
+    "type": {
+      "0": "Psychic"
+    },
+    "stats": {
+      "HP": "4",
+      "Attack": "5",
+      "Defense": "4",
+      "SpecialAttack": "5",
+      "SpecialDefense": "4",
+      "Speed": "5"
+    },
+    "height": "1' 04\"",
+    "weight": "8.8 lbs",
+    "category": {
+      "1": "New Species"
+    },
+    "ability": {
+      "0": {
+        "name": "Synchronize",
+        "description": "Passes poison, paralyze, or burn to the Pokémon that inflicted it."
+      }
+    }
+  }
+}
