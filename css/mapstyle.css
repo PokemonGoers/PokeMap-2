@@ -1,10 +1,10 @@
 #map { 
 	height: 540px; 
-	width:100%; 
+	width:100%;
 	background-color:gray;
 }
 
-#pokemonname
+.pokemonname
 {
 	width:80px;
 	color:gray;
@@ -12,36 +12,36 @@
 	float:left;
 }
 
-#pokemontype
+.pokemontype
 {
 	width:100px;
 }
 
-#pokemonevolution
+.pokemonevolution
 {
 
 }
 
-#poklabel
+.poklabel
 {
 	color:gray;
 }
 
-#pokemonmore
+.pokemonmore
 {
-	width:20px;
+	width: 20px;
 	height: 20px;
 	background-image: url('../img/moreinfo.png');
 	background-size: 20px 20px;
 	float:right;
 }
 
-#pokemonInfo
+.pokemonInfo
 {
 	height:30px;
 }
 
-#pokemonprobability
+.pokemonprobability
 {
 	font-size:25px;
 	color:rgb(14, 165, 205);
@@ -54,13 +54,48 @@
 	border-radius: 50px;
 }
 
-#pokemonbox
+.pokemonbox
 {
 	margin-left: 20px;
 	margin-bottom: 5px;
 }
 
+/* arrows for pokemon evolution */
 .a::before {
 	content: "↝";
 	vertical-align: 10%;
+}
+
+#sidebar {
+	display: none;
+	position: absolute;
+	overflow: scroll;
+	width: 260px;
+	height: 100%;
+	top: 0;
+	right: 0;
+	padding: 0 20px;
+}
+
+#close {
+	float:right;
+	width: 30px;
+	height: 30px;
+	border:solid 1px;
+	border-radius: 30px;
+	font-size: 26px;
+	text-align: center;
+	margin-top: 10px;
+}
+
+#close a {
+	text-decoration: none;
+}
+
+#avatar {
+	text-align: center;
+}
+
+#avatar img {
+	width: 200px;
 }

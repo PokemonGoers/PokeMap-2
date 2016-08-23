@@ -21,10 +21,31 @@
 </head>
 <body>
 
-	<div id="map">
-		<!-- opencyclemap -->
-	</div>
+	<!-- OpenCycleMap -->
+	<div id="map"></div>
 
+	<!-- Sidebar for additional information -->
+	<div id="sidebar">
+		<div id="close"><a href="#" onclick="hideAdditionalInformation()">×</a></div>
+		<div id="avatar"></div>
+		<h1 id="name">Pokemon Name</h1>
+		<table>
+		<tr><td>Height:</td><td><span id="height"></span></td></tr>
+		<tr><td>Weight:</td><td><span id="weight"></span></td></tr>
+		<tr><td>Type:</td><td><span id="type"></span></td></tr>
+		<tr><td>Category:</td><td><span id="category"></span></td></tr>
+		<tr><td>Evolution:</td><td><span id="evolution"></span></td></tr>
+		<tr><td>Weaknesses:</td><td><span id="weaknesses"></span></td></tr>
+		<tr><td>Stats:</td></tr>
+		<tr><td>HP:</td><td><span id="hp"></span></td></tr>
+		<tr><td>Attack:</td><td><span id="attack"></span></td></tr>
+		<tr><td>Defense:</td><td><span id="defense"></span></td></tr>
+		<tr><td>SpecialAttack:</td><td><span id="specialattack"></span></td></tr>
+		<tr><td>SpecialDefense:</td><td><span id="specialdefense"></span></td></tr>
+		<tr><td>Speed:</td><td><span id="speed"></span></td></tr>
+		<tr><td>Abilities:</td><td><span id="abilities"></span></td></tr>
+		</table>
+	</div>
 
 	<!-- Map Javascript -->
 	<script type="text/javascript" src="js/opencyclemap.js"></script>
