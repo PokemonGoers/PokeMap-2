@@ -7,14 +7,15 @@
 .pokemonname
 {
 	width:80px;
-	color:gray;
-	font-size:17px;
+	color:#F0F8FF;
+	font-size:23px;
 	float:left;
+    margin: 10px;
 }
 
 .pokemontype
 {
-	width:100px;
+	width:300px;
 }
 
 .pokemonevolution
@@ -24,34 +25,55 @@
 
 .poklabel
 {
-	color:gray;
+     color:#20B2AA;
 }
 
 .pokemonmore
 {
-	width: 20px;
-	height: 20px;
-	background-image: url('../img/moreinfo.png');
-	background-size: 20px 20px;
+	width: 55px;
+	height: 55px;
+	background-image: url('../img/book4.svg');
+	background-size:55px 55px;
 	float:right;
+    border:0px solid white;
+    border-radius: 50px;
+    position:fixed;
+      -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
 }
 
 .pokemonInfo
 {
-	height:30px;
+    display:table-cell;
+	text-align: center;
+	vertical-align: middle;
+    background-color:#20B2AA;
+    border-radius:15px;
+    width:300px;
+    height:40px;
 }
 
 .pokemonprobability
 {
-	font-size:25px;
-	color:rgb(14, 165, 205);
-	border:solid 1px rgb(14, 165, 205);
+	font-size:20px;
+    color:#20B2AA;
+	border:solid 5px white;
 	display:table-cell;
-	text-align: center;
 	vertical-align: middle;
-	width:60px;
-	height:60px;
-	border-radius: 50px;
+	text-align: center;
+	width:55px;
+	height:55px;
+	border-radius: 13px;
+    background-color: #F0F8FF;
+    position: relative;
+    
+}
+
+.probabilityhelper
+{
+/*    width:70px;*/
+    height:40px;
+    float:left;
 }
 
 .pokemonbox
@@ -59,11 +81,17 @@
 	margin-left: 20px;
 	margin-bottom: 5px;
 }
+/*RGB(240,102,104)*/
+.allinfo 
+{
+    margin-top:10px;
+}
 
 /* arrows for pokemon evolution */
 .a::before {
 	content: "↝";
 	vertical-align: 10%;
+    color: RGB(240,102,104)
 }
 
 #sidebar {
@@ -99,3 +127,18 @@
 #avatar img {
 	width: 200px;
 }
+
+a.pokemonmore:hover
+{
+    
+    border-radius:50px;
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    border:3px solid white;
+    border-radius: 50px;
+	width: 60px;
+	height: 60px;
+    background-size:60px 60px;
+}
+
+

@@ -127,13 +127,15 @@
 				var pokemonProbability = feature.properties.probability;
 				var pokemonTime = new Date(feature.properties.time);
 
-				var popupContent = "<div class='pokemonInfo'><div class='pokemonname'>" + pokemonName + "</div>" + "<a href='#' class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></a></div>";
-				popupContent += "<div class='pokemonbox'><div class='pokemonprobability'>" + pokemonProbability + "</div></div>";
-				popupContent += "<div class='pokemontype'><span class='poklabel'>Type: </span>" + pokemonType + "</div>";
+				var popupContent = "<div>";
+                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability + "</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<a href='#' class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></a>";
+                popupContent+= "</div>";
+				//popupContent += "<div class='pokemonbox'><div class='pokemonprobability'>" + pokemonProbability + "</div></div>";
+				popupContent += "<div class='allinfo'><div class='pokemontype'><span class='poklabel'>Type: </span>" + pokemonType + "</div>";
 				popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + pokemonEvolution + "</div>";
 				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + pokemonTime.toString() + "</div>";
 				//popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown" + pokemonName + "'></span></div>";
-
+                popupContent += "</div></div>";
 				layer.bindPopup(popupContent);
 
 				//initializeCountdown("countdown" + pokemonName, pokemonTime);
@@ -182,3 +184,5 @@
 			document.getElementById("map").style.width = "100%";
 			document.getElementById("sidebar").style.display = "none";
 		}
+        
+    
