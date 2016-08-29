@@ -81,7 +81,8 @@
 	margin-left: 20px;
 	margin-bottom: 5px;
 }
-/*RGB(240,102,104)*/
+/*RGB(240,102,104) red*/
+/*RGB(237,201,44) yel*/
 .allinfo 
 {
     margin-top:10px;
@@ -98,11 +99,14 @@
 	display: none;
 	position: absolute;
 	overflow: scroll;
-	width: 260px;
+	width: 310px;
 	height: 100%;
 	top: 0;
 	right: 0;
-	padding: 0 20px;
+/*	padding: 0 20px;*/
+    background-color:#F0F8FF;
+    font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+
 }
 
 #close {
@@ -122,13 +126,20 @@
 
 #avatar {
 	text-align: center;
+    border:5px solid RGB(237,201,44);
+    border-radius:300px;
+    background-color:white;
+    margin-right:5px;
+    display: table-cell;
+    margin-top: 5px;
 }
 
 #avatar img {
 	width: 200px;
+    padding:15px;
 }
 
-a.pokemonmore:hover
+.pokemonmore:hover
 {
     
     border-radius:50px;
@@ -141,4 +152,70 @@ a.pokemonmore:hover
     background-size:60px 60px;
 }
 
+.titlehelper
+{
+    background-color:  RGB(237,201,44);
+    color:white;
+    padding:10px;
+    border-radius:20px;
+    font-size:20px;
+    margin:10px 0;
+}
 
+.avatarhelper
+{
+   /* width:300px; */
+    margin-left:25px;
+    
+}
+
+.labelpok
+{
+    padding:0px 0px 5px 5px;
+    color:#20B2AA;
+    font-size: 15px;
+    border-bottom : 2px solid RGB(237,201,44);
+
+}
+
+.infopok
+{
+    border-bottom : 2px solid #20B2AA;
+    text-align: center;
+  
+    
+    
+}
+
+table 
+{
+    width:270px;
+    padding:15px;
+    margin-left:5px;
+}
+
+table td
+{
+    width:120px;
+}
+
+.closehelper
+{
+    width:55px;
+    height:55px;
+    background-image: url('../img/close.png');
+    background-size:55px 55px;
+    margin-top:-75px;
+    float:right; 
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+}
+
+.closehelper:hover
+{
+    -webkit-transition-duration: 0.5s; /* Safari */
+    transition-duration: 0.5s;
+    width:65px;
+    height:65px;
+    background-size:65px 65px;
+}

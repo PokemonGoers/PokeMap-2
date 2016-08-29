@@ -128,7 +128,7 @@
 				var pokemonTime = new Date(feature.properties.time);
 
 				var popupContent = "<div>";
-                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability + "</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<a href='#' class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></a>";
+                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability + "</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<button class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
                 popupContent+= "</div>";
 				//popupContent += "<div class='pokemonbox'><div class='pokemonprobability'>" + pokemonProbability + "</div></div>";
 				popupContent += "<div class='allinfo'><div class='pokemontype'><span class='poklabel'>Type: </span>" + pokemonType + "</div>";
@@ -159,7 +159,7 @@
 			loadJson("json/pokemonbasicinfo.json", function(response) {
 				var staticData = JSON.parse(response);
 				var pokemon = staticData[name];
-				document.getElementById("map").style.width = "calc(100% - 300px)";
+				document.getElementById("map").style.width = "calc(100% - 310px)";
 				document.getElementById("sidebar").style.display = "block";
 				document.getElementById("avatar").innerHTML = "<img src='img/" + name.toLowerCase() + ".png'>";
 				document.getElementById("name").innerHTML = name;
