@@ -13,16 +13,6 @@
     margin: 10px;
 }
 
-.pokemontype
-{
-	width:300px;
-}
-
-.pokemonevolution
-{
-
-}
-
 .poklabel
 {
      color:#20B2AA;
@@ -85,6 +75,7 @@
 /*RGB(237,201,44) yel*/
 .allinfo 
 {
+    width:300px;
     margin-top:10px;
 }
 
@@ -99,7 +90,7 @@
 	display: none;
 	position: absolute;
 	overflow: scroll;
-	width: 310px;
+	width: 410px;
 	height: 100%;
 	top: 0;
 	right: 0;
@@ -107,6 +98,11 @@
     background-color:#F0F8FF;
     font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 
+}
+
+#sidebar h2 {
+    color: #20B2AA;
+    margin: 10px 0px 0px 20px;
 }
 
 #close {
@@ -136,7 +132,7 @@
 
 #avatar img {
 	width: 200px;
-    padding:15px;
+    padding: 15px;
 }
 
 .pokemonmore:hover
@@ -159,18 +155,19 @@
     padding:10px;
     border-radius:20px;
     font-size:20px;
-    margin:10px 0;
+    margin: 10px;
 }
 
 .avatarhelper
 {
    /* width:300px; */
-    margin-left:25px;
+    margin: 10px 77px 10px 77px;
     
 }
 
 .labelpok
 {
+    width: 120px;
     padding:0px 0px 5px 5px;
     color:#20B2AA;
     font-size: 15px;
@@ -182,21 +179,33 @@
 {
     border-bottom : 2px solid #20B2AA;
     text-align: center;
-  
-    
-    
 }
 
 table 
 {
-    width:270px;
-    padding:15px;
+    width:370px;
+    padding: 10px 15px;
     margin-left:5px;
 }
 
-table td
-{
-    width:120px;
+/*table td {
+    width: 120px;
+}*/
+
+.stats {
+    text-align: center;
+
+}
+
+.labelstats td {
+    padding:0px 0px 5px 5px;
+    color:#20B2AA;
+    font-size: 15px;
+    border-bottom: 2px solid RGB(237,201,44);
+}
+
+.infostats td {
+    border-bottom: 2px solid #20B2AA;
 }
 
 .closehelper

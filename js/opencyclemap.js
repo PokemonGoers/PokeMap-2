@@ -80,13 +80,6 @@
 				"features": []
 			};
 			for(var i = 0, n = predictedData.length; i < n; ++i) {
-				var type = "", evolution = "";
-				for(var property in predictedData[i].type) {
-					type += predictedData[i].type[property] + ", ";
-				}
-				for(var property in predictedData[i].evolution) {
-					evolution += predictedData[i].evolution[property] + " <span class='a'></span> ";
-				}
 				pokemonMapData.features.push({
 					"id": i,
 					"type": "Feature",
@@ -97,9 +90,9 @@
 					"properties": {
 						"name": predictedData[i].name,
 						"time": predictedData[i].time,
-						"type": type.slice(0, -2),
-						"evolution": evolution.slice(0, -25),
-						"probability": predictedData[i].probability * 100 + "%",
+						"type": predictedData[i].type,
+						"evolution": predictedData[i].evolution,
+						"probability": predictedData[i].probability,
 						"img": "img/" + predictedData[i].name.toLowerCase() + ".png"
 					}
 				});
@@ -128,12 +121,11 @@
 				var pokemonTime = new Date(feature.properties.time);
 
 				var popupContent = "<div>";
-                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability + "</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<button class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
-                popupContent+= "</div>";
-				//popupContent += "<div class='pokemonbox'><div class='pokemonprobability'>" + pokemonProbability + "</div></div>";
-				popupContent += "<div class='allinfo'><div class='pokemontype'><span class='poklabel'>Type: </span>" + pokemonType + "</div>";
-				popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + pokemonEvolution + "</div>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + pokemonTime.toString() + "</div>";
+                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<button class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
+                popupContent+= "</div><div class='allinfo'>";
+				//popupContent += "<div class='pokemontype'><span class='poklabel'>Type: </span>" + objectValuesToString(pokemonType) + "</div>";
+				//popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + evolutionToString(pokemonEvolution, pokemonName) + "</div>";
+				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + "</div>";
 				//popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown" + pokemonName + "'></span></div>";
                 popupContent += "</div></div>";
 				layer.bindPopup(popupContent);
@@ -159,7 +151,7 @@
 			loadJson("json/pokemonbasicinfo.json", function(response) {
 				var staticData = JSON.parse(response);
 				var pokemon = staticData[name];
-				document.getElementById("map").style.width = "calc(100% - 310px)";
+				document.getElementById("map").style.width = "calc(100% - 410px)";
 				document.getElementById("sidebar").style.display = "block";
 				document.getElementById("avatar").innerHTML = "<img src='img/" + name.toLowerCase() + ".png'>";
 				document.getElementById("name").innerHTML = name;
@@ -167,15 +159,16 @@
 				document.getElementById("weight").innerHTML = pokemon.weight;
 				document.getElementById("type").innerHTML = pokemon.type[0];
 				document.getElementById("category").innerHTML = pokemon.category[1];
-				document.getElementById("evolution").innerHTML = "";
-				document.getElementById("weaknesses").innerHTML = "";
+				document.getElementById("evolution").innerHTML = evolutionToString(pokemon.evolution, name);
+				document.getElementById("weaknesses").innerHTML = objectValuesToString(pokemon.weaknesses);
 				document.getElementById("hp").innerHTML = pokemon.stats.HP;
 				document.getElementById("attack").innerHTML = pokemon.stats.Attack;
 				document.getElementById("defense").innerHTML = pokemon.stats.Defense;
 				document.getElementById("specialattack").innerHTML = pokemon.stats.SpecialAttack;
 				document.getElementById("specialdefense").innerHTML = pokemon.stats.SpecialDefense;
 				document.getElementById("speed").innerHTML = pokemon.stats.Speed;
-				document.getElementById("abilities").innerHTML = "";
+				document.getElementById("abilities").innerHTML = abilitiesToTable(pokemon.ability);
+				document.getElementById("abilitiestitle").innerHTML = abilitiesTitle(pokemon.ability);
 			});
 
 		}
