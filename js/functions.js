@@ -25,6 +25,55 @@ function mergeObjects(object_1, object_2) {
     return object_1;
 }
 
+function objectToArray(object) {
+    var array = [];
+    for(property in object) {
+        array[property] = object[property];
+    }
+    return array;
+}
+
+function objectValuesToString(object) {
+    var string = "";
+    for(key in object) {
+        string += object[key] + ", ";
+    }
+    return string.slice(0, -2);
+}
+
+function evolutionToString(evolution, pokemonName) {
+    var string = "";
+    for(key in evolution) {
+        evolutionName = evolution[key].substring(0,1).toUpperCase() + evolution[key].substring(1, evolution[key].length);
+        if (pokemonName === evolutionName) {
+            string += "<b>";
+        }
+        string += evolutionName;
+        if (pokemonName == evolutionName) {
+            string += "</b>";
+        }
+        string += " <span class='a'></span> ";
+    }
+    return string.slice(0, -25);
+}
+
+function abilitiesToTable(abilities) {
+    string = "<table>";
+    for(ability in abilities) {
+        string += "<tr><td class='labelpok'>" + abilities[ability].name + "</td><td class='infopok' style='text-align: justify;'>" + abilities[ability].description + "</td></tr>";
+    }
+    string += "</table>";
+    return string;
+}
+
+function abilitiesTitle(abilities) {
+    if (Object.keys(abilities).length == 1) {
+        return "Ability";
+    } else {
+        return "Abilities";
+    }
+}
+
 function initializeCountdown(id, time) {
     var countdownSpan = document.getElementById(id);
 
