@@ -47,10 +47,14 @@ exports.evolutionToString = function(evolution, pokemonName) {
         evolutionName = evolution[key].substring(0,1).toUpperCase() + evolution[key].substring(1, evolution[key].length);
         if (pokemonName === evolutionName) {
             string += "<b>";
+        } else {
+            string += "<a href='#' onclick='showAdditionalInformation(\"" + evolutionName + "\")'>";
         }
         string += evolutionName;
         if (pokemonName == evolutionName) {
             string += "</b>";
+        } else {
+            string += "</a>";
         }
         string += " <span class='a'></span> ";
     }

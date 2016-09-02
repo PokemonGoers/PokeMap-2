@@ -109,6 +109,15 @@
     margin: 10px 0px 0px 20px;
 }
 
+#sidebar a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#sidebar a:hover {
+    color: #20B2AA;
+}
+
 #close {
 	float:right;
 	width: 30px;
