@@ -3,10 +3,12 @@
 		//var x = 48.16;
 		//var y = 11.6;
 		var functions = require('./functions');
+        var L = require('leaflet');
 
 		var mymap=null;
 
 		exports.setUpMap = function(x,y) {
+            L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
 			mymap = L.map('map').setView([x, y], 17);
 			window.map = mymap; // Set map as a global variable
 

@@ -1,5 +1,6 @@
 var functions = require('./js/functions');
 var opencyclemap = require('./js/opencyclemap');
+//var L = require('leaflet');
 
 var xhr= new XMLHttpRequest();
 xhr.open('GET', 'css/sidebar.html', true);
@@ -13,6 +14,7 @@ xhr.onreadystatechange= function() {
     
 };
 xhr.send();
+
 
 opencyclemap.setUpMap(48.264673,11.671434);
 opencyclemap.setUpLocation(48.264673,11.671434);

@@ -21,5 +21,8 @@
   "homepage": "https://github.com/PokemonGoers/PokeMap-2#readme",
   "devDependencies": {
     "browserify": "^13.1.0"
+  },
+  "dependencies": {
+    "leaflet": "^0.7.7"
   }
 }
