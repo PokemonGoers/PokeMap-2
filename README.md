@@ -11,7 +11,7 @@ Install node dependencies defined in package.json:
 ```shell
 npm install
 ```
-Compile all *.js files to one bundle:
+Compile all *.js files to one bundle with browserify:
 ```shell
 ./node_modules/.bin/browserify testMap.js -o testMap.bundle.js
 ```
