@@ -2,6 +2,7 @@
 	height: 540px; 
 	width:100%;
 	background-color:gray;
+    cursor: move;
 }
 
 .pokemonname
@@ -22,7 +23,9 @@
 {
 	width: 55px;
 	height: 55px;
-	background-image: url('../img/book4.svg');
+    font-size: 40px;
+    color: RGB(237,201,44);
+	/*background-image: url('../img/book4.svg');*/
 	background-size:55px 55px;
 	float:right;
     border:0px solid white;
@@ -30,6 +33,7 @@
     position:fixed;
       -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
+    cursor: help;
 }
 
 .pokemonInfo
@@ -145,7 +149,8 @@
     border-radius: 50px;
 	width: 60px;
 	height: 60px;
-    background-size:60px 60px;
+    /*background-size:60px 60px;*/
+    background-color:#20B2AA;
 }
 
 .titlehelper
@@ -212,12 +217,15 @@ table
 {
     width:55px;
     height:55px;
-    background-image: url('../img/close.png');
+    font-size: 55px;
+    color: #d75a4a;
+    /*background-image: url('../img/close.png');*/
     background-size:55px 55px;
     margin-top:-75px;
     float:right; 
     -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
+    cursor: pointer;
 }
 
 .closehelper:hover
@@ -226,5 +234,6 @@ table
     transition-duration: 0.5s;
     width:65px;
     height:65px;
-    background-size:65px 65px;
+    font-size: 65px;
+    /*background-size:65px 65px;*/
 }

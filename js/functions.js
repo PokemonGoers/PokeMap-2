@@ -88,6 +88,7 @@ exports.initializeCountdown = function(id, time) {
 
         if (t <= 0) {
             clearInterval(interval);
+            countdownSpan.innerHTML = "Pokémon already appeared!";
         }
     }
 

@@ -40,6 +40,7 @@
     "browserify": "^13.1.0"
   },
   "dependencies": {
-    "leaflet": "^0.7.7"
-}
+    "leaflet": "^0.7.7",
+    "leaflet.locatecontrol": "^0.52.0"
+  }
 }

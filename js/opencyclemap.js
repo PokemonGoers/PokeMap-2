@@ -4,6 +4,7 @@
 		//var y = 11.6;
 		var functions = require('./functions');
         var L = require('leaflet');
+		var LC = require('leaflet.locatecontrol');
 
 		var mymap=null;
 
@@ -20,6 +21,7 @@
 			id: 'mapbox.streets'
 			}).addTo(mymap);
 
+			LC = L.control.locate().addTo(map);
 
 			/*var popup = L.popup();
 
@@ -124,17 +126,14 @@
 				var pokemonTime = new Date(feature.properties.time);
 
 				var popupContent = "<div>";
-                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<button class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
+                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
                 popupContent+= "</div><div class='allinfo'>";
-				//popupContent += "<div class='pokemontype'><span class='poklabel'>Type: </span>" + objectValuesToString(pokemonType) + "</div>";
-				//popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + evolutionToString(pokemonEvolution, pokemonName) + "</div>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + "</div>";
-				//popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown" + pokemonName + "'></span></div>";
+				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + " UTC</div>";
+				popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
                 popupContent += "</div></div>";
 				layer.bindPopup(popupContent);
 
-				//initializeCountdown("countdown" + pokemonName, pokemonTime);
-
+				layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
 			}
 
 			L.geoJson(pokemonMapData, {
