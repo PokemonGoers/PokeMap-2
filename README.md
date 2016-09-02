@@ -7,13 +7,9 @@ The world of Pokemon GO is as big as our planet. Pokemons have been sighted on t
 https://pokemongoers.github.io/PokeMap-2/
 
 ## Installation
-Install node dependencies defined in package.json:
+Install node dependencies defined in package.json and compile js-files with browserify:
 ```shell
-npm install
-```
-Compile all *.js files to one bundle with browserify:
-```shell
-./node_modules/.bin/browserify testMap.js -o testMap.bundle.js
+make
 ```
 
 ## Gitter
