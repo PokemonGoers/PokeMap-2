@@ -1,4 +1,4 @@
-function loadJson(file, callback) {
+exports.loadJson = function(file, callback) {
     var request = new XMLHttpRequest();
     request.overrideMimeType("application/json");
     request.open('GET', file, true);
@@ -10,7 +10,7 @@ function loadJson(file, callback) {
     request.send(null);
 }
 
-function mergeObjects(object_1, object_2) {
+exports.mergeObjects = function(object_1, object_2) {
     for(var property in object_2) {
         try {
             if (object_2[property].constructor == Object) {
@@ -25,7 +25,7 @@ function mergeObjects(object_1, object_2) {
     return object_1;
 }
 
-function objectToArray(object) {
+exports.objectToArray = function(object) {
     var array = [];
     for(property in object) {
         array[property] = object[property];
@@ -33,7 +33,7 @@ function objectToArray(object) {
     return array;
 }
 
-function objectValuesToString(object) {
+exports.objectValuesToString = function(object) {
     var string = "";
     for(key in object) {
         string += object[key] + ", ";
@@ -41,7 +41,7 @@ function objectValuesToString(object) {
     return string.slice(0, -2);
 }
 
-function evolutionToString(evolution, pokemonName) {
+exports.evolutionToString = function(evolution, pokemonName) {
     var string = "";
     for(key in evolution) {
         evolutionName = evolution[key].substring(0,1).toUpperCase() + evolution[key].substring(1, evolution[key].length);
@@ -57,7 +57,7 @@ function evolutionToString(evolution, pokemonName) {
     return string.slice(0, -25);
 }
 
-function abilitiesToTable(abilities) {
+exports.abilitiesToTable = function(abilities) {
     string = "<table>";
     for(ability in abilities) {
         string += "<tr><td class='labelpok'>" + abilities[ability].name + "</td><td class='infopok' style='text-align: justify;'>" + abilities[ability].description + "</td></tr>";
@@ -66,7 +66,7 @@ function abilitiesToTable(abilities) {
     return string;
 }
 
-function abilitiesTitle(abilities) {
+exports.abilitiesTitle = function(abilities) {
     if (Object.keys(abilities).length == 1) {
         return "Ability";
     } else {
@@ -74,7 +74,7 @@ function abilitiesTitle(abilities) {
     }
 }
 
-function initializeCountdown(id, time) {
+exports.initializeCountdown = function(id, time) {
     var countdownSpan = document.getElementById(id);
 
     function updateCountdown() {

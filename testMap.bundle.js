@@ -1,3 +1,101 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+exports.loadJson = function(file, callback) {
+    var request = new XMLHttpRequest();
+    request.overrideMimeType("application/json");
+    request.open('GET', file, true);
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == "200") {
+            callback(request.responseText);
+        }
+    };
+    request.send(null);
+}
+
+exports.mergeObjects = function(object_1, object_2) {
+    for(var property in object_2) {
+        try {
+            if (object_2[property].constructor == Object) {
+                object_1[property] = mergeObjects(object_1[property], object_2[property]);
+            } else {
+                object_1[property] = object_2[property];
+            }
+       } catch(e) {
+            object_1[property] = object_2[property];
+        }
+    }
+    return object_1;
+}
+
+exports.objectToArray = function(object) {
+    var array = [];
+    for(property in object) {
+        array[property] = object[property];
+    }
+    return array;
+}
+
+exports.objectValuesToString = function(object) {
+    var string = "";
+    for(key in object) {
+        string += object[key] + ", ";
+    }
+    return string.slice(0, -2);
+}
+
+exports.evolutionToString = function(evolution, pokemonName) {
+    var string = "";
+    for(key in evolution) {
+        evolutionName = evolution[key].substring(0,1).toUpperCase() + evolution[key].substring(1, evolution[key].length);
+        if (pokemonName === evolutionName) {
+            string += "<b>";
+        }
+        string += evolutionName;
+        if (pokemonName == evolutionName) {
+            string += "</b>";
+        }
+        string += " <span class='a'></span> ";
+    }
+    return string.slice(0, -25);
+}
+
+exports.abilitiesToTable = function(abilities) {
+    string = "<table>";
+    for(ability in abilities) {
+        string += "<tr><td class='labelpok'>" + abilities[ability].name + "</td><td class='infopok' style='text-align: justify;'>" + abilities[ability].description + "</td></tr>";
+    }
+    string += "</table>";
+    return string;
+}
+
+exports.abilitiesTitle = function(abilities) {
+    if (Object.keys(abilities).length == 1) {
+        return "Ability";
+    } else {
+        return "Abilities";
+    }
+}
+
+exports.initializeCountdown = function(id, time) {
+    var countdownSpan = document.getElementById(id);
+
+    function updateCountdown() {
+        var t = Date.parse(time) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60* 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+
+        countdownSpan.innerHTML = days + " days, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+
+        if (t <= 0) {
+            clearInterval(interval);
+        }
+    }
+
+    updateCountdown();
+    var interval = setInterval(updateCountdown, 1000);
+}
+},{}],2:[function(require,module,exports){
 		
 		//Our Location
 		//var x = 48.16;
@@ -180,3 +278,27 @@
 		}
         
     
+},{"./functions":1}],3:[function(require,module,exports){
+var functions = require('./js/functions');
+var opencyclemap = require('./js/opencyclemap');
+
+var xhr= new XMLHttpRequest();
+xhr.open('GET', 'css/sidebar.html', true);
+xhr.onreadystatechange= function() {
+    if (this.readyState!==4) return;
+    if (this.status!==200) return; // or whatever error handling you want
+    //	document.body.innerHTML += this.responseText;
+    var elemDiv = document.createElement('div');
+	elemDiv.innerHTML = this.responseText;
+	document.body.appendChild(elemDiv);
+    
+};
+xhr.send();
+
+opencyclemap.setUpMap(48.264673,11.671434);
+opencyclemap.setUpLocation(48.264673,11.671434);
+var from = new Date("2016-08-01T00:00:00.000Z");
+var to = new Date("2016-09-01T00:00:00.000Z");
+opencyclemap.loadPokemonData(opencyclemap.setPokemonOnMap, from, to);
+
+},{"./js/functions":1,"./js/opencyclemap":2}]},{},[3]);
