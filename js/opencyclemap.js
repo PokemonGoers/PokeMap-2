@@ -122,7 +122,7 @@
 				var pokemonTime = new Date(feature.properties.time);
 
 				var popupContent = "<div>";
-                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<button class='pokemonmore' onclick='opencyclemap.showAdditionalInformation(\""+ pokemonName + "\")'></button>";
+                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<button class='pokemonmore' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
                 popupContent+= "</div><div class='allinfo'>";
 				//popupContent += "<div class='pokemontype'><span class='poklabel'>Type: </span>" + objectValuesToString(pokemonType) + "</div>";
 				//popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + evolutionToString(pokemonEvolution, pokemonName) + "</div>";
@@ -148,8 +148,8 @@
 
 		}
 
-		exports.showAdditionalInformation = function(name) {
-			loadJson("json/pokemonbasicinfo.json", function(response) {
+		showAdditionalInformation = function(name) {
+			functions.loadJson("json/pokemonbasicinfo.json", function(response) {
 				var staticData = JSON.parse(response);
 				var pokemon = staticData[name];
 				document.getElementById("map").style.width = "calc(100% - 410px)";
@@ -160,21 +160,21 @@
 				document.getElementById("weight").innerHTML = pokemon.weight;
 				document.getElementById("type").innerHTML = pokemon.type[0];
 				document.getElementById("category").innerHTML = pokemon.category[1];
-				document.getElementById("evolution").innerHTML = evolutionToString(pokemon.evolution, name);
-				document.getElementById("weaknesses").innerHTML = objectValuesToString(pokemon.weaknesses);
+				document.getElementById("evolution").innerHTML = functions.evolutionToString(pokemon.evolution, name);
+				document.getElementById("weaknesses").innerHTML = functions.objectValuesToString(pokemon.weaknesses);
 				document.getElementById("hp").innerHTML = pokemon.stats.HP;
 				document.getElementById("attack").innerHTML = pokemon.stats.Attack;
 				document.getElementById("defense").innerHTML = pokemon.stats.Defense;
 				document.getElementById("specialattack").innerHTML = pokemon.stats.SpecialAttack;
 				document.getElementById("specialdefense").innerHTML = pokemon.stats.SpecialDefense;
 				document.getElementById("speed").innerHTML = pokemon.stats.Speed;
-				document.getElementById("abilities").innerHTML = abilitiesToTable(pokemon.ability);
-				document.getElementById("abilitiestitle").innerHTML = abilitiesTitle(pokemon.ability);
+				document.getElementById("abilities").innerHTML = functions.abilitiesToTable(pokemon.ability);
+				document.getElementById("abilitiestitle").innerHTML = functions.abilitiesTitle(pokemon.ability);
 			});
 
 		}
 
-		exports.hideAdditionalInformation = function() {
+		hideAdditionalInformation = function() {
 			document.getElementById("map").style.width = "100%";
 			document.getElementById("sidebar").style.display = "none";
 		}
