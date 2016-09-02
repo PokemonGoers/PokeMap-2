@@ -1,6 +1,6 @@
 var functions = require('./js/functions');
 var opencyclemap = require('./js/opencyclemap');
-//var L = require('leaflet');
+
 
 var xhr= new XMLHttpRequest();
 xhr.open('GET', 'css/sidebar.html', true);
