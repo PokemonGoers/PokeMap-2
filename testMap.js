@@ -1,3 +1,4 @@
+
 var functions = require('./js/functions');
 var opencyclemap = require('./js/opencyclemap');
 
@@ -9,8 +10,8 @@ var sidebarHTML = '<div id="sidebar">\
 		<table>\
 			<tr><td class="labelpok">Evolution:</td><td class="infopok"><span id="evolution"></span></td></tr>\
 			<tr><td class="labelpok">Category:</td><td class="infopok"><span id="category"></span></td></tr>\
-			<tr><td class="labelpok">Type:</td><td class="infopok"><span id="type"></span></td></tr>\
-			<tr><td class="labelpok">Weaknesses:</td><td class="infopok"><span id="weaknesses"></span></td></tr>\
+			<tr><td class="labelpok"><span id="typetitle"></span>:</td><td class="infopok"><span id="type"></span></td></tr>\
+			<tr><td class="labelpok"><span id="weaknessestitle"></span>:</td><td class="infopok"><span id="weaknesses"></span></td></tr>\
 			<tr><td class="labelpok">Height:</td><td class="infopok"><span id="height"></span></td></tr>\
 			<tr><td class="labelpok">Weight:</td><td class="infopok"><span id="weight"></span></td></tr>\
 		</table>\
@@ -34,4 +35,5 @@ opencyclemap.setUpMap(48.264673,11.671434);
 var from = new Date("2016-08-01T00:00:00.000Z");
 var to = new Date("2016-10-01T00:00:00.000Z");
 opencyclemap.loadPokemonData(opencyclemap.setPokemonOnMap, from, to);
+functions.initializeSlider();
 

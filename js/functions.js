@@ -41,6 +41,14 @@ exports.objectValuesToString = function(object) {
     return string.slice(0, -2);
 }
 
+exports.typeTitle = function(type) {
+    if (Object.keys(type).length == 1) {
+        return "Type";
+    } else {
+        return "Types";
+    }
+}
+
 exports.evolutionToString = function(evolution, pokemonName) {
     var string = "";
     for(key in evolution) {
@@ -59,6 +67,14 @@ exports.evolutionToString = function(evolution, pokemonName) {
         string += " <span class='a'></span> ";
     }
     return string.slice(0, -25);
+}
+
+exports.weaknessesTitle = function(weaknesses) {
+    if (Object.keys(weaknesses).length == 1) {
+        return "Weakness";
+    } else {
+        return "Weaknesses";
+    }
 }
 
 exports.abilitiesToTable = function(abilities) {
@@ -99,3 +115,38 @@ exports.initializeCountdown = function(id, time) {
     updateCountdown();
     var interval = setInterval(updateCountdown, 1000);
 }
+
+exports.initializeSlider = function() {
+    document.getElementsByClassName('leaflet-time-slider-bar')[0].id = 'slider';
+    document.getElementsByClassName('leaflet-time-slider-from')[0].id = 'slider_from';
+    document.getElementsByClassName('leaflet-time-slider-to')[0].id = 'slider_to';
+
+    var offset = new Date().getTimezoneOffset() / 60;
+
+    var mySlider = new dhtmlXSlider({
+        parent: "slider",
+        linkTo: ["slider_from", "slider_to"],
+        step: 0.5,
+        min: -12,
+        max: 12,
+        value: [offset, offset + 3],
+        range: true,
+    });
+
+    updateTimeString([- offset, 3 - offset]);
+    mySlider.setSkin("dhx_terrace");
+    mySlider.attachEvent("onSlideEnd", function(value) { updateTimeString(value); });
+};
+
+updateTimeString = function(value) {
+    var now = new Date();
+    var from = new Date();
+    var from_min = Math.floor(value[0]) === value[0] ? from.getMinutes() : from.getMinutes() + 30;
+    var to = new Date();
+    var to_min = Math.floor(value[1]) === value[1] ? to.getMinutes() : to.getMinutes() + 30;
+    from.setHours(now.getHours() + Math.floor(value[0]), from_min);
+    to.setHours(now.getHours() + Math.floor(value[1]), to_min);
+    document.getElementById("slider_from").innerHTML = from.toISOString().replace("T", ", ").slice(0, 17);
+    document.getElementById("slider_to").innerHTML = to.toISOString().replace("T", ", ").slice(0, 17);
+
+};

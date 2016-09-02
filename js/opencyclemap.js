@@ -23,6 +23,24 @@
 
 			LC = L.control.locate().addTo(map);
 
+			var MyControl = L.Control.extend({
+				options: {
+					position: 'bottomright'
+				},
+
+				onAdd: function (map) {
+					var container = L.DomUtil.create('div', 'leaflet-time-slider-container');
+					var timeSlider = L.DomUtil.create('div', 'leaflet-time-slider', container);
+					var slider = L.DomUtil.create('div', 'leaflet-time-slider-bar', timeSlider);
+					var slider = L.DomUtil.create('div', 'leaflet-time-slider-from', timeSlider);
+					var slider = L.DomUtil.create('div', 'leaflet-time-slider-to', timeSlider);
+					timeSlider.title = 'Change time range';
+					return container;
+				}
+			});
+
+			map.addControl(new MyControl());
+
 			/*var popup = L.popup();
 
 			function onMapClick(e) {
@@ -119,14 +137,8 @@
 			});
 
 			function onEachFeature(feature, layer) {
-				var pokemonName = feature.properties.name;
-				var pokemonType = feature.properties.type;
-				var pokemonEvolution = feature.properties.evolution;
-				var pokemonProbability = feature.properties.probability;
-				var pokemonTime = new Date(feature.properties.time);
-
 				var popupContent = "<div>";
-                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + pokemonProbability * 100 + "%</div></div><div class='pokemonname'>" + pokemonName + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ pokemonName + "\")'></button>";
+                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
                 popupContent+= "</div><div class='allinfo'>";
 				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + " UTC</div>";
 				popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
@@ -136,7 +148,7 @@
 				layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
 			}
 
-			L.geoJson(pokemonMapData, {
+			var pokemonLayer = L.geoJson(pokemonMapData, {
 
 				onEachFeature: onEachFeature,
 
@@ -144,10 +156,18 @@
 					var pokemon = new pokemonIcon({iconUrl: feature.properties.img});
 					var pokname = feature.properties.name;
 					return L.marker(latlng, {icon: pokemon, title:pokname,rinseOnHover:true});
-				}
-			}).addTo(map);
+				},
 
+				/*filter: function(feature, layer) {
+					var pokemonTime = new Date(feature.properties.time);
+					if(pokemonTime < from) return false;
+					if(to < pokemonTime) return false;
+					return true;
+				},*/
+
+			}).addTo(map);
 		}
+
 
 		showAdditionalInformation = function(name) {
 			functions.loadJson("json/pokemonbasicinfo.json", function(response) {
@@ -159,9 +179,11 @@
 				document.getElementById("name").innerHTML = name;
 				document.getElementById("height").innerHTML = pokemon.height;
 				document.getElementById("weight").innerHTML = pokemon.weight;
-				document.getElementById("type").innerHTML = pokemon.type[0];
+				document.getElementById("typetitle").innerHTML = functions.typeTitle(pokemon.type);
+				document.getElementById("type").innerHTML = functions.objectValuesToString(pokemon.type);
 				document.getElementById("category").innerHTML = pokemon.category[1];
 				document.getElementById("evolution").innerHTML = functions.evolutionToString(pokemon.evolution, name);
+				document.getElementById("weaknessestitle").innerHTML = functions.weaknessesTitle(pokemon.weaknesses);
 				document.getElementById("weaknesses").innerHTML = functions.objectValuesToString(pokemon.weaknesses);
 				document.getElementById("hp").innerHTML = pokemon.stats.HP;
 				document.getElementById("attack").innerHTML = pokemon.stats.Attack;

@@ -246,3 +246,33 @@ table
     font-size: 65px;
     /*background-size:65px 65px;*/
 }
+
+.leaflet-time-slider
+{
+   /*background-image: url(images/command.png);*/
+    width: 400px;
+    height: 40px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+    cursor: auto;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+#slider {
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    float: left;
+}
+#slider_from, #slider_to {
+    font-family: Roboto, Arial, Helvetica;
+    font-size: 14px;
+    color: #404040;
+}
