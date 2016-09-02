@@ -125,13 +125,12 @@
                 popupContent+= "</div><div class='allinfo'>";
 				//popupContent += "<div class='pokemontype'><span class='poklabel'>Type: </span>" + objectValuesToString(pokemonType) + "</div>";
 				//popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + evolutionToString(pokemonEvolution, pokemonName) + "</div>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + "</div>";
-				//popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown" + pokemonName + "'></span></div>";
+				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + " UTC</div>";
+				popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
                 popupContent += "</div></div>";
 				layer.bindPopup(popupContent);
 
-				//initializeCountdown("countdown" + pokemonName, pokemonTime);
-
+				layer.on({click: function(e) {initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
 			}
 
 			L.geoJson(pokemonMapData, {
@@ -143,8 +142,8 @@
 					var pokname = feature.properties.name;
 					return L.marker(latlng, {icon: pokemon, title:pokname,rinseOnHover:true});
 				}
-			}).addTo(map);
 
+			}).addTo(map);
 		}
 
 		function showAdditionalInformation(name) {
