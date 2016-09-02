@@ -1,0 +1,28 @@
+{
+  "name": "pokemap-2",
+  "version": "1.0.0",
+  "description": "PokeMap",
+  "main": "opencyclemap.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PokemonGoers/PokeMap-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PokemonGoers/PokeMap-2/issues"
+  },
+  "homepage": "https://github.com/PokemonGoers/PokeMap-2#readme",
+  "devDependencies": {
+    "browserify": "^13.1.0"
+  },
+  "dependencies": {
+    "leaflet": "^0.7.7"
+  }
+}

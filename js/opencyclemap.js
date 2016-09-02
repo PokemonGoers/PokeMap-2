@@ -2,10 +2,13 @@
 		//Our Location
 		//var x = 48.16;
 		//var y = 11.6;
+		var functions = require('./functions');
+        var L = require('leaflet');
 
 		var mymap=null;
 
-		function setUpMap(x,y) {
+		exports.setUpMap = function(x,y) {
+            L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
 			mymap = L.map('map').setView([x, y], 17);
 			window.map = mymap; // Set map as a global variable
 
@@ -30,7 +33,7 @@
 			mymap.on('click', onMapClick);*/
 		}
 
-		function setUpLocation(x,y) {
+		exports.setUpLocation = function(x,y) {
 			if(mymap==null) return;
 
 			L.marker([x,y]).addTo(mymap).bindPopup("Your location.");
@@ -43,7 +46,7 @@
 		}
 
 		/* filter Pokemon by passing from & to as date-objects */
-		function loadPokemonData(callback, from, to) {
+		exports.loadPokemonData = function(callback, from, to) {
 			if(typeof from === "undefined" || !(from instanceof Date)) {
 				from = new Date();
 				console.log("parameter 'from' is no date-object and will be changed to " + from.toString());
@@ -53,7 +56,7 @@
 				to.setMonth(to.getMonth() + 1);
 				console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
 			}
-			loadJson("json/predicted-data.json", function(response) {
+			functions.loadJson("json/predicted-data.json", function(response) {
 				var predictedData = JSON.parse(response);
 				console.log("loaded predicted pokemon (" + predictedData.length + " found)");
 				var predictedData = predictedData.filter(function(pokemon) {
@@ -63,10 +66,10 @@
 					return true;
 				});
 				console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
-				loadJson("json/pokemonbasicinfo.json", function(response) {
+				functions.loadJson("json/pokemonbasicinfo.json", function(response) {
 					var staticData = JSON.parse(response);
 					for(var i = 0, n = predictedData.length; i < n; ++i) {
-						predictedData[i] = mergeObjects(predictedData[i], staticData[predictedData[i].name]);
+						predictedData[i] = functions.mergeObjects(predictedData[i], staticData[predictedData[i].name]);
 						console.log("added static data for " + predictedData[i].name);
 					}
 					callback(predictedData);
@@ -74,7 +77,7 @@
 			});
 		}
 
-		function generatePokemonMapData(predictedData) {
+		exports.generatePokemonMapData = function(predictedData) {
 			var pokemonMapData = {
 				"type": "FeatureCollection",
 				"features": []
@@ -102,8 +105,8 @@
 		}
 
 
-		function setPokemonOnMap(predictedData) {
-			var pokemonMapData = generatePokemonMapData(predictedData);
+		exports.setPokemonOnMap = function(predictedData) {
+			var pokemonMapData = exports.generatePokemonMapData(predictedData);
 			if(mymap==null) return;
 
 			var pokemonIcon = L.Icon.extend(
@@ -125,12 +128,13 @@
                 popupContent+= "</div><div class='allinfo'>";
 				//popupContent += "<div class='pokemontype'><span class='poklabel'>Type: </span>" + objectValuesToString(pokemonType) + "</div>";
 				//popupContent += "<div class='pokemonevolution'><span class='poklabel'>Evolution: </span>" + evolutionToString(pokemonEvolution, pokemonName) + "</div>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + " UTC</div>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
+				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + "</div>";
+				//popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown" + pokemonName + "'></span></div>";
                 popupContent += "</div></div>";
 				layer.bindPopup(popupContent);
 
-				layer.on({click: function(e) {initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
+				//initializeCountdown("countdown" + pokemonName, pokemonTime);
+
 			}
 
 			L.geoJson(pokemonMapData, {
@@ -142,12 +146,12 @@
 					var pokname = feature.properties.name;
 					return L.marker(latlng, {icon: pokemon, title:pokname,rinseOnHover:true});
 				}
-
 			}).addTo(map);
+
 		}
 
-		function showAdditionalInformation(name) {
-			loadJson("json/pokemonbasicinfo.json", function(response) {
+		showAdditionalInformation = function(name) {
+			functions.loadJson("json/pokemonbasicinfo.json", function(response) {
 				var staticData = JSON.parse(response);
 				var pokemon = staticData[name];
 				document.getElementById("map").style.width = "calc(100% - 410px)";
@@ -158,21 +162,21 @@
 				document.getElementById("weight").innerHTML = pokemon.weight;
 				document.getElementById("type").innerHTML = pokemon.type[0];
 				document.getElementById("category").innerHTML = pokemon.category[1];
-				document.getElementById("evolution").innerHTML = evolutionToString(pokemon.evolution, name);
-				document.getElementById("weaknesses").innerHTML = objectValuesToString(pokemon.weaknesses);
+				document.getElementById("evolution").innerHTML = functions.evolutionToString(pokemon.evolution, name);
+				document.getElementById("weaknesses").innerHTML = functions.objectValuesToString(pokemon.weaknesses);
 				document.getElementById("hp").innerHTML = pokemon.stats.HP;
 				document.getElementById("attack").innerHTML = pokemon.stats.Attack;
 				document.getElementById("defense").innerHTML = pokemon.stats.Defense;
 				document.getElementById("specialattack").innerHTML = pokemon.stats.SpecialAttack;
 				document.getElementById("specialdefense").innerHTML = pokemon.stats.SpecialDefense;
 				document.getElementById("speed").innerHTML = pokemon.stats.Speed;
-				document.getElementById("abilities").innerHTML = abilitiesToTable(pokemon.ability);
-				document.getElementById("abilitiestitle").innerHTML = abilitiesTitle(pokemon.ability);
+				document.getElementById("abilities").innerHTML = functions.abilitiesToTable(pokemon.ability);
+				document.getElementById("abilitiestitle").innerHTML = functions.abilitiesTitle(pokemon.ability);
 			});
 
 		}
 
-		function hideAdditionalInformation() {
+		hideAdditionalInformation = function() {
 			document.getElementById("map").style.width = "100%";
 			document.getElementById("sidebar").style.display = "none";
 		}
