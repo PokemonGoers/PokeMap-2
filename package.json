@@ -1,8 +1,8 @@
 {
   "name": "pokemap-2",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "PokeMap",
-  "main": "opencyclemap.js",
+  "main": "testMap.js",
   "directories": {
     "doc": "docs"
   },
@@ -14,6 +14,23 @@
     "url": "git+https://github.com/PokemonGoers/PokeMap-2.git"
   },
   "author": "",
+  "contributors": [
+    {
+      "name": "Faris Cakaric",
+      "email": "cakaricf@gmail.com",
+      "url": "https://github.com/farisca"
+    },
+    {
+      "name": "Elma Gazetic",
+      "email": "elma.gazetic@tum.de",
+      "url": "https://github.com/egazetic1"
+    },
+    {
+      "name": "Timo Ludwig",
+      "email": "timo.ludwig@tum.de",
+      "url": "https://github.com/timoludwig"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/PokemonGoers/PokeMap-2/issues"
@@ -24,5 +41,5 @@
   },
   "dependencies": {
     "leaflet": "^0.7.7"
-  }
+}
 }
