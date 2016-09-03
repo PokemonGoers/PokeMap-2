@@ -247,13 +247,9 @@ table
     /*background-size:65px 65px;*/
 }
 
-.leaflet-time-slider
+.leaflet-time-slider-container
 {
-   /*background-image: url(images/command.png);*/
-    width: 400px;
     height: 40px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
     display: block;
     padding: 10px;
     border-radius: 4px;
@@ -261,14 +257,45 @@ table
     -moz-border-radius: 4px;
     box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
     cursor: auto;
-    text-align: center;
     background-color: #FFFFFF;
+}
+
+.leaflet-time-slider-container a
+{
+    cursor: pointer;
+    color: #20b2aa;
+}
+
+.leaflet-time-slider
+{
+    width: 430px;
+}
+
+.leaflet-time-slider-dates
+{
+    float: left;
+}
+
+.leaflet-time-slider-hide-container
+{
+    float: left;
+    font-size: 30px;
+    margin: -3px 0 0 15px;
+}
+
+.leaflet-time-slider-show-container
+{
+    display: none;
+    width: 20px;
+    float: left;
+    font-size: 30px;
+    margin: -3px 0 0 5px;
 }
 
 #slider {
     width: 250px;
     height: 30px;
-    margin-top: 10px;
+    margin: 10px 20px 0 10px;
     float: left;
 }
 #slider_from, #slider_to {

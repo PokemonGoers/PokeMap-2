@@ -103,8 +103,11 @@ exports.initializeCountdown = function(id, time) {
         var minutes = Math.floor((t / 1000 / 60) % 60);
         var hours = Math.floor((t / (1000 * 60* 60)) % 24);
         var days = Math.floor(t / (1000 * 60 * 60 * 24));
-
-        countdownSpan.innerHTML = days + " days, " + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+        var daystring = "";
+        if(days !== 0) {
+            daystring = days + " days, ";
+        }
+        countdownSpan.innerHTML = daystring + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
 
         if (t <= 0) {
             clearInterval(interval);
@@ -129,16 +132,16 @@ exports.initializeSlider = function() {
         step: 0.5,
         min: -12,
         max: 12,
-        value: [offset, offset + 3],
+        value: [0, 3],
         range: true,
     });
 
-    updateTimeString([- offset, 3 - offset]);
+    updateMap([0, 3]);
     mySlider.setSkin("dhx_terrace");
-    mySlider.attachEvent("onSlideEnd", function(value) { updateTimeString(value); });
+    mySlider.attachEvent("onSlideEnd", function(value) { updateMap(value); });
 };
 
-updateTimeString = function(value) {
+updateMap = function(value) {
     var now = new Date();
     var from = new Date();
     var from_min = Math.floor(value[0]) === value[0] ? from.getMinutes() : from.getMinutes() + 30;
@@ -146,7 +149,7 @@ updateTimeString = function(value) {
     var to_min = Math.floor(value[1]) === value[1] ? to.getMinutes() : to.getMinutes() + 30;
     from.setHours(now.getHours() + Math.floor(value[0]), from_min);
     to.setHours(now.getHours() + Math.floor(value[1]), to_min);
-    document.getElementById("slider_from").innerHTML = from.toISOString().replace("T", ", ").slice(0, 17);
-    document.getElementById("slider_to").innerHTML = to.toISOString().replace("T", ", ").slice(0, 17);
-
-};
+    document.getElementById("slider_from").innerHTML = from.toLocaleString();
+    document.getElementById("slider_to").innerHTML = to.toLocaleString();
+    setPokemonOnMap(from, to);
+}

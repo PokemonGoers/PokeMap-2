@@ -4,7 +4,7 @@
 		//var y = 11.6;
 		var functions = require('./functions');
         var L = require('leaflet');
-		var LC = require('leaflet.locatecontrol');
+		require('leaflet.locatecontrol');
 
 		var mymap=null;
 
@@ -21,7 +21,7 @@
 			id: 'mapbox.streets'
 			}).addTo(mymap);
 
-			LC = L.control.locate().addTo(map);
+			L.control.locate().addTo(map);
 
 			var MyControl = L.Control.extend({
 				options: {
@@ -29,17 +29,34 @@
 				},
 
 				onAdd: function (map) {
-					var container = L.DomUtil.create('div', 'leaflet-time-slider-container');
-					var timeSlider = L.DomUtil.create('div', 'leaflet-time-slider', container);
-					var slider = L.DomUtil.create('div', 'leaflet-time-slider-bar', timeSlider);
-					var slider = L.DomUtil.create('div', 'leaflet-time-slider-from', timeSlider);
-					var slider = L.DomUtil.create('div', 'leaflet-time-slider-to', timeSlider);
-					timeSlider.title = 'Change time range';
-					return container;
+					var controlContainer = L.DomUtil.create('div', 'leaflet-time-slider-container');
+					var sliderContainer = L.DomUtil.create('div', 'leaflet-time-slider', controlContainer);
+					L.DomUtil.create('div', 'leaflet-time-slider-bar', sliderContainer);
+					var dateContainer = L.DomUtil.create('div', 'leaflet-time-slider-dates', sliderContainer);
+					L.DomUtil.create('div', 'leaflet-time-slider-from', dateContainer);
+					L.DomUtil.create('div', 'leaflet-time-slider-to', dateContainer);
+					var hideContainer = L.DomUtil.create('div', 'leaflet-time-slider-hide-container', sliderContainer);
+					var hideLink = L.DomUtil.create('a', 'leaflet-time-slider-hide-link', hideContainer);
+					L.DomUtil.create('span', 'fa fa-angle-double-right', hideLink);
+					var showContainer = L.DomUtil.create('div', 'leaflet-time-slider-show-container', controlContainer);
+					var showLink = L.DomUtil.create('a', 'leaflet-time-slider-show-link', showContainer);
+					L.DomUtil.create('span', 'fa fa-angle-double-left', showLink);
+					sliderContainer.title = 'change time range';
+					hideContainer.title = 'hide slider';
+					showContainer.title = 'show slider';
+					return controlContainer;
 				}
 			});
 
 			map.addControl(new MyControl());
+			document.getElementsByClassName('leaflet-time-slider-hide-link')[0].onclick = function(e){
+				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'none';
+				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'block';
+			}
+			document.getElementsByClassName('leaflet-time-slider-show-link')[0].onclick = function(e){
+				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
+				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
+			}
 
 			/*var popup = L.popup();
 
@@ -102,7 +119,9 @@
 				"type": "FeatureCollection",
 				"features": []
 			};
+			var now = new Date();
 			for(var i = 0, n = predictedData.length; i < n; ++i) {
+				now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
 				pokemonMapData.features.push({
 					"id": i,
 					"type": "Feature",
@@ -112,7 +131,9 @@
 					},
 					"properties": {
 						"name": predictedData[i].name,
-						"time": predictedData[i].time,
+						// manipulate time to test the filter function
+						"time": now.toISOString(),
+						// "time": predictedData[i].time,
 						"type": predictedData[i].type,
 						"evolution": predictedData[i].evolution,
 						"probability": predictedData[i].probability,
@@ -124,10 +145,32 @@
 			return pokemonMapData
 		}
 
+		function onEachFeature(feature, layer) {
+			var popupContent = "<div>";
+			popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
+			popupContent+= "</div><div class='allinfo'>";
+			popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
+			popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
+			popupContent += "</div></div>";
+			layer.bindPopup(popupContent);
 
-		exports.setPokemonOnMap = function(predictedData) {
-			var pokemonMapData = exports.generatePokemonMapData(predictedData);
+			layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
+		}
+
+		var pokemonLayer, pokemonMapData;
+		exports.initializePokemonLayer = function(predictedData) {
+			pokemonMapData = exports.generatePokemonMapData(predictedData);
+			var from = new Date(), to = new Date();
+			to.setHours(from.getHours() + 3);
+			setPokemonOnMap(from, to);
+		}
+
+		setPokemonOnMap = function(from, to) {
 			if(mymap==null) return;
+
+			if(typeof pokemonLayer !== "undefined") {
+				map.removeLayer(pokemonLayer);
+			}
 
 			var pokemonIcon = L.Icon.extend(
 			{
@@ -136,19 +179,7 @@
 				}
 			});
 
-			function onEachFeature(feature, layer) {
-				var popupContent = "<div>";
-                popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
-                popupContent+= "</div><div class='allinfo'>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + feature.properties.time.replace("T", " ").slice(0, 16) + " UTC</div>";
-				popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
-                popupContent += "</div></div>";
-				layer.bindPopup(popupContent);
-
-				layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
-			}
-
-			var pokemonLayer = L.geoJson(pokemonMapData, {
+			pokemonLayer = L.geoJson(pokemonMapData, {
 
 				onEachFeature: onEachFeature,
 
@@ -158,12 +189,12 @@
 					return L.marker(latlng, {icon: pokemon, title:pokname,rinseOnHover:true});
 				},
 
-				/*filter: function(feature, layer) {
+				filter: function(feature, layer) {
 					var pokemonTime = new Date(feature.properties.time);
 					if(pokemonTime < from) return false;
 					if(to < pokemonTime) return false;
 					return true;
-				},*/
+				}
 
 			}).addTo(map);
 		}
@@ -201,5 +232,3 @@
 			document.getElementById("map").style.width = "100%";
 			document.getElementById("sidebar").style.display = "none";
 		}
-        
-    
