@@ -4,54 +4,25 @@
 	<title>Pokemon MAP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	
-	<!-- Leaflet CSS file -->
-	<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
-	
-	<!-- Leaflet JavaScript file -->
-	<script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 
-	<!-- Functions JavaScript file -->
-	<script src="js/functions.js"></script>
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+	
+	<!-- Leaflet CSS -->
+	<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
 
 	<!-- Map CSS -->
-	<link rel="stylesheet" href="css/mapstyle.css" />
-	
+	<link rel="stylesheet" href="css/mapstyle.css">
+
+	<!-- Slider -->
+	<link rel="stylesheet" href="css/dhtmlxslider.css">
+	<script src="js/dhtmlxslider.js"></script>
 </head>
 <body>
 
 	<!-- OpenCycleMap -->
 	<div id="map"></div>
-
-	<!-- Sidebar for additional information -->
-	<div id="sidebar">
-		<!--<div id="close"><a href="#" onclick="hideAdditionalInformation()">×</a></div>-->
-        <div class="avatarhelper"><div id="avatar"></div></div>
-		<div class="titlehelper"><div id="name">Pokemon Name</div><div class="closehelper" onclick="hideAdditionalInformation()"></div></div>
-        <h2>Information</h2>
-		<table>
-			<tr><td class='labelpok'>Evolution:</td><td class='infopok'><span id="evolution"></span></td></tr>
-			<tr><td class='labelpok'>Category:</td><td class='infopok'><span id="category"></span></td></tr>
-			<tr><td class='labelpok'>Type:</td><td class='infopok'><span id="type"></span></td></tr>
-			<tr><td class='labelpok'>Weaknesses:</td><td class='infopok'><span id="weaknesses"></span></td></tr>
-			<tr><td class='labelpok'>Height:</td><td class='infopok'><span id="height"></span></td></tr>
-			<tr><td class='labelpok'>Weight:</td><td class='infopok'><span id="weight"></span></td></tr>
-		</table>
-		<h2><span id="abilitiestitle"></span></h2>
-		<span id="abilities"></span>
-		<h2>Stats</h2>
-		<table class="stats">
-			<tr class='labelstats'><td rowspan="2">HP</td><td colspan="2" style="border: 0;">Attack</td><td colspan="2" style="border: 0;">Defense</td><td rowspan="2">Speed</td></tr>
-			<tr class='labelstats'><td>normal</td><td>special</td><td>normal</td><td>special</td></tr>
-			<tr class='infostats'><td><span id="hp"></span></td><td><span id="attack"></span></td><td><span id="defense"></span></td><td><span id="specialattack"></span></td><td><span id="specialdefense"></span></td><td><span id="speed"></span></td></tr>
-		</table>
-	</div>
-
-	<!-- Map Javascript -->
-	<script type="text/javascript" src="js/opencyclemap.js"></script>
-	<script type="text/javascript" src="dummydata.js"></script>
-	<script type="text/javascript" src="testMap.js"></script>
+    <script type="text/javascript" src="testMap.bundle.js"></script>
 
 </body>
 </html>
