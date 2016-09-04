@@ -147,7 +147,7 @@
 
 		function onEachFeature(feature, layer) {
 			var popupContent = "<div>";
-			popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
+			popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><div id='pokemonmorehelper'><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button></div>";
 			popupContent+= "</div><div class='allinfo'>";
 			popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
 			popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";

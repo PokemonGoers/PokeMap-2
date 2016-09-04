@@ -1,8 +1,14 @@
+html,body,div,ul,ol,li,p,h1,h2,h3,h4{
+     margin:0;
+     padding:0;
+}
+
 #map { 
 	height: 540px; 
 	width:100%;
 	background-color:gray;
     cursor: move;
+    position: relative;
 }
 
 .pokemonname
@@ -25,13 +31,13 @@
 	height: 55px;
     font-size: 40px;
     color: RGB(237,201,44);
-	/*background-image: url('../img/book4.svg');*/
+/*	background-image: url('../img/book4.svg');*/
 	background-size:55px 55px;
 	float:right;
     border:0px solid white;
     border-radius: 50px;
     position:fixed;
-      -webkit-transition-duration: 0.5s; /* Safari */
+    -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
     cursor: help;
 }
@@ -228,13 +234,14 @@ table
     height:55px;
     font-size: 55px;
     color: #d75a4a;
-    /*background-image: url('../img/close.png');*/
+/*    background-image: url('../img/close.png');*/
     background-size:55px 55px;
     margin-top:-75px;
     float:right; 
     -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
     cursor: pointer;
+    border-radius:300px;
 }
 
 .closehelper:hover
@@ -298,8 +305,142 @@ table
     margin: 10px 20px 0 10px;
     float: left;
 }
+
 #slider_from, #slider_to {
     font-family: Roboto, Arial, Helvetica;
     font-size: 14px;
     color: #404040;
+}
+
+/*################*/
+
+@media all and (max-width:760px)
+{
+        #sidebar {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: 0;
+        text-align: center;
+    /*	padding: 0 20px;*/
+
+    }
+    
+    table 
+    {
+        margin:0 auto;
+    }
+    
+    #map
+    {
+        position: fixed;
+    }
+    
+  
+    
+    .avatarhelper
+    {
+        width:100%;
+        margin:0;
+    }
+    
+    #avatar img {
+	text-align: center;
+    border:5px solid RGB(237,201,44);
+    border-radius:300px;
+    margin-right:5px;
+    display:inline-table;
+    margin-top: 5px;
+    background-color:white;
+}
+    
+
+    #avatar  {
+	
+    border:0;
+    display: block;
+    background: none;
+
+    }
+    
+    .leaflet-time-slider
+    {
+        width: 400px;
+    }
+    
+     .leaflet-time-slider-container
+    {
+        padding:7px;
+    }
+
+
+}
+
+@media all and (max-width:420px)
+{
+  
+    #sidebar
+    {
+        font-size:10px;
+    }
+    
+     #avatar img {
+         width:150px;
+    }
+
+    
+    
+    .labelstats td
+    {
+        font-size:10px;
+    }
+   
+    table
+    {
+        width:100%;
+        font-size:10px;
+    }
+    
+    table .labelpok
+    {
+        font-size:13px;
+    }
+
+    .leaflet-time-slider
+    {
+        width: 270px;
+        height:100px;
+    }
+    
+    .leaflet-time-slider-container
+    {
+        height: 80px;
+        display: block;
+        padding:5px;
+    }
+    
+    #slider_from
+    {
+        float:left;
+/*        border:1px solid gray;*/
+        border-radius:4px;
+        padding: 5px 1px;
+        background-color: #F0F8FF;
+        width:125px;
+        font-size:13px;
+    }
+    
+    #slider_to
+    {
+        float:right;
+/*        border:1px solid gray;*/
+        border-radius:4px;
+        padding: 5px 1px;
+        margin-left:15px;
+        background-color: #F0F8FF;
+        width:125px;
+        font-size:13px;
+    }
+
+
 }
