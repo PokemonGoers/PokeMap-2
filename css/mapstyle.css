@@ -312,6 +312,11 @@ table
     color: #404040;
 }
 
+.leaflet-popup-content {
+    width: auto !important;
+    }
+
+
 /*################*/
 
 @media all and (max-width:760px)
@@ -371,6 +376,50 @@ table
      .leaflet-time-slider-container
     {
         padding:7px;
+    }
+    
+        .allinfo
+    {
+        width:200px;
+        font-size:10px;
+    }
+    
+    .pokemonname
+    {
+        font-size:16px;
+        margin-left:5px;
+    }
+    
+    .pokemonprobability
+    {
+        font-size:15px;
+        width:40px;
+        height:40px;
+    }
+    
+    .pokemonmore
+    {
+        height:40px;
+        width:40px;
+        margin-left:8px;
+        background-size:40px 40px;
+    }
+    
+    .pokemonmore:hover
+    {
+        width: 45px;
+        height: 45px;
+        border:2px solid white;
+    }
+    
+    #pokemonmorehelper
+    {
+        width:50px;
+    }
+    
+    .leaflet-popup-content
+    {
+        margin:13px 14px;
     }
 
 
@@ -441,6 +490,5 @@ table
         width:125px;
         font-size:13px;
     }
-
-
+    
 }
