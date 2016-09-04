@@ -8,19 +8,37 @@
 
 		var mymap=null;
 
+        var osm = "http://{s}.tile.osm.org/{z}/{x}/{y}.png";
+        var ocm = "http://{s}.tile.opencyclemap.org/transport/{z}/{x}/{y}.png";
+        var attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+                            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                            'Imagery © <a href="http://mapbox.com">Mapbox</a>';
+
+        var ocmLayer = L.tileLayer(ocm, {attribution: attribution, id:'mapData1'});
+        var osmLayer = L.tileLayer(osm, {attribution: attribution, id:'mapData2'});
+
 		exports.setUpMap = function(x,y) {
+         
             L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
-			mymap = L.map('map').setView([x, y], 17);
+            
+             mymap = L.map('map', {
+                center: [x, y],
+                zoom:18,
+                layers: [ocmLayer, osmLayer]
+            });
+            
+            var baseMaps = {
+                "OpenCycleMap": ocmLayer,
+                "OpenStreetMap": osmLayer
+            };
+            
+            
+            L.control.layers(baseMaps).addTo(mymap);
+            
 			window.map = mymap; // Set map as a global variable
-
-			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.streets'
-			}).addTo(mymap);
-
+            
+            
+            
 			L.control.locate().addTo(map);
 
 			var MyControl = L.Control.extend({
@@ -57,17 +75,6 @@
 				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 			}
-
-			/*var popup = L.popup();
-
-			function onMapClick(e) {
-				popup
-					.setLatLng(e.latlng)
-					.setContent("You clicked the map at " + e.latlng.toString())
-					.openOn(mymap);
-			}
-
-			mymap.on('click', onMapClick);*/
 		}
 
 		exports.setUpLocation = function(x,y) {
