@@ -206,7 +206,9 @@
 				var pokemon = staticData[name];
 				document.getElementById("map").style.width = "calc(100% - 410px)";
 				document.getElementById("sidebar").style.display = "block";
-				document.getElementById("avatar").innerHTML = "<img src='img/" + name.toLowerCase() + ".png' alt='Avatar not found'>";
+//				document.getElementById("avatar").innerHTML = "<div class='avatarborder'><img src='img/" + name.toLowerCase() + ".png' alt='Avatar not found'></div>";
+                document.getElementById("avatar").innerHTML = "<div id='avatarborder'></div>";
+                document.getElementById("avatarborder").style.backgroundImage="url('img/"+ name.toLowerCase() + ".png')";
 				document.getElementById("name").innerHTML = name;
 				document.getElementById("height").innerHTML = pokemon.height;
 				document.getElementById("weight").innerHTML = pokemon.weight;
