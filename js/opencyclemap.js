@@ -44,6 +44,8 @@
 					sliderContainer.title = 'change time range';
 					hideContainer.title = 'hide slider';
 					showContainer.title = 'show slider';
+                    
+                    
 					return controlContainer;
 				}
 			});
@@ -52,11 +54,25 @@
 			document.getElementsByClassName('leaflet-time-slider-hide-link')[0].onclick = function(e){
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'none';
 				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'block';
+                
 			}
 			document.getElementsByClassName('leaflet-time-slider-show-link')[0].onclick = function(e){
 				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 			}
+            
+            document.getElementsByClassName('leaflet-time-slider-bar')[0].onmousedown = function(e){
+                mymap.dragging.disable();
+                
+			}
+            
+            document.getElementsByClassName('leaflet-time-slider-bar')[0].onmouseup = function(e){
+                mymap.dragging.enable();
+                
+			}
+  
+            
+                
 
 			/*var popup = L.popup();
 
