@@ -38,10 +38,8 @@ h4 {
     float: right;
     border: 0px solid white;
     border-radius: 50px;
-    position: fixed;
+    position: absolute; 
     -webkit-transition-duration: 0.5s;
-    /* Safari */
-    
     transition-duration: 0.5s;
     cursor: help;
 }
@@ -297,12 +295,14 @@ table {
         top: 0;
         right: 0;
         /*	padding: 0 20px;*/
+        
+        z-index: 2;
     }
     table {
         margin: 0 auto;
     }
     #map {
-        position: fixed;
+        z-index: 1;
     }
     #avatarborder
     {
@@ -318,11 +318,12 @@ table {
         background-size:150px 150px;
     }
     .leaflet-time-slider {
-        width: 400px;
+        width: 410px;
     }
     .leaflet-time-slider-container {
-        padding: 7px;
+        padding: 4px;
     }
+
     .allinfo {
         width: 200px;
         font-size: 10px;
@@ -339,8 +340,6 @@ table {
     .pokemonmore {
         height: 40px;
         width: 40px;
-        /*        margin-left:8px;*/
-        
         background-size: 40px 40px;
     }
     .pokemonmore:hover {
@@ -351,8 +350,6 @@ table {
     }
     #pokemonmorehelper {
         width: 50px;
-        /*        margin-right:120px;*/
-        
         width: 40px;
         height: 40px;
         background-size: 40px 40px;
@@ -390,8 +387,6 @@ table {
     }
     #slider_to {
         font-size: 10px;
-        /*         margin-top:-5px;*/
-        
         width: 270px;
         text-align: center;
     }
