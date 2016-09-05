@@ -61,12 +61,26 @@
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 			}
             
-            document.getElementsByClassName('leaflet-time-slider-bar')[0].onmousedown = function(e){
+            document.getElementsByClassName('leaflet-time-slider-bar')[0].onmousemove = function(e){
+                console.log("move");
                 mymap.dragging.disable();
                 
 			}
             
-            document.getElementsByClassName('leaflet-time-slider-bar')[0].onmouseup = function(e){
+            document.getElementsByClassName('leaflet-time-slider-bar')[0].onmouseleave = function(e){
+                console.log("out");
+                mymap.dragging.enable();
+                
+			}
+            
+             document.getElementsByClassName('leaflet-time-slider-bar')[0].ontouchstart = function(e){
+                console.log("move");
+                mymap.dragging.disable();
+                
+			}
+             
+              document.getElementsByClassName('leaflet-time-slider-bar')[0].ontouchend = function(e){
+                console.log("move");
                 mymap.dragging.enable();
                 
 			}
