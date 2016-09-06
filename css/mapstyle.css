@@ -67,8 +67,6 @@ h4 {
     position: relative;
 }
 .probabilityhelper {
-    /*    width:70px;*/
-    
     height: 40px;
     float: left;
 }
@@ -98,7 +96,6 @@ h4 {
     height: 100%;
     top: 0;
     right: 0;
-    /*	padding: 0 20px;*/
     background-color: #F0F8FF;
     font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
@@ -129,16 +126,7 @@ h4 {
 .avatarhelper {
     width: 100%;
 }
-#avatar img {
-    text-align: center;
-    border: 5px solid RGB(237, 201, 44);
-    border-radius: 300px;
-    margin-right: 5px;
-    display: inline-table;
-    margin-top: 5px;
-    background-color: white;
-    width:250px;
-}
+
 #avatar {
     border: 0;
 /*    display: block;*/
@@ -161,18 +149,13 @@ h4 {
     background-size:200px 200px;
 }
 
-
 .pokemonmore:hover {
     border-radius: 50px;
     -webkit-transition-duration: 0.5s;
-    /* Safari */
-    
     transition-duration: 0.5s;
     border: 3px solid white;
     width: 60px;
     height: 60px;
-    /*background-size:60px 60px;*/
-    
     background-color: #20B2AA;
 }
 .titlehelper {
@@ -200,8 +183,6 @@ table {
     margin-left: 5px;
     text-align: left;
 }
-
-
 .stats {
     text-align: center;
 }
@@ -223,16 +204,12 @@ table {
     margin-top: -75px;
     float: right;
     -webkit-transition-duration: 0.5s;
-    /* Safari */
-    
     transition-duration: 0.5s;
     cursor: pointer;
     border-radius: 300px;
 }
 .closehelper:hover {
     -webkit-transition-duration: 0.5s;
-    /* Safari */
-    
     transition-duration: 0.5s;
     width: 65px;
     height: 65px;
