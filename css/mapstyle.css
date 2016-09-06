@@ -237,9 +237,9 @@ table {
     float: left;
 }
 .leaflet-time-slider-hide-container {
-    float: left;
+    float: right;
     font-size: 30px;
-    margin: -3px 0 0 15px;
+    margin: -45px 0 0 15px;
 }
 .leaflet-time-slider-show-container {
     display: none;
@@ -334,7 +334,24 @@ table {
     .leaflet-popup-content {
         margin: 13px 14px;
     }
+  
+
+    .leaflet-time-slider-hide-container {
+    float: right;
+    font-size: 22px;
+    margin: 5px 0 0 15px;
+    }
+    
+
+    #slider_from {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    #slider_to {
+        font-size: 12px;
+    }
 }
+
 @media all and (max-width: 420px) {
     #sidebar {
         font-size: 10px;
@@ -371,4 +388,13 @@ table {
         padding-bottom: 25px;
         text-align: center;
     }
+    
+
+     .leaflet-time-slider-hide-container {
+    float: right;
+    font-size: 25px;
+    margin: -35px 0 0 15px;
+    }
+  
+
 }

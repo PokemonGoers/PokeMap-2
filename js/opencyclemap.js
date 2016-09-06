@@ -49,6 +49,16 @@
 			});
 
 			map.addControl(new MyControl());
+            
+             document.getElementsByClassName('leaflet-time-slider-hide-link')[0].ontouchstart= function(e){
+				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'none';
+				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'block';
+			}
+			document.getElementsByClassName('leaflet-time-slider-show-link')[0].ontouchstart = function(e){
+				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
+				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
+			}
+            
 			document.getElementsByClassName('leaflet-time-slider-hide-link')[0].onclick = function(e){
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'none';
 				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'block';
@@ -57,6 +67,8 @@
 				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 			}
+            
+           
 
 			/*var popup = L.popup();
 
