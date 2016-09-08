@@ -8,9 +8,11 @@ var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLev
 	this.htmlElement = htmlElement;
 	this.coordinates = coordinates;
 	this.zoomLevel = zoomLevel;
+
+	this.setUpMap();
 }
 
-PokeMap.prototype.setUpMap = function(x,y) {
+PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
 	mymap = L.map(this.htmlElement).setView(this.coordinates, this.zoomLevel);
 	window.map = mymap; // Set map as a global variable
@@ -59,17 +61,20 @@ PokeMap.prototype.setUpMap = function(x,y) {
 		document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 		document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 	}
+}
 
-	/*var popup = L.popup();
+PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
+	for(var i = 0; i < pokePOIs.length; i++) {
+		if(pokePOIs[i] instanceof PokemonSighting) {
 
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
+		}
+		else if(pokePOIs[i] instanceof PokemonPrediction) {
+
+		}
+		else if(pokePOIs[i] instanceof PokeMob) {
+
+		}
 	}
-
-	mymap.on('click', onMapClick);*/
 }
 
 PokeMap.prototype.setUpLocation = function(x,y) {
