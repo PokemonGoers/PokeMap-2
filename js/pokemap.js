@@ -1,7 +1,3 @@
-		
-//Our Location
-//var x = 48.16;
-//var y = 11.6;
 var functions = require('./functions');
 var L = require('leaflet');
 require('leaflet.locatecontrol');
@@ -13,8 +9,6 @@ var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLev
 	this.coordinates = coordinates;
 	this.zoomLevel = zoomLevel;
 }
-
-
 
 PokeMap.prototype.setUpMap = function(x,y) {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';

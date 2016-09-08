@@ -1,6 +1,6 @@
 
 var functions = require('./js/functions');
-var PokeMap = require('./js/opencyclemap');
+var PokeMap = require('./js/pokemap');
 
 var sidebarHTML = '<div id="sidebar">\
 		<!--<div id="close"><a href="#" onclick="hideAdditionalInformation()">×</a></div>-->\
