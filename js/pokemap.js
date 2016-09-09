@@ -66,7 +66,12 @@ PokeMap.prototype.setUpMap = function() {
 		document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 	}
 
+	mymap.on('move', function(e) {
+		PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
+	});
 }
+
+
 
 PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
 	for(var i = 0; i < pokePOIs.length; i++) {
@@ -77,10 +82,40 @@ PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
 
 		}
 		else if(pokePOIs[i] instanceof PokeMob) {
-
+			this.displayPokeMob(pokePOIs[i]);
 		}
 	}
 }
+
+PokeMap.prototype.displayPokeMob = function(pokeMob) {
+	L.circle(pokeMob.coordinates, 200, {
+		color: '#808080',
+		fillColor: 'red',
+		fillOpacity: 0.1
+	}).addTo(mymap).bindPopup("PokeMob detected here! Date: " + pokeMob.date);
+}
+
+PokeMap.prototype.displayPokemonPrediction = function(pokemonPrediction) {
+
+}
+
+PokeMap.prototype.displayPokemonSighting = function(pokemonSighting) {
+
+}
+
+PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
+	mymap.panTo(coordinates, zoomLevel);
+	console.log("GoTo method executed with params (" + coordinates + "), (" + zoomLevel + ")");
+}
+
+PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
+	this.emit('move', coordinates, zoomLevel);
+	console.log("Emitted 'move' event with params (" + coordinates + "), (" + zoomLevel + ")");
+	this.goTo(coordinates, zoomLevel + 3);
+}
+
+//PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
+
 
 PokeMap.prototype.setUpLocation = function(x,y) {
 	if(mymap==null) return;
