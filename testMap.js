@@ -37,3 +37,11 @@ var from = new Date("2016-08-01T00:00:00.000Z");
 var to = new Date("2016-10-01T00:00:00.000Z");
 poke.loadPokemonData(poke.initializePokemonLayer, from, to);
 functions.initializeSlider();
+
+function PokeMob(coordinates, date) {
+	this.coordinates = coordinates;
+	this.date = date;
+}
+
+var a = new PokeMob([48.364673,11.671434], new Date("2016-08-01T00:00:00.000Z"));
+poke.displayPokeMob(a);

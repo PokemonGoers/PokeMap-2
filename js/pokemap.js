@@ -14,6 +14,7 @@ var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLev
 	this.setUpMap();
 }
 
+// PokeMap extends EventEmitter to enable us to emit events
 util.inherits(PokeMap, EventEmitter);
 
 PokeMap.prototype.setUpMap = function() {
@@ -65,21 +66,19 @@ PokeMap.prototype.setUpMap = function() {
 		document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 		document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 	}
-
+	// Emit "move" event when the map is moved
 	mymap.on('move', function(e) {
 		PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
 	});
 }
 
-
-
 PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
 	for(var i = 0; i < pokePOIs.length; i++) {
 		if(pokePOIs[i] instanceof PokemonSighting) {
-
+			this.displayPokemonSighting(pokePOIs[i]);
 		}
 		else if(pokePOIs[i] instanceof PokemonPrediction) {
-
+			this.displayPokemonPrediction(pokePOIs[i]);
 		}
 		else if(pokePOIs[i] instanceof PokeMob) {
 			this.displayPokeMob(pokePOIs[i]);
@@ -88,11 +87,12 @@ PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
 }
 
 PokeMap.prototype.displayPokeMob = function(pokeMob) {
-	L.circle(pokeMob.coordinates, 200, {
+	L.circle(pokeMob.coordinates, 100, {
 		color: '#808080',
 		fillColor: 'red',
 		fillOpacity: 0.1
 	}).addTo(mymap).bindPopup("PokeMob detected here! Date: " + pokeMob.date);
+	console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
 }
 
 PokeMap.prototype.displayPokemonPrediction = function(pokemonPrediction) {
