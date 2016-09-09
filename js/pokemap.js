@@ -5,6 +5,8 @@ var L = require('leaflet');
 require('leaflet.locatecontrol');
 
 var mymap=null;
+var sliderFrom = null;
+var sliderTo = null;
 
 var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLevel = 17) {
 	this.htmlElement = htmlElement;
@@ -14,8 +16,14 @@ var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLev
 	this.setUpMap();
 }
 
-// PokeMap extends EventEmitter to enable us to emit events
 util.inherits(PokeMap, EventEmitter);
+
+
+PokeMap.prototype.setSliderValues = function(from,to)
+{
+    sliderFrom = from;
+    sliderTo = to;
+}
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
@@ -66,154 +74,66 @@ PokeMap.prototype.setUpMap = function() {
 		document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 		document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 	}
-	// Emit "move" event when the map is moved
-	mymap.on('move', function(e) {
-		PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
-	});
+
 }
+
 
 PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
+
+    var pokemonsPrediction = "[";
+    var pokemonsSightings = null;
+    var pokemonsMops = null;
+
 	for(var i = 0; i < pokePOIs.length; i++) {
+
 		if(pokePOIs[i] instanceof PokemonSighting) {
-			this.displayPokemonSighting(pokePOIs[i]);
+
 		}
 		else if(pokePOIs[i] instanceof PokemonPrediction) {
-			this.displayPokemonPrediction(pokePOIs[i]);
+
+
+            console.log("Prediction: " + pokePOIs[i].pokemonname);
+            pokemonsPrediction += "{";
+
+            pokemonsPrediction += '"name":"' + pokePOIs[i].pokemonname + '"';
+            pokemonsPrediction +=",";
+          pokemonsPrediction += '"latitude":' + pokePOIs[i].latitude;
+            pokemonsPrediction +=",";
+          pokemonsPrediction +=  '"longitude":' + pokePOIs[i].longitude;
+
+            pokemonsPrediction += "}";
+
+
 		}
 		else if(pokePOIs[i] instanceof PokeMob) {
-			this.displayPokeMob(pokePOIs[i]);
+
 		}
+
+         if(i!=pokePOIs.length-1)
+                pokemonsPrediction +=",";
 	}
-}
 
-PokeMap.prototype.displayPokeMob = function(pokeMob) {
-	L.circle(pokeMob.coordinates, 100, {
-		color: '#808080',
-		fillColor: 'red',
-		fillOpacity: 0.1
-	}).addTo(mymap).bindPopup("PokeMob detected here! Date: " + pokeMob.date);
-	console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
-}
+    pokemonsPrediction +="]";
 
-PokeMap.prototype.displayPokemonPrediction = function(pokemonPrediction) {
+    var pokemonJson = JSON.parse(pokemonsPrediction);
+    var mapData = generatePokemonPOIMapData(pokemonJson);
 
-}
+    	sliderFrom = new Date();
+        sliderTo = new Date();
+    	sliderTo.setHours(sliderFrom.getHours() + 3);
 
-PokeMap.prototype.displayPokemonSighting = function(pokemonSighting) {
+        setPokePOIsOnMap(mapData, sliderFrom, sliderTo);
 
 }
 
-PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
-	mymap.panTo(coordinates, zoomLevel);
-	console.log("GoTo method executed with params (" + coordinates + "), (" + zoomLevel + ")");
-}
-
-PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
-	this.emit('move', coordinates, zoomLevel);
-	console.log("Emitted 'move' event with params (" + coordinates + "), (" + zoomLevel + ")");
-	this.goTo(coordinates, zoomLevel + 3);
-}
-
-//PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
-
-
-PokeMap.prototype.setUpLocation = function(x,y) {
+var currentPokemonMapData = null;
+setPokePOIsOnMap = function(pokemonMapData,from,to) {
 	if(mymap==null) return;
 
-	L.marker([x,y]).addTo(mymap).bindPopup("Your location.");
-
-	L.circle([x, y], 200, {
-		color: '#808080',
-		fillColor: 'red',
-		fillOpacity: 0.1
-	}).addTo(mymap).bindPopup("Pokemons appear here!");
-}
-
-		/* filter Pokemon by passing from & to as date-objects */
-PokeMap.prototype.loadPokemonData = function(callback, from, to) {
-	if(typeof from === "undefined" || !(from instanceof Date)) {
-		from = new Date();
-		console.log("parameter 'from' is no date-object and will be changed to " + from.toString());
-	}
-	if(typeof to === "undefined" || !(to instanceof Date)) {
-		to = new Date(from.getTime());
-		to.setMonth(to.getMonth() + 1);
-		console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
-	}
-	functions.loadJson("json/predicted-data.json", function(response) {
-		var predictedData = JSON.parse(response);
-		console.log("loaded predicted pokemon (" + predictedData.length + " found)");
-		var predictedData = predictedData.filter(function(pokemon) {
-			var pokemonTime = new Date(pokemon.time);
-			if(pokemonTime < from) return false;
-			if(to < pokemonTime) return false;
-			return true;
-		});
-		console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
-		functions.loadJson("json/pokemonbasicinfo.json", function(response) {
-			var staticData = JSON.parse(response);
-			for(var i = 0, n = predictedData.length; i < n; ++i) {
-				predictedData[i] = functions.mergeObjects(predictedData[i], staticData[predictedData[i].name]);
-				console.log("added static data for " + predictedData[i].name);
-			}
-			callback(predictedData);
-		});
-	});
-}
-
-PokeMap.prototype.generatePokemonMapData = function(predictedData) {
-	var pokemonMapData = {
-		"type": "FeatureCollection",
-		"features": []
-	};
-	var now = new Date();
-	for(var i = 0, n = predictedData.length; i < n; ++i) {
-		now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
-		pokemonMapData.features.push({
-			"id": i,
-			"type": "Feature",
-			"geometry": {
-				"type": "Point",
-				"coordinates": [predictedData[i].longitude, predictedData[i].latitude]
-			},
-			"properties": {
-				"name": predictedData[i].name,
-				// manipulate time to test the filter function
-				"time": now.toISOString(),
-				// "time": predictedData[i].time,
-				"type": predictedData[i].type,
-				"evolution": predictedData[i].evolution,
-				"probability": predictedData[i].probability,
-				"img": "img/" + predictedData[i].name.toLowerCase() + ".png"
-			}
-		});
-		console.log("generated map data for " + predictedData[i].name);
-	}
-	return pokemonMapData
-}
-
-function onEachFeature(feature, layer) {
-	var popupContent = "<div>";
-	popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
-	popupContent+= "</div><div class='allinfo'>";
-	popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
-	popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
-	popupContent += "</div></div>";
-	layer.bindPopup(popupContent);
-
-	layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
-}
-
-var pokemonLayer, pokemonMapData;
-PokeMap.prototype.initializePokemonLayer = function(predictedData) {
-	pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData);
-	var from = new Date(), to = new Date();
-	to.setHours(from.getHours() + 3);
-	setPokemonOnMap(from, to);
-}
-
-setPokemonOnMap = function(from, to) {
-	if(mymap==null) return;
+    if(pokemonMapData == null)
+        pokemonMapData = currentPokemonMapData;
+    else
+        currentPokemonMapData = pokemonMapData;
 
 	if(typeof pokemonLayer !== "undefined") {
 		map.removeLayer(pokemonLayer);
@@ -238,14 +158,56 @@ setPokemonOnMap = function(from, to) {
 
 		filter: function(feature, layer) {
 			var pokemonTime = new Date(feature.properties.time);
+
 			if(pokemonTime < from) return false;
 			if(to < pokemonTime) return false;
-			return true;
-		}
 
+			return true;
+
+		}
 	}).addTo(map);
 }
 
+generatePokemonPOIMapData = function(predictedData) {
+	var pokemonMapData = {
+		"type": "FeatureCollection",
+		"features": []
+	};
+    var now = new Date();
+	for(var i = 0, n = predictedData.length; i < n; ++i) {
+		now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
+		pokemonMapData.features.push({
+			"id": i,
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [predictedData[i].longitude, predictedData[i].latitude]
+			},
+			"properties": {
+				"name": predictedData[i].name,
+				"type": predictedData[i].type,
+				"time":  now.toISOString(),
+				"probability": predictedData[i].probability,
+				"img": "img/" + predictedData[i].name.toLowerCase() + ".png"
+			}
+		});
+		console.log("generated map data for " + predictedData[i].name);
+	}
+	return pokemonMapData;
+}
+
+
+function onEachFeature(feature, layer) {
+	var popupContent = "<div>";
+	popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
+	popupContent+= "</div><div class='allinfo'>";
+	popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
+	popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
+	popupContent += "</div></div>";
+	layer.bindPopup(popupContent);
+
+	layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
+}
 
 showAdditionalInformation = function(name) {
 	functions.loadJson("json/pokemonbasicinfo.json", function(response) {
@@ -278,6 +240,7 @@ showAdditionalInformation = function(name) {
 hideAdditionalInformation = function() {
 	document.getElementById("map").style.width = "100%";
 	document.getElementById("sidebar").style.display = "none";
+
 }
 
 //make PokeMap class available

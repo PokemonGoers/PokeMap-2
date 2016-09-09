@@ -32,16 +32,68 @@ document.body.appendChild(elemDiv);
 
 
 var poke = new PokeMap('map', [48.264673,11.671434], 17);
-//opencyclemap.setUpLocation(48.264673,11.671434);
 var from = new Date("2016-08-01T00:00:00.000Z");
 var to = new Date("2016-10-01T00:00:00.000Z");
-poke.loadPokemonData(poke.initializePokemonLayer, from, to);
 functions.initializeSlider();
 
-function PokeMob(coordinates, date) {
-	this.coordinates = coordinates;
-	this.date = date;
+poke.setSliderValues(from,to);
+
+class PokePOI
+{
+    constructor(pokemonJSON)
+    {
+        this.latitude = pokemonJSON['latitude'];
+        this.longitude = pokemonJSON['longitude'];
+    }
 }
 
-var a = new PokeMob([48.364673,11.671434], new Date("2016-08-01T00:00:00.000Z"));
-poke.displayPokeMob(a);
+class PokemonSighting extends PokePOI{
+
+    constructor(pokemonJson)
+    {
+        super(pokemonJson);
+        this.pokemonname = pokemonJson['name'];
+    }
+}
+
+class PokemonPrediction extends PokePOI{
+
+    constructor(pokemonJson)
+    {
+        super(pokemonJson);
+        this.pokemonname = pokemonJson['name'];
+        this.accuracy = pokemonJson['probability'];
+    }
+}
+
+class PokeMob extends PokePOI{
+
+    constructor(pokemonJson)
+    {
+        super(pokemonJson);
+    }
+}
+
+window.PokemonSighting = PokemonSighting;
+window.PokemonPrediction = PokemonPrediction;
+window.PokeMob = PokeMob;
+
+var pokemons = []
+
+var predictedData = {};
+functions.loadJsonTemp("json/predicted-data.json", function(response) {
+		predictedData = JSON.parse(response);
+		console.log("Loaded predicted pokemon (" + predictedData.length + " found)");
+
+		});
+
+functions.loadJsonTemp("json/pokemonbasicinfo.json", function(response) {
+			var staticData = JSON.parse(response);
+			for(var i = 0, n = predictedData.length; i < n; ++i) {
+				pokemons.push(new PokemonPrediction(functions.mergeObjects(predictedData[i], staticData[predictedData[i].name])));
+			}
+
+		});
+
+
+poke.displayPokePOIs(pokemons);
