@@ -74,15 +74,18 @@ PokeMap.prototype.setUpMap = function() {
 		document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 		document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 	}
-
+	// Emit "move" event when the map is moved
+	mymap.on('move', function(e) {
+		PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
+	});
 }
 
 
 PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
 
-    var pokemonsPrediction = "[";
-    var pokemonsSightings = null;
-    var pokemonsMops = null;
+	var pokemonsPrediction = "[";
+	var pokemonsSightings = null;
+	var pokemonsMops = null;
 
 	for(var i = 0; i < pokePOIs.length; i++) {
 
@@ -90,41 +93,55 @@ PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
 
 		}
 		else if(pokePOIs[i] instanceof PokemonPrediction) {
-
-
-            console.log("Prediction: " + pokePOIs[i].pokemonname);
-            pokemonsPrediction += "{";
-
-            pokemonsPrediction += '"name":"' + pokePOIs[i].pokemonname + '"';
-            pokemonsPrediction +=",";
-          pokemonsPrediction += '"latitude":' + pokePOIs[i].latitude;
-            pokemonsPrediction +=",";
-          pokemonsPrediction +=  '"longitude":' + pokePOIs[i].longitude;
-
-            pokemonsPrediction += "}";
-
-
+			console.log("Prediction: " + pokePOIs[i].pokemonname);
+			pokemonsPrediction += "{";
+			pokemonsPrediction += '"name":"' + pokePOIs[i].pokemonname + '"';
+			pokemonsPrediction +=",";
+			pokemonsPrediction += '"latitude":' + pokePOIs[i].latitude;
+			pokemonsPrediction +=",";
+			pokemonsPrediction +=  '"longitude":' + pokePOIs[i].longitude;
+			pokemonsPrediction += "}";
 		}
 		else if(pokePOIs[i] instanceof PokeMob) {
-
 		}
 
-         if(i!=pokePOIs.length-1)
-                pokemonsPrediction +=",";
+		if(i!=pokePOIs.length-1) pokemonsPrediction +=",";
 	}
 
-    pokemonsPrediction +="]";
+	pokemonsPrediction +="]";
 
-    var pokemonJson = JSON.parse(pokemonsPrediction);
-    var mapData = generatePokemonPOIMapData(pokemonJson);
+	var pokemonJson = JSON.parse(pokemonsPrediction);
+	var mapData = generatePokemonPOIMapData(pokemonJson);
 
-    	sliderFrom = new Date();
-        sliderTo = new Date();
-    	sliderTo.setHours(sliderFrom.getHours() + 3);
+	sliderFrom = new Date();
+	sliderTo = new Date();
+	sliderTo.setHours(sliderFrom.getHours() + 3);
 
-        setPokePOIsOnMap(mapData, sliderFrom, sliderTo);
+	setPokePOIsOnMap(mapData, sliderFrom, sliderTo);
 
 }
+
+PokeMap.prototype.displayPokeMob = function(pokeMob) {
+	L.circle(pokeMob.coordinates, 100, {
+		color: '#808080',
+		fillColor: 'red',
+		fillOpacity: 0.1
+	}).addTo(mymap).bindPopup("PokeMob detected here! Date: " + pokeMob.date);
+	console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
+}
+
+PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
+	mymap.panTo(coordinates, zoomLevel);
+	console.log("GoTo method executed with params (" + coordinates + "), (" + zoomLevel + ")");
+}
+
+PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
+	this.emit('move', coordinates, zoomLevel);
+	console.log("Emitted 'move' event with params (" + coordinates + "), (" + zoomLevel + ")");
+	this.goTo(coordinates, zoomLevel + 3);
+}
+
+//PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
 
 var currentPokemonMapData = null;
 setPokePOIsOnMap = function(pokemonMapData,from,to) {
