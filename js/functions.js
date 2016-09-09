@@ -10,6 +10,18 @@ exports.loadJson = function(file, callback) {
     request.send(null);
 }
 
+exports.loadJsonTemp = function(file, callback) {
+    var request = new XMLHttpRequest();
+    request.overrideMimeType("application/json");
+    request.open('GET', file, false);
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == "200") {
+            callback(request.responseText);
+        }
+    };
+    request.send(null);
+}
+
 exports.mergeObjects = function(object_1, object_2) {
     for(var property in object_2) {
         try {
@@ -151,5 +163,7 @@ updateMap = function(value) {
     to.setHours(now.getHours() + Math.floor(value[1]), to_min);
     document.getElementById("slider_from").innerHTML = from.toLocaleString();
     document.getElementById("slider_to").innerHTML = to.toLocaleString();
-    setPokemonOnMap(from, to);
+    
+    setInterval(from,to);
+    setPokePOIsOnMap(null,from,to);
 }
