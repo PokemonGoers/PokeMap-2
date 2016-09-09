@@ -1,4 +1,6 @@
 var functions = require('./functions');
+var EventEmitter = require('events').EventEmitter;
+var util = require('util');
 var L = require('leaflet');
 require('leaflet.locatecontrol');
 
@@ -11,6 +13,8 @@ var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLev
 
 	this.setUpMap();
 }
+
+util.inherits(PokeMap, EventEmitter);
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
@@ -61,6 +65,7 @@ PokeMap.prototype.setUpMap = function() {
 		document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 		document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 	}
+
 }
 
 PokeMap.prototype.displayPokePOIs = function(pokePOIs) {
