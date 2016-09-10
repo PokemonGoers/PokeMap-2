@@ -31,10 +31,8 @@ elemDiv.innerHTML = sidebarHTML;
 document.body.appendChild(elemDiv);
 
 
-var poke = new PokeMap('map', [48.264673,11.671434], 17);
+var poke = new PokeMap('map', [48.264673,11.671434], 2);
 var from = new Date("2016-08-01T00:00:00.000Z");
 var to = new Date("2016-10-01T00:00:00.000Z");
 poke.loadPokemonData(poke.initializePokemonLayer, from, to);
 functions.initializeSlider();
-
-

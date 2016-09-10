@@ -6,6 +6,11 @@ require('leaflet.locatecontrol');
 
 var mymap = null;
 
+var apiURL = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014";
+var getAllSightingsURL = "/api/pokemon/sighting";
+var getAllPokemon = "/api/pokemon";
+var getPokemonById = "/api/pokemon/id/";
+
 var PokeMap = function(htmlElement, coordinates = [48.264673, 11.671434], zoomLevel = 17) {
     this.htmlElement = htmlElement;
     this.coordinates = coordinates;
@@ -103,8 +108,8 @@ PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
 
 
 var pokemonLayer, pokemonMapData;
-PokeMap.prototype.initializePokemonLayer = function(predictedData) {
-    pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData);
+PokeMap.prototype.initializePokemonLayer = function(predictedData,staticData) {
+    pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData, staticData);
     var from = new Date(),
         to = new Date();
     to.setHours(from.getHours() + 3);
@@ -161,55 +166,67 @@ PokeMap.prototype.loadPokemonData = function(callback, from, to) {
         to.setMonth(to.getMonth() + 1);
         console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
     }
-    functions.loadJson("json/predicted-data.json", function(response) {
+
+    functions.loadJson(apiURL + getAllSightingsURL, function(response) {
         var predictedData = JSON.parse(response);
-        console.log("loaded predicted pokemon (" + predictedData.length + " found)");
-        var predictedData = predictedData.filter(function(pokemon) {
-            var pokemonTime = new Date(pokemon.time);
+        console.log("API message: [" + predictedData.message + "]");
+        predictedData = predictedData["data"];
+
+        predictedData = predictedData.filter(function(pokemon) {
+            var pokemonTime = new Date(pokemon.appearedOn);
             if (pokemonTime < from) return false;
             if (to < pokemonTime) return false;
             return true;
         });
+
         console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
-        functions.loadJson("json/pokemonbasicinfo.json", function(response) {
-            var staticData = JSON.parse(response);
-            for (var i = 0, n = predictedData.length; i < n; ++i) {
-                predictedData[i] = functions.mergeObjects(predictedData[i], staticData[predictedData[i].name]);
-                console.log("added static data for " + predictedData[i].name);
-            }
-            callback(predictedData);
+        
+        var allPokemonData = {};
+        functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
+            allPokemonData = JSON.parse(response);
+            allPokemonData = allPokemonData["data"];
         });
+
+        var staticData = functions.mergeData(predictedData, allPokemonData);
+
+        callback(predictedData, staticData);
     });
 }
-
-PokeMap.prototype.generatePokemonMapData = function(predictedData) {
+PokeMap.prototype.generatePokemonMapData = function(predictedData, staticData) {
+       
     var pokemonMapData = {
         "type": "FeatureCollection",
         "features": []
     };
     var now = new Date();
+    
     for (var i = 0, n = predictedData.length; i < n; ++i) {
+        
+        //If there is no location, then don't show pokemon
+        if(predictedData[i].location == null) 
+            continue;
+        
         now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
         pokemonMapData.features.push({
             "id": i,
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [predictedData[i].longitude, predictedData[i].latitude]
+                "coordinates": [predictedData[i].location.coordinates[0], predictedData[i].location.coordinates[1]]
             },
             "properties": {
-                "name": predictedData[i].name,
+                "name": staticData[i].name,
                 // manipulate time to test the filter function
                 "time": now.toISOString(),
                 // "time": predictedData[i].time,
-                "type": predictedData[i].type,
-                "evolution": predictedData[i].evolution,
-                "probability": predictedData[i].probability,
-                "img": "img/" + predictedData[i].name.toLowerCase() + ".png"
+                "type": staticData[i].types,
+                "evolution": staticData[i].nextEvolutions,
+                "img": "img/bulbasaur.png"
             }
         });
-        console.log("generated map data for " + predictedData[i].name);
     }
+    
+    console.log("Generated data for pokemons on map!");
     return pokemonMapData
 }
 
@@ -221,7 +238,7 @@ hideAdditionalInformation = function() {
 
 function onEachFeature(feature, layer) {
     var popupContent = "<div>";
-    popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\"" + feature.properties.name + "\")'></button>";
+    popupContent += "<div class='pokemonInfo'><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\"" + feature.properties.name + "\")'></button>";
     popupContent += "</div><div class='allinfo'>";
     popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
     popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
