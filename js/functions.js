@@ -10,17 +10,6 @@ exports.loadJson = function(file, callback) {
     request.send(null);
 }
 
-exports.loadJsonTemp = function(file, callback) {
-    var request = new XMLHttpRequest();
-    request.overrideMimeType("application/json");
-    request.open('GET', file, false);
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == "200") {
-            callback(request.responseText);
-        }
-    };
-    request.send(null);
-}
 
 exports.mergeObjects = function(object_1, object_2) {
     for(var property in object_2) {
@@ -164,6 +153,5 @@ updateMap = function(value) {
     document.getElementById("slider_from").innerHTML = from.toLocaleString();
     document.getElementById("slider_to").innerHTML = to.toLocaleString();
     
-    setInterval(from,to);
-    setPokePOIsOnMap(null,from,to);
+    setPokemonOnMap(from, to);
 }
