@@ -14,7 +14,8 @@ var PokeMap = function(htmlElement, coordinates = [48.264673,11.671434], zoomLev
 	this.zoomLevel = zoomLevel;
 }
 
-
+// Interface used to emit 'click' and 'move' events. Will be set when initializing the PokeMap.
+PokeMap.prototype.emit = function() {};
 
 PokeMap.prototype.setUpMap = function(x,y) {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
