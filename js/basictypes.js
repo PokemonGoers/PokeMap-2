@@ -1,49 +1,38 @@
+var util = require('util');
 
-class Pokemon 
-{
-    constructor(pokemonJSON)
-    {
-        this.pokemonname = pokemonJson['name'];
-        this.type = pokemonJson['type'];
-    }
+exports.Pokemon = function(pokemonJson) {
+  console.log(pokemonJson);
+  this.pokemonname = pokemonJson['name'];
+  this.types = pokemonJson['types'];
 }
 
 
-class PokePOI 
-{
-    constructor(pokemonJSON)
-    {
-        this.latitude = pokemonJSON['latitude'];
-        this.longitude = pokemonJSON['longitude'];
-    }
+exports.PokePOI = function(pokemonJson) {
+  this.latitude = pokemonJson['latitude'];
+  this.longitude = pokemonJson['longitude'];
 }
 
-class PokemonSighting extends PokePOI{
-    
-    constructor(pokemonJson)
-        { 
-        super(pokemonJson);
-         this.date = pokemonJson['date'];
-         this.pokemon = new Pokemon(pokemonJson);
-    }
+exports.PokemonSighting = function(pokemonJson) {
+  this.super_.apply(this, pokemonJson);
+  this.date = pokemonJson['date'];
+  this.pokemon = new Pokemon(pokemonJson);
 }
 
-class PokemonPrediction extends PokePOI{
-    
-    constructor(pokemonJson)
-    { 
-        super(pokemonJson);
-        this.date = pokemonJson['date'];
-        this.accuracy = pokemonJson['accuracy'];
-        this.pokemon = new Pokemon(pokemonJson);
-    }
+util.inherits(exports.PokemonSighting, exports.PokePOI);
+
+
+exports.PokemonPrediction = function(pokemonJson) {
+  this.super_.apply(this, pokemonJson);
+  this.date = pokemonJson['date'];
+  this.accuracy = pokemonJson['accuracy'];
+  this.pokemon = new Pokemon(pokemonJson);
 }
 
-class PokeMob extends PokePOI{
-    
-    constructor(pokemonJson)
-    { 
-        super(pokemonJson);
-        this.date = pokemonJson['date'];
-    }
+util.inherits(exports.PokemonPrediction, exports.PokePOI);
+
+exports.PokeMob = function(pokemonJson) {
+  this.super_.apply(this, pokemonJson);
+  this.date = pokemonJson['date'];
 }
+
+util.inherits(exports.PokeMob, exports.PokePOI);

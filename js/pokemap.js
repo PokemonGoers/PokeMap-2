@@ -2,6 +2,7 @@ var functions = require('./functions');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var L = require('leaflet');
+var Pokemon = require('./basictypes');
 require('leaflet.locatecontrol');
 
 var mymap = null;
@@ -29,6 +30,8 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
       }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + mob.date);
       console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
     }
+
+
 
     this.markers = [];
     this.currentOpenPokemon = null;
@@ -224,6 +227,9 @@ function onEachFeature(feature, layer) {
         console.log(pokemonData);
         layer._popup._contentNode.getElementsByClassName("pokemonname")[0].innerHTML = pokemonData[0].name;
         console.log(layer._popup._contentNode);
+
+        var pokemon = new Pokemon.PokemonSighting(pokemonData[0]);
+        console.log(pokemon);
       });
     }
   });
