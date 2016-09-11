@@ -5,27 +5,25 @@ var L = require('leaflet');
 require('leaflet.locatecontrol');
 
 var mymap = null;
-
-var apiURL = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014";
+var apiURL={};
 var getAllSightingsURL = "/api/pokemon/sighting";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 
-var PokeMap = function(htmlElement, coordinates = [48.264673, 11.671434], zoomLevel = 17) {
+var PokeMap = function(htmlElement,[coordinates = [48.264673, 11.671434] , [from = 2, to = 30], apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"]) {
     this.htmlElement = htmlElement;
     this.coordinates = coordinates;
-    this.zoomLevel = zoomLevel;
-
+    this.zoomLevel = 2;                                
+    this.sliderFrom = from;
+    this.sliderTo = to;
+    
+    apiURL = apiEndPoint; 
     this.setUpMap();
 }
 
 util.inherits(PokeMap, EventEmitter);
 
 
-//PokeMap.prototype.setSliderValues = function(from, to) {
-//    sliderFrom = from;
-//    sliderTo = to;
-//}
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
