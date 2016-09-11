@@ -31,7 +31,5 @@ elemDiv.innerHTML = sidebarHTML;
 document.body.appendChild(elemDiv);
 
 
-var poke = new PokeMap('map', {latitude: 48.264673, longitude: 11.671434}, {from: -200000, to: 5}, "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014");
-var from = new Date("2016-08-01T00:00:00.000Z");
-var to = new Date("2016-10-01T00:00:00.000Z");
+var poke = new PokeMap('map', {latitude: 48.264673, longitude: 11.671434}, {from: -8300, to: 5}, "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014");
 functions.initializeSlider();

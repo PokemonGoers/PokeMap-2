@@ -15,7 +15,7 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
     this.htmlElement = htmlElement;
     this.coordinates = [coordinates.latitude, coordinates.longitude];
     console.log(this.coordinates);
-    this.zoomLevel = 17;
+    this.zoomLevel = 5;
     this.sliderFrom = timeRange.from;
     this.sliderTo = timeRange.to;
     this.mobSocket = new WebSocket("ws://www.example.com/socketserver");
@@ -43,12 +43,14 @@ util.inherits(PokeMap, EventEmitter);
 // pokemon sightings are fetched with two params: from - starting date in UTC format and to - time span in mins
 PokeMap.prototype.getFromForAPI = function() {
   console.log(this.sliderFrom);
+    console.log(new Date());
+    console.log(functions.addMinutes(new Date(), this.sliderFrom).toISOString());
   return functions.addMinutes(new Date(), this.sliderFrom).toISOString();
 }
 
 PokeMap.prototype.getToForAPI = function() {
-  console.log(this.sliderTo);
-  return Math.abs(this.sliderFrom) + "m";
+  console.log("SliderTO: " + this.sliderTo);
+  return (Math.abs(this.sliderFrom) + this.sliderTo) + "m";
 }
 
 PokeMap.prototype.setUpMap = function() {
@@ -151,23 +153,27 @@ setPokemonOnMap = function() {
 
 PokeMap.prototype.showPokemonSightings = function() {
   console.log(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI());
-  functions.loadJson(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI(), function(response) {
+
+    var URL = apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI();
+  functions.loadJson(URL, function(response) {
       var predictedData = JSON.parse(response);
 
       predictedData = predictedData["data"];
 
-      var allPokemonData = {};
-      console.log(apiURL + getAllPokemon);
-      functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
-          allPokemonData = JSON.parse(response);
-          allPokemonData = allPokemonData["data"];
-          console.log(allPokemonData);
-      });
+//      var allPokemonData = {};
+//      console.log(apiURL + getAllPokemon);
+//      functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
+//          allPokemonData = JSON.parse(response);
+//          allPokemonData = allPokemonData["data"];
+//      });
 
-
-      var staticData = functions.mergeData(predictedData, allPokemonData);
-      console.log(staticData);
-      pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData, staticData);
+        
+//      var staticData = functions.mergeData(predictedData, allPokemonData);
+//      console.log(staticData);
+      
+      console.log("Predicted data length: " + predictedData.length);
+      pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData);
+      
       setPokemonOnMap();
   });
 
@@ -182,7 +188,7 @@ PokeMap.prototype.showPokemonMobs = function() {
 PokeMap.prototype.updateTimeRange = function(timeRange) {
   this.sliderFrom = timeRange.from;
   this.sliderTo = timeRange.to;
-
+    
   this.showPokemonSightings();
   this.showPokemonPrediction();
 }
@@ -192,7 +198,7 @@ PokeMap.prototype.updateTimeRange = function(timeRange) {
 
 
 
-PokeMap.prototype.generatePokemonMapData = function(predictedData, staticData) {
+PokeMap.prototype.generatePokemonMapData = function(predictedData) {
 
     var pokemonMapData = {
         "type": "FeatureCollection",
@@ -215,17 +221,12 @@ PokeMap.prototype.generatePokemonMapData = function(predictedData, staticData) {
                 "coordinates": [predictedData[i].location.coordinates[0], predictedData[i].location.coordinates[1]]
             },
             "properties": {
-                "name": staticData[i].name,
-                // manipulate time to test the filter function
-                "time": now.toISOString(),
-                // "time": predictedData[i].time,
-                "type": staticData[i].types,
-                "evolution": staticData[i].nextEvolutions,
                 "img": "img/bulbasaur.png"
             }
         });
     }
-
+    
+    console.log(predictedData.length);
     console.log("Generated data for pokemons on map!");
     return pokemonMapData
 }
