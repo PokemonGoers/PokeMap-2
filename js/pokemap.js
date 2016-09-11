@@ -195,26 +195,29 @@ PokeMap.prototype.loadPokemonData = function(callback, from, to) {
 
     functions.loadJson(apiURL + getAllSightingsURL, function(response) {
         var predictedData = JSON.parse(response);
-        console.log("API message: [" + predictedData.message + "]");
+
         predictedData = predictedData["data"];
+console.log("API message: [" + predictedData + "]");
+        // predictedData = predictedData.filter(function(pokemon) {
+        //     var pokemonTime = new Date(pokemon.appearedOn);
+        //     if (pokemonTime < from) return false;
+        //     if (to < pokemonTime) return false;
+        //     return true;
+        // });
 
-        predictedData = predictedData.filter(function(pokemon) {
-            var pokemonTime = new Date(pokemon.appearedOn);
-            if (pokemonTime < from) return false;
-            if (to < pokemonTime) return false;
-            return true;
-        });
-
-        console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
+      //  console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
 
         var allPokemonData = {};
+        console.log(apiURL + getAllPokemon);
         functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
             allPokemonData = JSON.parse(response);
             allPokemonData = allPokemonData["data"];
+            console.log(allPokemonData);
         });
 
-        var staticData = functions.mergeData(predictedData, allPokemonData);
 
+        var staticData = functions.mergeData(predictedData, allPokemonData);
+        console.log(staticData);
         callback(predictedData, staticData);
     });
 }

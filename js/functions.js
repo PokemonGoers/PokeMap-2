@@ -13,7 +13,7 @@ exports.loadJson = function(file, callback) {
 exports.loadJsonTemp = function(file, callback) {
     var request = new XMLHttpRequest();
     request.overrideMimeType("application/json");
-    request.open('GET', file, true );
+    request.open('GET', file, false );
     request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == "200") {
             callback(request.responseText);
