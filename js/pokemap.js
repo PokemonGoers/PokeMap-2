@@ -166,7 +166,14 @@ PokeMap.prototype.showPokemonSightings = function() {
   });
 }
 
+// Not implemented! Copy Timo's or Elma's data from one of the previous commits
 PokeMap.prototype.showPokemonPrediction = function() {
+  var URL = apiURL + getAllPredictions + this.getFromForAPI() + "/range/" + this.getToForAPI();
+  functions.loadJson(URL, function(response) {
+    var predictedData = (JSON.parse(response))["data"];
+    pokemonMapData = PokeMap.prototype.generatePokemonPredictionsMapData(predictedData);
+    setPokemonOnMap();
+  });
 }
 
 PokeMap.prototype.showPokemonMobs = function() {
