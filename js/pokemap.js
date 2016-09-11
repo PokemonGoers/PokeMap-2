@@ -10,14 +10,15 @@ var getAllSightingsURL = "/api/pokemon/sighting";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 
-var PokeMap = function(htmlElement,[coordinates = [48.264673, 11.671434] , [from = 2, to = 30], apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"]) {
+var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitude: 11.671434} , timeRange = {from: 2, to: 30}, apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
     this.htmlElement = htmlElement;
-    this.coordinates = coordinates;
-    this.zoomLevel = 2;                                
-    this.sliderFrom = from;
-    this.sliderTo = to;
-    
-    apiURL = apiEndPoint; 
+    this.coordinates = [coordinates.latitude, coordinates.longitude];
+    console.log(this.coordinates);
+    this.zoomLevel = 17;
+    this.sliderFrom = timeRange.from;
+    this.sliderTo = timeRange.to;
+
+    apiURL = apiEndPoint;
     this.setUpMap();
 }
 
@@ -178,7 +179,7 @@ PokeMap.prototype.loadPokemonData = function(callback, from, to) {
         });
 
         console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
-        
+
         var allPokemonData = {};
         functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
             allPokemonData = JSON.parse(response);
@@ -191,19 +192,19 @@ PokeMap.prototype.loadPokemonData = function(callback, from, to) {
     });
 }
 PokeMap.prototype.generatePokemonMapData = function(predictedData, staticData) {
-       
+
     var pokemonMapData = {
         "type": "FeatureCollection",
         "features": []
     };
     var now = new Date();
-    
+
     for (var i = 0, n = predictedData.length; i < n; ++i) {
-        
+
         //If there is no location, then don't show pokemon
-        if(predictedData[i].location == null) 
+        if(predictedData[i].location == null)
             continue;
-        
+
         now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
         pokemonMapData.features.push({
             "id": i,
@@ -223,7 +224,7 @@ PokeMap.prototype.generatePokemonMapData = function(predictedData, staticData) {
             }
         });
     }
-    
+
     console.log("Generated data for pokemons on map!");
     return pokemonMapData
 }
