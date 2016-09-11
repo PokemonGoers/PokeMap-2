@@ -7,11 +7,11 @@ require('leaflet.locatecontrol');
 var mymap = null;
 var apiURL={};
 var getAllSightingsURL = "/api/pokemon/sighting";
-var getAllSightingsBetweenCoordinatesURL = "/api/pokemon/sighting/coordinates/from/";
+var getAllSightingsByTimeRangeURL = "/api/pokemon/sighting/ts/";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 
-var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitude: 11.671434} , timeRange = {from: 2, to: 30}, apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
+var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitude: 11.671434} , timeRange = {from: -200000, to: 30}, apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
     this.htmlElement = htmlElement;
     this.coordinates = [coordinates.latitude, coordinates.longitude];
     console.log(this.coordinates);
@@ -39,6 +39,17 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
 }
 
 util.inherits(PokeMap, EventEmitter);
+
+// pokemon sightings are fetched with two params: from - starting date in UTC format and to - time span in mins
+PokeMap.prototype.getFromForAPI = function() {
+  console.log(this.sliderFrom);
+  return functions.addMinutes(new Date(), this.sliderFrom).toISOString();
+}
+
+PokeMap.prototype.getToForAPI = function() {
+  console.log(this.sliderTo);
+  return Math.abs(this.sliderFrom) + "m";
+}
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
@@ -192,12 +203,12 @@ PokeMap.prototype.loadPokemonData = function(callback, from, to) {
         to.setMonth(to.getMonth() + 1);
         console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
     }
-
-    functions.loadJson(apiURL + getAllSightingsURL, function(response) {
+    console.log(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI());
+    functions.loadJson(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI(), function(response) {
         var predictedData = JSON.parse(response);
 
         predictedData = predictedData["data"];
-console.log("API message: [" + predictedData + "]");
+        //console.log("API message: [" + predictedData + "]");
         // predictedData = predictedData.filter(function(pokemon) {
         //     var pokemonTime = new Date(pokemon.appearedOn);
         //     if (pokemonTime < from) return false;

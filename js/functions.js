@@ -184,3 +184,7 @@ updateMap = function(value) {
 exports.addMinutes = function(date, minutes) {
     return new Date(date.getTime() + minutes*60000);
 }
+
+exports.subtractMinutes = function(date, minutes) {
+    return new Date(date.getTime() - minutes*60000);
+}
