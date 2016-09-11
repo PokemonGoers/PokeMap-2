@@ -7,6 +7,7 @@ require('leaflet.locatecontrol');
 var mymap = null;
 var apiURL={};
 var getAllSightingsURL = "/api/pokemon/sighting";
+var getAllSightingsBetweenCoordinatesURL = "/api/pokemon/sighting/coordinates/from/";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 
@@ -20,11 +21,12 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
 
     apiURL = apiEndPoint;
     this.setUpMap();
+    this.showPokemonSightings();
+
+    //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 }
 
 util.inherits(PokeMap, EventEmitter);
-
-
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
@@ -93,18 +95,38 @@ PokeMap.prototype.displayPokeMob = function(pokeMob) {
 
 PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
     mymap.panTo(coordinates, zoomLevel);
-    console.log("GoTo method executed with params (" + coordinates + "), (" + zoomLevel + ")");
 }
 
 PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
     this.emit('move', coordinates, zoomLevel);
-    console.log("Emitted 'move' event with params (" + coordinates + "), (" + zoomLevel + ")");
-    this.goTo(coordinates, zoomLevel + 3);
 }
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
 
+PokeMap.prototype.showPokemonSightings = function() {
+  // pokeData API is called like this: http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting/ts/2016-08-26T11:37:12.469Z/range/5w
+  // from - we need the current time plus the from value
+  // to - the starting time plus "to" minutes
+  var from = functions.addMinutes(new Date(), this.sliderFrom);
+  var to = (this.sliderTo - this.sliderFrom) + "m";
 
+  // TODO: fetch sightings within the time range
+  poke.loadPokemonData(poke.initializePokemonLayer, from, to);
+}
+
+PokeMap.prototype.showPokemonPrediction = function() {
+}
+
+PokeMap.prototype.showPokemonMobs = function() {
+}
+
+PokeMap.prototype.updateTimeRange = function(timeRange) {
+  this.sliderFrom = timeRange.from;
+  this.sliderTo = timeRange.to;
+
+  this.showPokemonSightings();
+  this.showPokemonPrediction();
+}
 
 var pokemonLayer, pokemonMapData;
 PokeMap.prototype.initializePokemonLayer = function(predictedData,staticData) {
