@@ -30,6 +30,9 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
       console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
     }
 
+    this.markers = [];
+    this.currentOpenPokemon = null;
+
     console.log("here");
     apiURL = apiEndPoint;
     this.setUpMap();
@@ -152,31 +155,12 @@ setPokemonOnMap = function() {
 }
 
 PokeMap.prototype.showPokemonSightings = function() {
-  console.log(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI());
-
-    var URL = apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI();
+  var URL = apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI();
   functions.loadJson(URL, function(response) {
-      var predictedData = JSON.parse(response);
-
-      predictedData = predictedData["data"];
-
-//      var allPokemonData = {};
-//      console.log(apiURL + getAllPokemon);
-//      functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
-//          allPokemonData = JSON.parse(response);
-//          allPokemonData = allPokemonData["data"];
-//      });
-
-        
-//      var staticData = functions.mergeData(predictedData, allPokemonData);
-//      console.log(staticData);
-      
-      console.log("Predicted data length: " + predictedData.length);
-      pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData);
-      
-      setPokemonOnMap();
+    var sightingsData = (JSON.parse(response))["data"];
+    pokemonMapData = PokeMap.prototype.generatePokemonSightingsMapData(sightingsData);
+    setPokemonOnMap();
   });
-
 }
 
 PokeMap.prototype.showPokemonPrediction = function() {
@@ -188,110 +172,65 @@ PokeMap.prototype.showPokemonMobs = function() {
 PokeMap.prototype.updateTimeRange = function(timeRange) {
   this.sliderFrom = timeRange.from;
   this.sliderTo = timeRange.to;
-    
+
   this.showPokemonSightings();
   this.showPokemonPrediction();
 }
 
-
-
-
-
-
-PokeMap.prototype.generatePokemonMapData = function(predictedData) {
-
+PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
     var pokemonMapData = {
         "type": "FeatureCollection",
         "features": []
     };
     var now = new Date();
 
-    for (var i = 0, n = predictedData.length; i < n; ++i) {
-
+    for (var i = 0, n = sightingsData.length; i < n; ++i) {
         //If there is no location, then don't show pokemon
-        if(predictedData[i].location == null)
+        if(sightingsData[i].location == null)
             continue;
 
-        now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
         pokemonMapData.features.push({
-            "id": i,
+            "id": sightingsData[i].pokemonId,
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [predictedData[i].location.coordinates[0], predictedData[i].location.coordinates[1]]
+                "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
             },
             "properties": {
-                "img": "img/bulbasaur.png"
+                "img": "img/bulbasaur.png",
+                "time": sightingsData[i].appearedOn
             }
         });
     }
-    
-    console.log(predictedData.length);
-    console.log("Generated data for pokemons on map!");
+
     return pokemonMapData
 }
 
-hideAdditionalInformation = function() {
-    document.getElementById("map").style.width = "100%";
-    document.getElementById("sidebar").style.display = "none";
 
-}
 
 function onEachFeature(feature, layer) {
-    var popupContent = "<div>";
-    popupContent += "<div class='pokemonInfo'><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\"" + feature.properties.name + "\")'></button>";
-    popupContent += "</div><div class='allinfo'>";
-    popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
-    popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
-    popupContent += "</div></div>";
-    layer.bindPopup(popupContent);
+  var popupContent = "<div>";
+  popupContent += "<div class='pokemonInfo'><div class='pokemonname'></div>" + "<span class=''></span><button class='pokemonmore fa fa-book' ";
+  popupContent += "onclick='showSideBar(" + ")'></button>";
+  popupContent += "</div><div class='allinfo'>";
+  popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
+  popupContent += "</div></div>";
+  layer.bindPopup(popupContent);
 
-    layer.on({
-        click: function(e) {
-            functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));
-        }
-    });
+  layer.on({
+    click: function(e) {
+      functions.loadJson(apiURL + getPokemonById + feature.id, function(response) {
+        var pokemonData = ((JSON.parse(response))["data"]);
+        console.log(pokemonData);
+        layer._popup._contentNode.getElementsByClassName("pokemonname")[0].innerHTML = pokemonData[0].name;
+        console.log(layer._popup._contentNode);
+      });
+    }
+  });
 }
 
-showAdditionalInformation = function(name) {
-    functions.loadJson("json/pokemonbasicinfo.json", function(response) {
-        var staticData = JSON.parse(response);
-        var pokemon = staticData[name];
-        document.getElementById("map").style.width = "calc(100% - 410px)";
-        document.getElementById("sidebar").style.display = "block";
-        document.getElementById("avatar").innerHTML = "<img src='img/" + name.toLowerCase() + ".png' alt='Avatar not found'>";
-        document.getElementById("name").innerHTML = name;
-        document.getElementById("height").innerHTML = pokemon.height;
-        document.getElementById("weight").innerHTML = pokemon.weight;
-        document.getElementById("typetitle").innerHTML = functions.typeTitle(pokemon.type);
-        document.getElementById("type").innerHTML = functions.objectValuesToString(pokemon.type);
-        document.getElementById("category").innerHTML = pokemon.category[1];
-        document.getElementById("evolution").innerHTML = functions.evolutionToString(pokemon.evolution, name);
-        document.getElementById("weaknessestitle").innerHTML = functions.weaknessesTitle(pokemon.weaknesses);
-        document.getElementById("weaknesses").innerHTML = functions.objectValuesToString(pokemon.weaknesses);
-        document.getElementById("hp").innerHTML = pokemon.stats.HP;
-        document.getElementById("attack").innerHTML = pokemon.stats.Attack;
-        document.getElementById("defense").innerHTML = pokemon.stats.Defense;
-        document.getElementById("specialattack").innerHTML = pokemon.stats.SpecialAttack;
-        document.getElementById("specialdefense").innerHTML = pokemon.stats.SpecialDefense;
-        document.getElementById("speed").innerHTML = pokemon.stats.Speed;
-        document.getElementById("abilities").innerHTML = functions.abilitiesToTable(pokemon.ability);
-        document.getElementById("abilitiestitle").innerHTML = functions.abilitiesTitle(pokemon.ability);
-    });
+showSideBar = function() {
 
 }
 
-//make PokeMap class available
 module.exports = PokeMap;
-//PokeMap.prototype.loadPokemonData = function(callback, from, to) {
-    // if (typeof from === "undefined" || !(from instanceof Date)) {
-    //     from = new Date();
-    //     console.log("parameter 'from' is no date-object and will be changed to " + from.toString());
-    // }
-    // if (typeof to === "undefined" || !(to instanceof Date)) {
-    //     to = new Date(from.getTime());
-    //     to.setMonth(to.getMonth() + 1);
-    //     console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
-    // }
-
-//}
