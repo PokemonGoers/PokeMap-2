@@ -116,44 +116,8 @@ PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
 }
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
-
-PokeMap.prototype.showPokemonSightings = function() {
-  // pokeData API is called like this: http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting/ts/2016-08-26T11:37:12.469Z/range/5w
-  // from - we need the current time plus the from value
-  // to - the starting time plus "to" minutes
-  var from = functions.addMinutes(new Date(), this.sliderFrom);
-  var to = (this.sliderTo - this.sliderFrom) + "m";
-
-  // TODO: fetch sightings within the time range
-  var from1 = new Date("2016-08-01T00:00:00.000Z");
-  var to1 = new Date("2016-10-01T00:00:00.000Z");
-  this.loadPokemonData(this.initializePokemonLayer, from1, to1);
-}
-
-PokeMap.prototype.showPokemonPrediction = function() {
-}
-
-PokeMap.prototype.showPokemonMobs = function() {
-}
-
-PokeMap.prototype.updateTimeRange = function(timeRange) {
-  this.sliderFrom = timeRange.from;
-  this.sliderTo = timeRange.to;
-
-  this.showPokemonSightings();
-  this.showPokemonPrediction();
-}
-
 var pokemonLayer, pokemonMapData;
-PokeMap.prototype.initializePokemonLayer = function(predictedData,staticData) {
-    pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData, staticData);
-    var from = new Date(),
-        to = new Date();
-    to.setHours(from.getHours() + 3);
-    setPokemonOnMap(from, to);
-}
-
-setPokemonOnMap = function(from, to) {
+setPokemonOnMap = function() {
     if (mymap == null) return;
 
     if (typeof pokemonLayer !== "undefined") {
@@ -180,58 +144,54 @@ setPokemonOnMap = function(from, to) {
                 title: pokname,
                 rinseOnHover: true
             });
-        },
-
-        filter: function(feature, layer) {
-            var pokemonTime = new Date(feature.properties.time);
-            if (pokemonTime < from) return false;
-            if (to < pokemonTime) return false;
-            return true;
         }
 
     }).addTo(map);
 }
 
+PokeMap.prototype.showPokemonSightings = function() {
+  console.log(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI());
+  functions.loadJson(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI(), function(response) {
+      var predictedData = JSON.parse(response);
 
-PokeMap.prototype.loadPokemonData = function(callback, from, to) {
-    if (typeof from === "undefined" || !(from instanceof Date)) {
-        from = new Date();
-        console.log("parameter 'from' is no date-object and will be changed to " + from.toString());
-    }
-    if (typeof to === "undefined" || !(to instanceof Date)) {
-        to = new Date(from.getTime());
-        to.setMonth(to.getMonth() + 1);
-        console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
-    }
-    console.log(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI());
-    functions.loadJson(apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI(), function(response) {
-        var predictedData = JSON.parse(response);
+      predictedData = predictedData["data"];
 
-        predictedData = predictedData["data"];
-        //console.log("API message: [" + predictedData + "]");
-        // predictedData = predictedData.filter(function(pokemon) {
-        //     var pokemonTime = new Date(pokemon.appearedOn);
-        //     if (pokemonTime < from) return false;
-        //     if (to < pokemonTime) return false;
-        //     return true;
-        // });
-
-      //  console.log("filtered pokemon from " + from.toString() + " to " + to.toString() + " (" + predictedData.length + " found)");
-
-        var allPokemonData = {};
-        console.log(apiURL + getAllPokemon);
-        functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
-            allPokemonData = JSON.parse(response);
-            allPokemonData = allPokemonData["data"];
-            console.log(allPokemonData);
-        });
+      var allPokemonData = {};
+      console.log(apiURL + getAllPokemon);
+      functions.loadJsonTemp(apiURL + getAllPokemon, function(response) {
+          allPokemonData = JSON.parse(response);
+          allPokemonData = allPokemonData["data"];
+          console.log(allPokemonData);
+      });
 
 
-        var staticData = functions.mergeData(predictedData, allPokemonData);
-        console.log(staticData);
-        callback(predictedData, staticData);
-    });
+      var staticData = functions.mergeData(predictedData, allPokemonData);
+      console.log(staticData);
+      pokemonMapData = PokeMap.prototype.generatePokemonMapData(predictedData, staticData);
+      setPokemonOnMap();
+  });
+
 }
+
+PokeMap.prototype.showPokemonPrediction = function() {
+}
+
+PokeMap.prototype.showPokemonMobs = function() {
+}
+
+PokeMap.prototype.updateTimeRange = function(timeRange) {
+  this.sliderFrom = timeRange.from;
+  this.sliderTo = timeRange.to;
+
+  this.showPokemonSightings();
+  this.showPokemonPrediction();
+}
+
+
+
+
+
+
 PokeMap.prototype.generatePokemonMapData = function(predictedData, staticData) {
 
     var pokemonMapData = {
@@ -322,3 +282,15 @@ showAdditionalInformation = function(name) {
 
 //make PokeMap class available
 module.exports = PokeMap;
+//PokeMap.prototype.loadPokemonData = function(callback, from, to) {
+    // if (typeof from === "undefined" || !(from instanceof Date)) {
+    //     from = new Date();
+    //     console.log("parameter 'from' is no date-object and will be changed to " + from.toString());
+    // }
+    // if (typeof to === "undefined" || !(to instanceof Date)) {
+    //     to = new Date(from.getTime());
+    //     to.setMonth(to.getMonth() + 1);
+    //     console.log("parameter 'to' is no date-object and will be changed to " + to.toString());
+    // }
+
+//}
