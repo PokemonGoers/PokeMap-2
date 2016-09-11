@@ -18,7 +18,19 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
     this.zoomLevel = 17;
     this.sliderFrom = timeRange.from;
     this.sliderTo = timeRange.to;
+    this.mobSocket = new WebSocket("ws://www.example.com/socketserver");
+    this.mobSocket.onmessage = function (event) {
+      console.log("Mob detected!");
+      var mob = JSON.parse(event.data);
+      L.circle(mob.coordinates, 100, {
+          color: '#808080',
+          fillColor: 'red',
+          fillOpacity: 0.1
+      }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + mob.date);
+      console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
+    }
 
+    console.log("here");
     apiURL = apiEndPoint;
     this.setUpMap();
     this.showPokemonSightings();
@@ -84,15 +96,6 @@ PokeMap.prototype.setUpMap = function() {
 }
 
 
-PokeMap.prototype.displayPokeMob = function(pokeMob) {
-    L.circle(pokeMob.coordinates, 100, {
-        color: '#808080',
-        fillColor: 'red',
-        fillOpacity: 0.1
-    }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + pokeMob.date);
-    console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
-}
-
 PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
     mymap.panTo(coordinates, zoomLevel);
 }
@@ -111,7 +114,9 @@ PokeMap.prototype.showPokemonSightings = function() {
   var to = (this.sliderTo - this.sliderFrom) + "m";
 
   // TODO: fetch sightings within the time range
-  poke.loadPokemonData(poke.initializePokemonLayer, from, to);
+  var from1 = new Date("2016-08-01T00:00:00.000Z");
+  var to1 = new Date("2016-10-01T00:00:00.000Z");
+  this.loadPokemonData(this.initializePokemonLayer, from1, to1);
 }
 
 PokeMap.prototype.showPokemonPrediction = function() {
