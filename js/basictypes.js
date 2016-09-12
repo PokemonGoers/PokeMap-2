@@ -13,26 +13,30 @@ exports.PokePOI = function(pokemonJson) {
 }
 
 exports.PokemonSighting = function(pokemonJson) {
-  this.super_.apply(this, pokemonJson);
+//  this.super_.apply(this, pokemonJson);
   this.date = pokemonJson['date'];
-  this.pokemon = new Pokemon(pokemonJson);
+  this.pokemon = new exports.Pokemon(pokemonJson);
 }
 
+
+exports.PokemonSighting.prototype = Object.create(exports.PokePOI.prototype);
 util.inherits(exports.PokemonSighting, exports.PokePOI);
 
 
 exports.PokemonPrediction = function(pokemonJson) {
-  this.super_.apply(this, pokemonJson);
+//  this.super_.apply(this, pokemonJson);
   this.date = pokemonJson['date'];
   this.accuracy = pokemonJson['accuracy'];
-  this.pokemon = new Pokemon(pokemonJson);
+  this.pokemon = new exports.Pokemon(pokemonJson);
 }
 
+exports.PokemonPrediction.prototype = Object.create(exports.PokePOI.prototype);
 util.inherits(exports.PokemonPrediction, exports.PokePOI);
 
 exports.PokeMob = function(pokemonJson) {
-  this.super_.apply(this, pokemonJson);
+//  this.super_.apply(this, pokemonJson);
   this.date = pokemonJson['date'];
 }
 
+exports.PokeMob.prototype = Object.create(exports.PokePOI.prototype);
 util.inherits(exports.PokeMob, exports.PokePOI);

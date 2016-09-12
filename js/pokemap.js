@@ -233,8 +233,7 @@ function onEachFeature(feature, layer) {
         var pokemonData = ((JSON.parse(response))["data"]);
         console.log(pokemonData);
         layer._popup._contentNode.getElementsByClassName("pokemonname")[0].innerHTML = pokemonData[0].name;
-        console.log(layer._popup._contentNode);
-
+       
         var pokemon = new Pokemon.PokemonSighting(pokemonData[0]);
         console.log(pokemon);
       });
@@ -243,7 +242,7 @@ function onEachFeature(feature, layer) {
 }
 
 showSideBar = function() {
-
+    
 }
 
 module.exports = PokeMap;
