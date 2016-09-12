@@ -36,7 +36,6 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
     this.markers = [];
     this.currentOpenPokemon = null;
 
-    console.log("here");
     apiURL = apiEndPoint;
     this.setUpMap();
     this.showPokemonSightings();
@@ -112,6 +111,8 @@ PokeMap.prototype.setUpMap = function() {
     mymap.on('move', function(e) {
         PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
     });
+    
+   
 }
 
 
@@ -122,6 +123,14 @@ PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
 PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
     this.emit('move', coordinates, zoomLevel);
 }
+
+PokeMap.prototype.emitClick = function(pokemon) {
+    this.emit('click', pokemon);
+}
+
+PokeMap.prototype.on('click', function(pokemon){
+    
+})
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
 var pokemonLayer, pokemonMapData;
@@ -217,7 +226,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
 }
 
 
-
+var pokemonForSidebar = {};
 function onEachFeature(feature, layer) {
   var popupContent = "<div>";
   popupContent += "<div class='pokemonInfo'><div class='pokemonname'></div>" + "<span class=''></span><button class='pokemonmore fa fa-book' ";
@@ -231,18 +240,22 @@ function onEachFeature(feature, layer) {
     click: function(e) {
       functions.loadJson(apiURL + getPokemonById + feature.id, function(response) {
         var pokemonData = ((JSON.parse(response))["data"]);
-        console.log(pokemonData);
         layer._popup._contentNode.getElementsByClassName("pokemonname")[0].innerHTML = pokemonData[0].name;
        
-        var pokemon = new Pokemon.PokemonSighting(pokemonData[0]);
-        console.log(pokemon);
+        pokemonForSidebar = new Pokemon.PokemonSighting(pokemonData[0]);
+        console.log("Pop up for pokemon: " + pokemonForSidebar.pokemon);
       });
     }
   });
 }
 
+
+
+
 showSideBar = function() {
-    
+  
+    PokeMap.prototype.emitClick(pokemonForSidebar);
+
 }
 
 module.exports = PokeMap;

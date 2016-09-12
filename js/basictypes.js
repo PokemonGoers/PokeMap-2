@@ -1,7 +1,6 @@
 var util = require('util');
 
 exports.Pokemon = function(pokemonJson) {
-  console.log(pokemonJson);
   this.pokemonname = pokemonJson['name'];
   this.types = pokemonJson['types'];
 }
