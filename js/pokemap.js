@@ -36,24 +36,11 @@ var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, 
     this.currentOpenPokemon = null;
 
     this.setUpMap();
-    this.filter(null, 2, 0)
+    this.filter(filter.pokemonIds, filter.sightingsSince, filter.predictionsUntil);
     //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 }
 
 util.inherits(PokeMap, EventEmitter);
-
-// pokemon sightings are fetched with two params: from - starting date in UTC format and to - time span in mins
-PokeMap.prototype.getFromForAPI = function() {
-  console.log(this.sliderFrom);
-    console.log(new Date());
-    console.log(functions.addMinutes(new Date(), this.sliderFrom).toISOString());
-  return functions.addMinutes(new Date(), this.sliderFrom).toISOString();
-}
-
-PokeMap.prototype.getToForAPI = function() {
-  console.log("SliderTO: " + this.sliderTo);
-  return (Math.abs(this.sliderFrom) + this.sliderTo) + "m";
-}
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
@@ -121,13 +108,9 @@ PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
     this.emit('move', coordinates, zoomLevel);
 }
 
-PokeMap.prototype.emitClick = function(pokemon) {
-    this.emit('click', pokemon);
+PokeMap.prototype.emitClick = function(pokePOI) {
+    this.emit('click', pokePOI);
 }
-
-PokeMap.prototype.on('click', function(pokemon){
-
-});
 
 PokeMap.prototype.filter = function(pokemonIds, sightingsSince, predictionsUntil) {
   if(sightingsSince > 0) {
@@ -140,19 +123,20 @@ PokeMap.prototype.filter = function(pokemonIds, sightingsSince, predictionsUntil
   }
   this.socket.on("connect", function () {
       console.log("Connected to server, sending geo settings..");
-      socket.emit("settings", {mode: "geo", lat: 1, lon:1, radius: 5000000});
+      socket.emit("settings", {mode: "geo", lat: mymap.getCenter().lat, lon: mymap.getCenter().lon, radius: 5000000});
   });
 
   this.socket.onmessage = function (event) {
     console.log("Mob detected!");
     console.log(event);
     var mob = JSON.parse(event.data);
-    L.circle(mob.coordinates, 100, {
+    var mobCircle = L.circle(mob.coordinates, 100, {
         color: '#808080',
         fillColor: 'red',
         fillOpacity: 0.1
-    }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + mob.date);
-    console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
+    }).addTo(mymap);
+    mobCircle.bindPopup("PokeMob detected here! Date: " + mob.date);
+    mobCircle.on('click', function(e) { this.emitClick(event.data); });
   }
 };
 
