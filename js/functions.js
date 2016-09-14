@@ -185,6 +185,6 @@ exports.addMinutes = function(date, minutes) {
     return new Date(date.getTime() + minutes*60000);
 }
 
-exports.subtractMinutes = function(date, minutes) {
-    return new Date(date.getTime() - minutes*60000);
+exports.subtractSeconds = function(date, seconds) {
+    return new Date(date.getTime() - seconds*1000);
 }

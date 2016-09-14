@@ -14,40 +14,29 @@ var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 
 
-var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitude: 11.671434} , timeRange = {from: -200000, to: 30}, apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
-    this.htmlElement = htmlElement;
-    this.coordinates = [coordinates.latitude, coordinates.longitude];
-    console.log(this.coordinates);
-    this.zoomLevel = 5;
-    this.sliderFrom = timeRange.from;
-    this.sliderTo = timeRange.to;
+var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, apiEndPoint = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
+  this.htmlElement = htmlElement.id;
+  apiURL = apiEndPoint;
 
-    var socket = io.connect('http://localhost:3000');
-    socket.on("connect", function () {
-        console.log("Connected to server, sending geo settings..");
-        socket.emit("settings", {mode: "geo", lat: 1, lon:1, radius: 5000000});
-    });
+//   = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"
+//  coordinates = {latitude: 48.264673, longitude: 11.671434} , timeRange = {from: -200000, to: 30}, ) {
 
-    socket.onmessage = function (event) {
-      console.log("Mob detected!");
-      console.log(event);
-      var mob = JSON.parse(event.data);
-      L.circle(mob.coordinates, 100, {
-          color: '#808080',
-          fillColor: 'red',
-          fillOpacity: 0.1
-      }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + mob.date);
-      console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
-    }
+  //  this.coordinates = [coordinates.latitude, coordinates.longitude];
+  //  console.log(this.coordinates);
+  //  this.zoomLevel = 5;
+  //  this.sliderFrom = timeRange.from;
+//    this.sliderTo = timeRange.to;
 
+    // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
+    this.filterPokemons = null;
+
+    this.socket = io.connect('http://localhost:3000');
 
     this.markers = [];
     this.currentOpenPokemon = null;
 
-    apiURL = apiEndPoint;
     this.setUpMap();
-    this.showPokemonSightings();
-
+    this.filter(null, 2, 0)
     //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 }
 
@@ -68,7 +57,7 @@ PokeMap.prototype.getToForAPI = function() {
 
 PokeMap.prototype.setUpMap = function() {
     L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
-    mymap = L.map(this.htmlElement).setView(this.coordinates, this.zoomLevel);
+    mymap = L.map(this.htmlElement).fitWorld();//.setView(this.coordinates, this.zoomLevel);
     window.map = mymap; // Set map as a global variable
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
@@ -138,7 +127,34 @@ PokeMap.prototype.emitClick = function(pokemon) {
 
 PokeMap.prototype.on('click', function(pokemon){
 
-})
+});
+
+PokeMap.prototype.filter = function(pokemonIds, sightingsSince, predictionsUntil) {
+  if(sightingsSince > 0) {
+    console.log("Calling method to show sightings.");
+    this.showPokemonSightings(sightingsSince);
+  }
+  if(predictionsUntil > 0) {
+    console.log("Calling method to show predictions.");
+    this. showPokemonPredictions(predictionsUntil);
+  }
+  this.socket.on("connect", function () {
+      console.log("Connected to server, sending geo settings..");
+      socket.emit("settings", {mode: "geo", lat: 1, lon:1, radius: 5000000});
+  });
+
+  this.socket.onmessage = function (event) {
+    console.log("Mob detected!");
+    console.log(event);
+    var mob = JSON.parse(event.data);
+    L.circle(mob.coordinates, 100, {
+        color: '#808080',
+        fillColor: 'red',
+        fillOpacity: 0.1
+    }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + mob.date);
+    console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
+  }
+};
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
 var pokemonLayer, pokemonMapData;
@@ -174,9 +190,14 @@ setPokemonOnMap = function() {
     }).addTo(map);
 }
 
-PokeMap.prototype.showPokemonSightings = function() {
-  var URL = apiURL + getAllSightingsByTimeRangeURL + this.getFromForAPI() + "/range/" + this.getToForAPI();
+PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
+  console.log("Lets show sightings.");
+  var dateNow = new Date();
+  var startingDate = functions.subtractSeconds(dateNow, sightingsSince);
+  var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
+  console.log("Fetching data from ", URL);
   functions.loadJson(URL, function(response) {
+    console.log("Data fetched. Generating map data.");
     var sightingsData = (JSON.parse(response))["data"];
     pokemonMapData = PokeMap.prototype.generatePokemonSightingsMapData(sightingsData);
     setPokemonOnMap();
@@ -184,7 +205,7 @@ PokeMap.prototype.showPokemonSightings = function() {
 }
 
 // Not implemented! Copy Timo's or Elma's data from one of the previous commits
-PokeMap.prototype.showPokemonPrediction = function() {
+PokeMap.prototype.showPokemonPredictions = function(predictionsUntil) {
   var URL = apiURL + getAllPredictions + this.getFromForAPI() + "/range/" + this.getToForAPI();
   functions.loadJson(URL, function(response) {
     var predictedData = (JSON.parse(response))["data"];
@@ -205,32 +226,32 @@ PokeMap.prototype.updateTimeRange = function(timeRange) {
 }
 
 PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
-    var pokemonMapData = {
-        "type": "FeatureCollection",
-        "features": []
-    };
-    var now = new Date();
+  var pokemonMapData = {
+    "type": "FeatureCollection",
+    "features": []
+  };
+  var now = new Date();
 
-    for (var i = 0, n = sightingsData.length; i < n; ++i) {
-        //If there is no location, then don't show pokemon
-        if(sightingsData[i].location == null)
-            continue;
+  for (var i = 0, n = sightingsData.length; i < n; ++i) {
+    if(this.filterPokemons != null && this.filterPokemons.indexOf(sightingsData[i].pokemonId) == -1) continue;
+    //If there is no location, then don't show pokemon
+    if(sightingsData[i].location == null) continue;
 
-        pokemonMapData.features.push({
-            "id": sightingsData[i].pokemonId,
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
-            },
-            "properties": {
-                "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/" + sightingsData[i].pokemonId +"/1/icon",
-                "time": sightingsData[i].appearedOn
-            }
-        });
-    }
+    pokemonMapData.features.push({
+      "id": sightingsData[i].pokemonId,
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
+      },
+      "properties": {
+        "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/" + sightingsData[i].pokemonId +"/1/icon",
+        "time": sightingsData[i].appearedOn
+      }
+    });
+  }
 
-    return pokemonMapData
+  return pokemonMapData
 }
 
 
