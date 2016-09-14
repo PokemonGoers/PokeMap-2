@@ -2,6 +2,7 @@ var functions = require('./functions');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var L = require('leaflet');
+var io = require('socket.io-browserify');
 var Pokemon = require('./basictypes');
 require('leaflet.locatecontrol');
 
@@ -12,6 +13,7 @@ var getAllSightingsByTimeRangeURL = "/api/pokemon/sighting/ts/";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 
+
 var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitude: 11.671434} , timeRange = {from: -200000, to: 30}, apiEndPoint="http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
     this.htmlElement = htmlElement;
     this.coordinates = [coordinates.latitude, coordinates.longitude];
@@ -19,9 +21,16 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
     this.zoomLevel = 5;
     this.sliderFrom = timeRange.from;
     this.sliderTo = timeRange.to;
-    this.mobSocket = new WebSocket("ws://www.example.com/socketserver");
-    this.mobSocket.onmessage = function (event) {
+
+    var socket = io.connect('http://localhost:3000');
+    socket.on("connect", function () {
+        console.log("Connected to server, sending geo settings..");
+        socket.emit("settings", {mode: "geo", lat: 1, lon:1, radius: 5000000});
+    });
+
+    socket.onmessage = function (event) {
       console.log("Mob detected!");
+      console.log(event);
       var mob = JSON.parse(event.data);
       L.circle(mob.coordinates, 100, {
           color: '#808080',
@@ -30,7 +39,6 @@ var PokeMap = function(htmlElement, coordinates = {latitude: 48.264673, longitud
       }).addTo(mymap).bindPopup("PokeMob detected here! Date: " + mob.date);
       console.log("PokeMob displayed at coordinates: ", pokeMob.coordinates);
     }
-
 
 
     this.markers = [];
@@ -111,8 +119,8 @@ PokeMap.prototype.setUpMap = function() {
     mymap.on('move', function(e) {
         PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
     });
-    
-   
+
+
 }
 
 
@@ -129,7 +137,7 @@ PokeMap.prototype.emitClick = function(pokemon) {
 }
 
 PokeMap.prototype.on('click', function(pokemon){
-    
+
 })
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
@@ -216,7 +224,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
                 "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
             },
             "properties": {
-                "img": "img/bulbasaur.png",
+                "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/" + sightingsData[i].pokemonId +"/1/icon",
                 "time": sightingsData[i].appearedOn
             }
         });
@@ -241,7 +249,7 @@ function onEachFeature(feature, layer) {
       functions.loadJson(apiURL + getPokemonById + feature.id, function(response) {
         var pokemonData = ((JSON.parse(response))["data"]);
         layer._popup._contentNode.getElementsByClassName("pokemonname")[0].innerHTML = pokemonData[0].name;
-       
+
         pokemonForSidebar = new Pokemon.PokemonSighting(pokemonData[0]);
         console.log("Pop up for pokemon: " + pokemonForSidebar.pokemon);
       });
@@ -253,7 +261,7 @@ function onEachFeature(feature, layer) {
 
 
 showSideBar = function() {
-  
+
     PokeMap.prototype.emitClick(pokemonForSidebar);
 
 }
