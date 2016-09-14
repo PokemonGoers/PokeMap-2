@@ -45,7 +45,7 @@ PokeMap.prototype.setUpMap = function() {
     'Imagery © <a href="http://mapbox.com">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(mymap);
-  
+
   L.control.locate().addTo(map);
 
   var MyControl = L.Control.extend({
@@ -137,6 +137,7 @@ setPokemonOnMap = function() {
   if (mymap == null) return;
 
   if (typeof pokemonLayer !== "undefined") {
+    this.markers = [];
     map.removeLayer(pokemonLayer);
   }
 
@@ -253,13 +254,8 @@ function onEachFeature(feature, layer) {
   });
 }
 
-
-
-
 showSideBar = function() {
-
   PokeMap.prototype.emitClick(pokemonForSidebar);
-
 }
 
 module.exports = PokeMap;
