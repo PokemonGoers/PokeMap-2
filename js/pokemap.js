@@ -12,7 +12,7 @@ var getAllSightingsURL = "/api/pokemon/sighting";
 var getAllSightingsByTimeRangeURL = "/api/pokemon/sighting/ts/";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
-
+var getAllPredictions = {};
 
 var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, apiEndPoint = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
   this.htmlElement = htmlElement.id;
@@ -170,7 +170,8 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
   console.log("Lets show sightings.");
   var dateNow = new Date();
   var startingDate = functions.subtractSeconds(dateNow, sightingsSince);
-  var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
+ // var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
+   var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting/source/TWITTER";
   console.log("Fetching data from ", URL);
   functions.loadJson(URL, function(response) {
     console.log("Data fetched. Generating map data.");
@@ -182,12 +183,12 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
 
 // Not implemented! Copy Timo's or Elma's data from one of the previous commits
 PokeMap.prototype.showPokemonPredictions = function(predictionsUntil) {
-  var URL = apiURL + getAllPredictions + this.getFromForAPI() + "/range/" + this.getToForAPI();
-  functions.loadJson(URL, function(response) {
-    var predictedData = (JSON.parse(response))["data"];
-    pokemonMapData = PokeMap.prototype.generatePokemonPredictionsMapData(predictedData);
-    setPokemonOnMap();
-  });
+//  var URL = apiURL + getAllPredictions + this.getFromForAPI() + "/range/" + this.getToForAPI();
+//  functions.loadJson(URL, function(response) {
+//    var predictedData = (JSON.parse(response))["data"];
+//    pokemonMapData = PokeMap.prototype.generatePokemonPredictionsMapData(predictedData);
+//    setPokemonOnMap();
+//  });
 }
 
 PokeMap.prototype.showPokemonMobs = function() {
