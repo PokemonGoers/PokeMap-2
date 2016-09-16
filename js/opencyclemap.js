@@ -5,9 +5,10 @@
 		var functions = require('./functions');
         var L = require('leaflet');
 		require('leaflet.locatecontrol');
+		require('leaflet-routing-machine');
 
 		var mymap=null;
-
+		var lc = L.control.locate();
 		exports.setUpMap = function(x,y) {
             L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
 			mymap = L.map('map').setView([x, y], 17);
@@ -21,7 +22,7 @@
 			id: 'mapbox.streets'
 			}).addTo(mymap);
 
-			L.control.locate().addTo(map);
+			lc.addTo(map);
 
 			var MyControl = L.Control.extend({
 				options: {
@@ -137,7 +138,7 @@
 						"type": predictedData[i].type,
 						"evolution": predictedData[i].evolution,
 						"probability": predictedData[i].probability,
-						"img": "img/" + predictedData[i].name.toLowerCase() + ".png"
+						"img": "img/" + predictedData[i].name.toLowerCase() + ".png",
 					}
 				});
 				console.log("generated map data for " + predictedData[i].name);
@@ -151,9 +152,9 @@
 			popupContent+= "</div><div class='allinfo'>";
 			popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
 			popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
+			popupContent += "<div class='pokemontime'><button onclick='calculateRoute("+ feature.geometry.coordinates + ")'>calculate route</button></div>";
 			popupContent += "</div></div>";
 			layer.bindPopup(popupContent);
-
 			layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
 		}
 
@@ -199,6 +200,27 @@
 			}).addTo(map);
 		}
 
+		calculateRoute = function(lng, lat) {
+			lc.start();
+			map.on('locationfound', function(e) {
+				if (typeof route !== 'undefined') {
+					var lrc = document.getElementsByClassName('leaflet-routing-container');
+					for(var i = 0; i < lrc.length; i++) {
+						lrc[i].parentNode.removeChild(lrc[i]);
+					}
+				}
+				route = L.Routing.control({
+					waypoints: [
+						L.latLng(e.latlng),
+						L.latLng({
+							"lat": lat,
+							"lng": lng
+						})
+					],
+					routeWhileDragging: true
+				}).addTo(map);
+			});
+		}
 
 		showAdditionalInformation = function(name) {
 			functions.loadJson("json/pokemonbasicinfo.json", function(response) {
