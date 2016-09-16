@@ -2,7 +2,8 @@ var functions = require('./functions');
 var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var L = require('leaflet');
-var io = require('socket.io-browserify');
+var io = require('socket.io-client');
+var socket = io.connect("http://localhost:3000");
 var Pokemon = require('./basictypes');
 require('leaflet.locatecontrol');
 
@@ -21,7 +22,7 @@ var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
 
-  this.socket = io.connect('http://localhost:3000');
+  //this.socket = io.connect('http://localhost:3000');
 
   this.markers = [];
   this.currentOpenPokemon = null;
@@ -86,6 +87,23 @@ PokeMap.prototype.setUpMap = function() {
   mymap.on('move', function(e) {
     PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
   });
+  socket.on("connect", function () {
+    console.log("Connected to server, sending geo settings..");
+    socket.emit("settings", {mode: "geo", lat: mymap.getCenter().lat, lon: mymap.getCenter().lon, radius: 5000000});
+  });
+
+  socket.on('mob', function (data) {
+    console.log("New mob! ", data);
+    var mob = (data);
+    console.log(mob.coordinates);
+    var mobCircle = L.circle(mob.coordinates, 100, {
+      color: '#808080',
+      fillColor: 'red',
+      fillOpacity: 0.1
+    }).addTo(mymap);
+    mobCircle.bindPopup("PokeMob detected here! Date: " + mob.date);
+    mobCircle.on('click', function(e) { this.emitClick(event.data); });
+  });
 
 
 }
@@ -112,23 +130,7 @@ PokeMap.prototype.filter = function(pokemonIds, sightingsSince, predictionsUntil
     console.log("Calling method to show predictions.");
     this. showPokemonPredictions(predictionsUntil);
   }
-  this.socket.on("connect", function () {
-    console.log("Connected to server, sending geo settings..");
-    socket.emit("settings", {mode: "geo", lat: mymap.getCenter().lat, lon: mymap.getCenter().lon, radius: 5000000});
-  });
 
-  this.socket.onmessage = function (event) {
-    console.log("Mob detected!");
-    console.log(event);
-    var mob = JSON.parse(event.data);
-    var mobCircle = L.circle(mob.coordinates, 100, {
-      color: '#808080',
-      fillColor: 'red',
-      fillOpacity: 0.1
-    }).addTo(mymap);
-    mobCircle.bindPopup("PokeMob detected here! Date: " + mob.date);
-    mobCircle.on('click', function(e) { this.emitClick(event.data); });
-  }
 };
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})

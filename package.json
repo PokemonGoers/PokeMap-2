@@ -40,7 +40,7 @@
     "browserify": "^13.1.0"
   },
   "dependencies": {
-    "socket.io-browserify": "latest",
+    "socket.io-client": "latest",
     "leaflet": "^0.7.7",
     "leaflet.locatecontrol": "^0.52.0"
   }
