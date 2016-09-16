@@ -5,6 +5,7 @@ var L = require('leaflet');
 var io = require('socket.io-client');
 var socket = io.connect("http://localhost:3000");
 var Pokemon = require('./basictypes');
+var config = require('./config');
 require('leaflet.locatecontrol');
 
 var mymap = null;
@@ -15,9 +16,10 @@ var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 var getAllPredictions = {};
 
-var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, apiEndPoint = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
+var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0, tileLayer: config.currentMap}, apiEndPoint = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
   this.htmlElement = htmlElement.id;
   apiURL = apiEndPoint;
+
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
@@ -26,25 +28,22 @@ var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, 
 
   this.markers = [];
   this.currentOpenPokemon = null;
+  
 
-  this.setUpMap();
+  this.setUpMap(filter.tileLayer);
   this.filter(filter.pokemonIds, filter.sightingsSince, filter.predictionsUntil);
   //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 }
 
 util.inherits(PokeMap, EventEmitter);
 
-PokeMap.prototype.setUpMap = function() {
+PokeMap.prototype.setUpMap = function(tileLayer) {
   L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
   mymap = L.map(this.htmlElement).fitWorld();//.setView(this.coordinates, this.zoomLevel);
   window.map = mymap; // Set map as a global variable
 
-  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-    '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'mapbox.streets'
+  L.tileLayer(tileLayer, {
+    maxZoom: 18
   }).addTo(mymap);
 
   L.control.locate().addTo(map);
