@@ -2,7 +2,7 @@
   "name": "pokemap-2",
   "version": "0.0.1",
   "description": "PokeMap",
-  "main": "testMap.js",
+  "main": "js/pokemap.js",
   "directories": {
     "doc": "docs"
   },

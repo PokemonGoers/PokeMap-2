@@ -16,9 +16,9 @@ var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 var getAllPredictions = {};
 
-var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0, tileLayer: config.currentMap}, apiEndPoint = "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014") {
-  this.htmlElement = htmlElement.id;
-  apiURL = apiEndPoint;
+var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndPoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'}) {
+  this.htmlElement = htmlElement;
+  apiURL = options.apiEndPoint;
 
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
@@ -29,9 +29,9 @@ var PokeMap = function(htmlElement, filter = {pokemonIds: 0, sightingsSince: 0, 
   this.markers = [];
   this.currentOpenPokemon = null;
   
-
-  this.setUpMap(filter.tileLayer);
-  this.filter(filter.pokemonIds, filter.sightingsSince, filter.predictionsUntil);
+  this.setUpMap(options.tileLayer);
+  this.filter(options.filter);
+    
   //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 }
 
@@ -72,7 +72,6 @@ PokeMap.prototype.setUpMap = function(tileLayer) {
       return controlContainer;
     }
   });
-
   map.addControl(new MyControl());
   document.getElementsByClassName('leaflet-time-slider-hide-link')[0].onclick = function(e) {
     document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'none';
@@ -108,19 +107,20 @@ PokeMap.prototype.setUpMap = function(tileLayer) {
 }
 
 
-PokeMap.prototype.goTo = function(coordinates, zoomLevel) {
-  mymap.panTo(coordinates, zoomLevel);
+PokeMap.prototype.goTo = function({coordinates, zoomLevel}) {
+  //mymap.panTo([params.coordinates.latitude, params.coordinates.longitude],params.zoomLevel);
+  mymap.setView([coordinates.latitude, coordinates.longitude],zoomLevel);
 }
 
-PokeMap.prototype.emitMove = function(coordinates, zoomLevel) {
-  this.emit('move', coordinates, zoomLevel);
+PokeMap.prototype.emitMove = function(coordinates,zoomLevel) {
+    this.emit('move', {coordinates,zoomLevel});
 }
 
 PokeMap.prototype.emitClick = function(pokePOI) {
   this.emit('click', pokePOI);
 }
 
-PokeMap.prototype.filter = function(pokemonIds, sightingsSince, predictionsUntil) {
+PokeMap.prototype.filter = function({pokemonIds, sightingsSince, predictionsUntil}) {
   if(sightingsSince > 0) {
     console.log("Calling method to show sightings.");
     this.showPokemonSightings(sightingsSince);

@@ -33,17 +33,27 @@ var elemDiv = document.createElement('div');
 elemDiv.innerHTML = sidebarHTML;
 document.body.appendChild(elemDiv);
 
+var filter = 
+    {
+       pokemonIds: null, 
+    sightingsSince: 100000, 
+    predictionsUntil: 10 
+    };
+
 var options = 
 {
-    pokemonIds: null, 
-    sightingsSince: 100000, 
-    predictionsUntil: 10,
-    tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+    tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    filter : filter,
+    apiEndPoint: "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"
 
 };
 
-var poke = new PokeMap(map, options, "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014");
+var poke = new PokeMap(map, options);
 //var poke = new PokeMap(map, {latitude: 48.264673, longitude: 11.671434}, {from: -83000, to: 5});
+
+//var coordinates = {latitude: 48, longitude: 11};
+//var zoomLevel = 15;
+//poke.goTo({coordinates,zoomLevel});
 
 functions.initializeSlider();
 
