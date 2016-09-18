@@ -2,7 +2,7 @@
   "name": "pokemap-2",
   "version": "0.0.1",
   "description": "PokeMap",
-  "main": "testMap.js",
+  "main": "js/pokemap.js",
   "directories": {
     "doc": "docs"
   },
@@ -41,6 +41,8 @@
   },
   "dependencies": {
     "leaflet": "^0.7.7",
-    "leaflet.locatecontrol": "^0.52.0"
+    "leaflet.locatecontrol": "^0.52.0",
+    "socket.io-browserify": "^0.9.6",
+    "socket.io-client": "latest"
   }
 }
