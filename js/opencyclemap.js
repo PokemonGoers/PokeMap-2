@@ -1,19 +1,15 @@
-		
-		//Our Location
-		//var x = 48.16;
-		//var y = 11.6;
 		var functions = require('./functions');
         var L = require('leaflet');
 		require('leaflet.locatecontrol');
 		require('leaflet-routing-machine');
-		//require('leaflet-control-geocoder');
+		require('leaflet-control-geocoder');
 
 		var mymap=null;
 		var lc = L.control.locate();
 		exports.setUpMap = function(x,y) {
             L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
 			mymap = L.map('map').setView([x, y], 17);
-			window.map = mymap; // Set map as a global variable
+			window.map = mymap;
 
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
 			maxZoom: 18,
@@ -212,12 +208,10 @@
 					}
 					route = L.Routing.control({
 						waypoints: [
-							//{latLng: e.latlng, name: "Start"},
-							//{latLng: target, name: "Ziel"}
 							e.latlng,
 							target
 						],
-						//geocoder: L.Control.Geocoder.nominatim(),
+						geocoder: L.Control.Geocoder.nominatim(),
 						routeWhileDragging: true,
 						showAlternatives: true
 					}).addTo(map);
