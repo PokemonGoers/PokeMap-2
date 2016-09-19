@@ -160,6 +160,8 @@
 			setPokemonOnMap(from, to);
 		}
 
+		//random comment
+
 		setPokemonOnMap = function(from, to) {
 			if(mymap==null) return;
 
