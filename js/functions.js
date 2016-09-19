@@ -110,8 +110,15 @@ exports.initializeCountdown = function(id, time) {
         countdownSpan.innerHTML = daystring + ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
 
         if (t <= 0) {
+            countdownSpan.innerHTML = "";
             clearInterval(interval);
-            countdownSpan.innerHTML = "Pokémon already appeared!";
+            var parent = countdownSpan.parentNode.parentNode;
+            if(parent!== null) {
+                var popup = parent.parentNode.getElementsByClassName('pokemonInfo')[0];
+                popup.removeChild(popup.getElementsByClassName('probabilityHelper')[0]);
+                parent.removeChild(parent.getElementsByClassName('pokemonRoute')[0]);
+                parent.removeChild(parent.getElementsByClassName('pokemonCountdown')[0]);
+            }
         }
     }
 

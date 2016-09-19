@@ -1,11 +1,11 @@
 #map { 
-	height: 540px; 
+	height: 600px;
 	width:100%;
 	background-color:gray;
     cursor: move;
 }
 
-.pokemonname
+.pokemonName
 {
 	width:80px;
 	color:#F0F8FF;
@@ -14,12 +14,12 @@
     margin: 10px;
 }
 
-.poklabel
+.pokemonLabel
 {
      color:#20B2AA;
 }
 
-.pokemonmore
+.pokemonMore
 {
 	width: 55px;
 	height: 55px;
@@ -47,7 +47,7 @@
     height:40px;
 }
 
-.pokemonprobability
+.pokemonProbability
 {
 	font-size:20px;
     color:#20B2AA;
@@ -63,7 +63,21 @@
     
 }
 
-.probabilityhelper
+.pokemonRoute {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #F0F8FF;
+    color: #20B2AA;
+    text-align: center;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.pokemonRoute button {
+    font-size: 26px;
+}
+
+.probabilityHelper
 {
 /*    width:70px;*/
     height:40px;

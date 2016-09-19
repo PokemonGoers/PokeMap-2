@@ -6,6 +6,7 @@
         var L = require('leaflet');
 		require('leaflet.locatecontrol');
 		require('leaflet-routing-machine');
+		require('leaflet-control-geocoder');
 
 		var mymap=null;
 		var lc = L.control.locate();
@@ -58,17 +59,6 @@
 				document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
 				document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
 			}
-
-			/*var popup = L.popup();
-
-			function onMapClick(e) {
-				popup
-					.setLatLng(e.latlng)
-					.setContent("You clicked the map at " + e.latlng.toString())
-					.openOn(mymap);
-			}
-
-			mymap.on('click', onMapClick);*/
 		}
 
 		exports.setUpLocation = function(x,y) {
@@ -120,9 +110,13 @@
 				"type": "FeatureCollection",
 				"features": []
 			};
-			var now = new Date();
 			for(var i = 0, n = predictedData.length; i < n; ++i) {
-				now.setHours(now.getHours() + Math.floor((Math.random() * 12) - 6), Math.floor(Math.random() * 60));
+				var now = new Date();
+				if(i < predictedData.length / 2) {
+					now.setHours(now.getHours() + Math.floor(Math.random() * 5), Math.floor(Math.random() * 60));
+				} else {
+					now.setHours(now.getHours() + Math.floor(Math.random() * (- 5)), Math.floor(Math.random() * 60));
+				}
 				pokemonMapData.features.push({
 					"id": i,
 					"type": "Feature",
@@ -147,12 +141,12 @@
 		}
 
 		function onEachFeature(feature, layer) {
-			var popupContent = "<div>";
-			popupContent += "<div class='pokemonInfo'><div class='probabilityhelper' ><div class='pokemonprobability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonname'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonmore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
+			var popupContent = "<div id='popup_" + feature.id + "'>";
+			popupContent += "<div class='pokemonInfo'><div class='probabilityHelper' ><div class='pokemonProbability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonName'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonMore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
 			popupContent+= "</div><div class='allinfo'>";
-			popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
-			popupContent += "<div class='pokemontime'><span class='poklabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
-			popupContent += "<div class='pokemontime'><button onclick='calculateRoute("+ feature.geometry.coordinates + ")'>calculate route</button></div>";
+			popupContent += "<div class='pokemonTime'><span class='pokemonLabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
+			popupContent += "<div class='pokemonCountdown'><span class='pokemonLabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
+			popupContent += "<div class='pokemonRoute' onclick='calculateRoute("+ feature.geometry.coordinates + ")'><i class='fa fa-map-signs' aria-hidden='true'</i> calculate route</div>";
 			popupContent += "</div></div>";
 			layer.bindPopup(popupContent);
 			layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
@@ -202,23 +196,38 @@
 
 		calculateRoute = function(lng, lat) {
 			lc.start();
+			var target = {"lat": lat, "lng": lng};
+			var buffer = {"lat": 0, "lng": 0};
 			map.on('locationfound', function(e) {
-				if (typeof route !== 'undefined') {
-					var lrc = document.getElementsByClassName('leaflet-routing-container');
-					for(var i = 0; i < lrc.length; i++) {
-						lrc[i].parentNode.removeChild(lrc[i]);
+				if(buffer.lat != e.latlng.lat || buffer.lng != e.latlng.lng) {
+					buffer = e.latlng;
+					if (typeof route !== 'undefined') {
+						route.setWaypoints([]);
+						var lrc = document.getElementsByClassName('leaflet-routing-container');
+						for (var i = 0; i < lrc.length; i++) {
+							lrc[i].parentNode.removeChild(lrc[i]);
+						}
 					}
+					route = L.Routing.control({
+						waypoints: [
+							//{latLng: e.latlng, name: "Start"},
+							//{latLng: target, name: "Ziel"}
+							e.latlng,
+							target
+						],
+						geocoder: L.Control.Geocoder.nominatim(),
+						routeWhileDragging: true,
+						showAlternatives: true
+					}).addTo(map);
+					var remove_interval = setInterval(function() {
+						var parent_div = document.getElementsByClassName('leaflet-routing-alt')[0];
+						if(typeof parent_div !== 'undefined') {
+							parent_div.removeChild(parent_div.getElementsByTagName('h2')[0]);
+							clearInterval(remove_interval);
+						}
+					}, 500);
+
 				}
-				route = L.Routing.control({
-					waypoints: [
-						L.latLng(e.latlng),
-						L.latLng({
-							"lat": lat,
-							"lng": lng
-						})
-					],
-					routeWhileDragging: true
-				}).addTo(map);
 			});
 		}
 
