@@ -6,7 +6,7 @@
         var L = require('leaflet');
 		require('leaflet.locatecontrol');
 		require('leaflet-routing-machine');
-		require('leaflet-control-geocoder');
+		//require('leaflet-control-geocoder');
 
 		var mymap=null;
 		var lc = L.control.locate();
@@ -217,7 +217,7 @@
 							e.latlng,
 							target
 						],
-						geocoder: L.Control.Geocoder.nominatim(),
+						//geocoder: L.Control.Geocoder.nominatim(),
 						routeWhileDragging: true,
 						showAlternatives: true
 					}).addTo(map);
