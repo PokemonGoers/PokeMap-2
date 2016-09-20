@@ -256,7 +256,7 @@ function onEachFeature(feature, layer) {
   });
 }
 
-showSideBar = function() {
+function showSideBar() {
   PokeMap.prototype.emitClick(pokemonForSidebar);
 }
 
