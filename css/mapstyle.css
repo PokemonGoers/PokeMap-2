@@ -73,8 +73,12 @@
     cursor: pointer;
 }
 
-.pokemonRoute button {
-    font-size: 26px;
+.pokemonRouteff {
+    color: RGB(237,201,44);
+}
+
+.pokemonRoute:hover {
+    color: RGB(237,201,44);
 }
 
 .probabilityHelper

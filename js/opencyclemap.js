@@ -109,9 +109,9 @@
 			for(var i = 0, n = predictedData.length; i < n; ++i) {
 				var now = new Date();
 				if(i < predictedData.length / 2) {
-					now.setHours(now.getHours() + Math.floor(Math.random() * 5), Math.floor(Math.random() * 60));
+					now.setHours(now.getHours() + Math.floor(Math.random() * 5), Math.floor(Math.random() * 60), Math.floor(Math.random() * 60));
 				} else {
-					now.setHours(now.getHours() + Math.floor(Math.random() * (- 5)), Math.floor(Math.random() * 60));
+					now.setHours(now.getHours() + Math.floor(Math.random() * (- 5)), Math.floor(Math.random() * 60), Math.floor(Math.random() * 60));
 				}
 				pokemonMapData.features.push({
 					"id": i,
@@ -136,16 +136,23 @@
 			return pokemonMapData
 		}
 
+		var route;
 		function onEachFeature(feature, layer) {
 			var popupContent = "<div id='popup_" + feature.id + "'>";
-			popupContent += "<div class='pokemonInfo'><div class='probabilityHelper' ><div class='pokemonProbability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonName'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonMore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button>";
-			popupContent+= "</div><div class='allinfo'>";
-			popupContent += "<div class='pokemonTime'><span class='pokemonLabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
-			popupContent += "<div class='pokemonCountdown'><span class='pokemonLabel'>Time until appearance: </span> <span id='countdown_" + feature.id + "'></span></div>";
-			popupContent += "<div class='pokemonRoute' onclick='calculateRoute("+ feature.geometry.coordinates + ")'><i class='fa fa-map-signs' aria-hidden='true'</i> calculate route</div>";
+			popupContent += "<div class='pokemonInfo'><div class='probabilityHelper'><div class='pokemonProbability'>" + feature.properties.probability * 100 + "%</div></div><div class='pokemonName'>" + feature.properties.name + "</div>" + "<span class=''></span><button class='pokemonMore fa fa-book' onclick='showAdditionalInformation(\""+ feature.properties.name + "\")'></button></div>";
+			popupContent+= "<div class='allinfo'>";
+			popupContent += "<div class='pokemonTime'><span class='pokemonLabel'>Time of appearance: </span>" + new Date(feature.properties.time).toLocaleString() + "</div>";
+			popupContent += "<div class='pokemonCountdown'><span class='pokemonLabel'>Time until appearance: </span><span id='countdown_" + feature.id + "'></span></div>";
+			popupContent += "<div class='pokemonRoute' onclick='calculateRoute("+ feature.geometry.coordinates + ")'><i class='fa fa-map-signs' aria-hidden='true'></i> calculate route</div>";
+			popupContent += "<div class='pokemonRoute addToRoute' onclick='addToRoute("+ feature.geometry.coordinates + ")' style='display: none;'><i class='fa fa-plus-circle' aria-hidden='true'></i> add to route</div>";
 			popupContent += "</div></div>";
 			layer.bindPopup(popupContent);
-			layer.on({click: function(e) {functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));}});
+			layer.on({click: function(e) {
+				functions.initializeCountdown("countdown_" + e.target.feature.id, new Date(e.target.feature.properties.time));
+				if(typeof route !== "undefined") {
+						document.getElementsByClassName('addToRoute')[0].style.display = 'block';
+				}
+			}});
 		}
 
 		var pokemonLayer, pokemonMapData;
@@ -207,13 +214,9 @@
 						}
 					}
 					route = L.Routing.control({
-						waypoints: [
-							e.latlng,
-							target
-						],
+						waypoints: [e.latlng, target],
 						geocoder: L.Control.Geocoder.nominatim(),
-						routeWhileDragging: true,
-						showAlternatives: true
+						routeWhileDragging: true
 					}).addTo(map);
 					var remove_interval = setInterval(function() {
 						var parent_div = document.getElementsByClassName('leaflet-routing-alt')[0];
@@ -225,6 +228,18 @@
 
 				}
 			});
+		}
+
+		addToRoute = function(lng, lat) {
+			var target = {"lat": lat, "lng": lng};
+			route.setWaypoints(route.getWaypoints().filter(function(value) {
+				var returnValue = value.latLng.lat !== target.lat || value.latLng.lng !== target.lng;
+				if (!returnValue) {
+					console.log('Error: target already part of route');
+				}
+				return returnValue;
+			}));
+			route.spliceWaypoints(1, 0, target);
 		}
 
 		showAdditionalInformation = function(name) {
