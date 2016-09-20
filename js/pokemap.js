@@ -134,7 +134,7 @@ PokeMap.prototype.filter = function({pokemonIds, sightingsSince, predictionsUnti
 
 //PokeMap.prototype.on('move', function(a, b) {console.log(a + " " + b);})
 var pokemonLayer, pokemonMapData;
-setPokemonOnMap = function() {
+function setPokemonOnMap() {
   if (mymap == null) return;
 
   if (typeof pokemonLayer !== "undefined") {
