@@ -2,12 +2,13 @@
   "name": "pokemap-2",
   "version": "0.0.1",
   "description": "PokeMap",
-  "main": "js/pokemap.js",
+  "main": "pokemap.bundle.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "browserify js/pokemap.js -o pokemap.bundle.js -t es6ify --standalone PokeMap"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "browserify": "^13.1.0"
   },
   "dependencies": {
+    "es6ify": "^1.6.0",
     "leaflet": "^0.7.7",
     "leaflet.locatecontrol": "^0.52.0",
     "socket.io-browserify": "^0.9.6",

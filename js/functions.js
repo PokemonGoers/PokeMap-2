@@ -167,7 +167,7 @@ exports.initializeSlider = function() {
     mySlider.attachEvent("onSlideEnd", function(value) { updateMap(value); });
 };
 
-updateMap = function(value) {
+function updateMap(value) {
     var now = new Date();
     var from = new Date();
     var from_min = Math.floor(value[0]) === value[0] ? from.getMinutes() : from.getMinutes() + 30;

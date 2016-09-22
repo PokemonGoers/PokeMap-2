@@ -43,4 +43,4 @@ jspm_packages
 *.idea
 
 # browserify generated bundle
-testMap.bundle.js
+*.bundle.js
