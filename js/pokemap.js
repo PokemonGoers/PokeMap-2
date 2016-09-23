@@ -223,7 +223,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
         "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
       },
       "properties": {
-        "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/id/" + sightingsData[i].pokemonId +"/icon",
+        "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/id/" + sightingsData[i].pokemonId +"/icon/gif",
         "time": sightingsData[i].appearedOn
       }
     });
