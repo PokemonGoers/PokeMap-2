@@ -22,11 +22,8 @@ var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsS
   this.htmlElement = htmlElement;
   apiURL = options.apiEndpoint;
 
-
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
-
-  //this.socket = io.connect('http://localhost:3000');
 
   this.markers = [];
   this.currentOpenPokemon = null;
@@ -37,6 +34,7 @@ var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsS
   //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 };
 
+// extend EventEmitter class
 util.inherits(PokeMap, EventEmitter);
 
 PokeMap.prototype.setUpMap = function(tileLayer) {
@@ -82,10 +80,12 @@ PokeMap.prototype.goTo = function({coordinates, zoomLevel}) {
 };
 
 PokeMap.prototype.emitMove = function(coordinates,zoomLevel) {
+  console.log("Move emitted");
     this.emit('move', {coordinates,zoomLevel});
 };
 
 PokeMap.prototype.emitClick = function(pokePOI) {
+  console.log("Click emitted!", "Sending data: ", pokePOI);
   this.emit('click', pokePOI);
 };
 
@@ -119,7 +119,17 @@ function setPokemonOnMap() {
 
   pokemonLayer = L.geoJson(pokemonMapData, {
 
-    onEachFeature: onEachFeature,
+    onEachFeature: function onEachFeature(feature, layer) {
+      layer.on({
+        click: function(e) {
+          var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/id/" + feature.id;
+          functions.loadJson(URL, function(pokePOI) {
+            PokeMap.prototype.emitClick(pokePOI);
+          });
+
+        }
+      });
+    },
 
     pointToLayer: function(feature, latlng) {
       var pokemon = new pokemonIcon({
@@ -141,7 +151,7 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
   var dateNow = new Date();
   var startingDate = functions.subtractSeconds(dateNow, sightingsSince);
  // var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
-   var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting/source/TWITTER";
+   var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting";
   console.log("Fetching data from ", URL);
   functions.loadJson(URL, function(response) {
     console.log("Data fetched. Generating map data.");
@@ -173,6 +183,7 @@ PokeMap.prototype.updateTimeRange = function(timeRange) {
 };
 
 PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
+  console.log("Generating pokemon sightings map data");
   var pokemonMapData = {
     "type": "FeatureCollection",
     "features": []
@@ -186,6 +197,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
 
     pokemonMapData.features.push({
       "id": sightingsData[i].pokemonId,
+      "pokePOI": sightingsData[i],
       "type": "Feature",
       "geometry": {
         "type": "Point",
@@ -201,19 +213,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
   return pokemonMapData
 };
 
-function onEachFeature(feature, layer) {
-  layer.on({
-    click: function(e) {
-      functions.loadJson(apiURL + getPokemonById + feature.id, function(response) {
-        var pokemonData = ((JSON.parse(response))["data"]);
-        var clickedPokemon = new Pokemon.PokemonSighting(pokemonData[0]);
-        clickedPokemon.coordinates = {latitude: e.latlng.lat, longitude: e.latlng.lng};
-        PokeMap.prototype.emitClick(clickedPokemon);
-        console.log("emitClick for pokemon: " + clickedPokemon.pokemon.pokemonname);
-      });
-    }
-  });
-}
+
 
 var route;
 PokeMap.prototype.navigate = function(start, destination) {
