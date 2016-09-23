@@ -7,6 +7,8 @@ var socket = io.connect("http://localhost:3000");
 var Pokemon = require('./basictypes');
 var config = require('./config');
 require('leaflet.locatecontrol');
+require('leaflet-routing-machine');
+require('leaflet-control-geocoder');
 
 var mymap = null;
 var apiURL={};
@@ -205,12 +207,37 @@ function onEachFeature(feature, layer) {
       functions.loadJson(apiURL + getPokemonById + feature.id, function(response) {
         var pokemonData = ((JSON.parse(response))["data"]);
         var clickedPokemon = new Pokemon.PokemonSighting(pokemonData[0]);
+        clickedPokemon.coordinates = {latitude: e.latlng.lat, longitude: e.latlng.lng};
         PokeMap.prototype.emitClick(clickedPokemon);
-        console.log(clickedPokemon);
         console.log("emitClick for pokemon: " + clickedPokemon.pokemon.pokemonname);
       });
     }
   });
 }
+
+var route;
+PokeMap.prototype.navigate = function(start, destination) {
+  route = L.Routing.control({
+    waypoints: [{
+      lat: start.latitude,
+      lng: start.longitude
+    }, {
+      lat: destination.latitude,
+      lng: destination.longitude
+    }],
+    geocoder: L.Control.Geocoder.nominatim()
+  }).addTo(map);
+};
+
+PokeMap.prototype.clearRoutes = function() {
+  if(typeof route !== 'undefined') {
+    route.setWaypoints([]);
+    var routingContainer = document.getElementsByClassName('leaflet-routing-container')[0];
+    routingContainer.parentNode.removeChild(routingContainer);
+    console.log('Success: cleared route.');
+  } else {
+    console.log('Error: no route defined.');
+  }
+};
 
 module.exports = PokeMap;
