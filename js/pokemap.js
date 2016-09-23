@@ -16,9 +16,9 @@ var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 var getAllPredictions = {};
 
-var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndPoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'}) {
+var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndpoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'}) {
   this.htmlElement = htmlElement;
-  apiURL = options.apiEndPoint;
+  apiURL = options.apiEndpoint;
 
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
@@ -28,10 +28,10 @@ var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsS
 
   this.markers = [];
   this.currentOpenPokemon = null;
-  
+
   this.setUpMap(options.tileLayer);
   this.filter(options.filter);
-    
+
   //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
 }
 

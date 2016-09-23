@@ -33,18 +33,18 @@ var elemDiv = document.createElement('div');
 elemDiv.innerHTML = sidebarHTML;
 document.body.appendChild(elemDiv);
 
-var filter = 
+var filter =
     {
-       pokemonIds: null, 
-    sightingsSince: 100000, 
-    predictionsUntil: 10 
+       pokemonIds: null,
+    sightingsSince: 100000,
+    predictionsUntil: 10
     };
 
-var options = 
+var options =
 {
     tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
     filter : filter,
-    apiEndPoint: "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"
+    apiEndpoint: "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"
 
 };
 
