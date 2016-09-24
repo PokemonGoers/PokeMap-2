@@ -11,7 +11,7 @@ require('leaflet-routing-machine');
 require('leaflet-control-geocoder');
 
 var mymap = null;
-var apiURL={};
+var apiEndpoint=null;
 var getAllSightingsURL = "/api/pokemon/sighting";
 var getAllSightingsByTimeRangeURL = "/api/pokemon/sighting/ts/";
 var getAllPokemon = "/api/pokemon";
@@ -20,7 +20,7 @@ var getAllPredictions = {};
 
 var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndpoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'}) {
   this.htmlElement = htmlElement;
-  apiURL = options.apiEndpoint;
+  apiEndpoint = options.apiEndpoint;
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
@@ -122,7 +122,7 @@ function setPokemonOnMap() {
     onEachFeature: function onEachFeature(feature, layer) {
       layer.on({
         click: function(e) {
-          var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/id/" + feature.id;
+          var URL= apiEndpoint + "/pokemon/id/" + feature.id;
           functions.loadJson(URL, function(pokePOI) {
             PokeMap.prototype.emitClick(pokePOI);
           });
@@ -151,7 +151,7 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
   var dateNow = new Date();
   var startingDate = functions.subtractSeconds(dateNow, sightingsSince);
  // var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
-   var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting";
+   var URL=  apiEndpoint + "/pokemon/sighting";
   console.log("Fetching data from ", URL);
   functions.loadJson(URL, function(response) {
     console.log("Data fetched. Generating map data.");
@@ -204,7 +204,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
         "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
       },
       "properties": {
-        "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/id/" + sightingsData[i].pokemonId +"/icon/gif",
+        "img": apiEndpoint + "/pokemon/id/" + sightingsData[i].pokemonId +"/icon/gif",
         "time": sightingsData[i].appearedOn
       }
     });
