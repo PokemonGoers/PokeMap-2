@@ -4,37 +4,39 @@ var util = require('util');
 var L = require('leaflet');
 var io = require('socket.io-client');
 var socket = io.connect("http://localhost:3000");
-var Pokemon = require('./basictypes');
 var config = require('./config');
 require('leaflet.locatecontrol');
+require('leaflet-routing-machine');
+require('leaflet-control-geocoder');
 
 var mymap = null;
-var apiURL={};
+var apiEndpoint=null;
 var getAllSightingsURL = "/api/pokemon/sighting";
 var getAllSightingsByTimeRangeURL = "/api/pokemon/sighting/ts/";
 var getAllPokemon = "/api/pokemon";
 var getPokemonById = "/api/pokemon/id/";
 var getAllPredictions = {};
 
-var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndPoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'}) {
+var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndpoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014', websocketEndpoint: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024'}) {
   this.htmlElement = htmlElement;
-  apiURL = options.apiEndPoint;
-
+  apiEndpoint = options.apiEndpoint;
+  websocketEndpoint = options.websocketEndpoint;
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
 
-  //this.socket = io.connect('http://localhost:3000');
+  socket = io.connect(websocketEndpoint + '/mobs');
 
   this.markers = [];
   this.currentOpenPokemon = null;
-  
+
   this.setUpMap(options.tileLayer);
   this.filter(options.filter);
-    
-  //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
-}
 
+  //console.log(mymap.getBounds().getNorthWest(), mymap.getBounds().getSouthEast());
+};
+
+// extend EventEmitter class
 util.inherits(PokeMap, EventEmitter);
 
 PokeMap.prototype.setUpMap = function(tileLayer) {
@@ -48,39 +50,6 @@ PokeMap.prototype.setUpMap = function(tileLayer) {
 
   L.control.locate().addTo(map);
 
-  var MyControl = L.Control.extend({
-    options: {
-      position: 'bottomright'
-    },
-
-    onAdd: function(map) {
-      var controlContainer = L.DomUtil.create('div', 'leaflet-time-slider-container');
-      var sliderContainer = L.DomUtil.create('div', 'leaflet-time-slider', controlContainer);
-      L.DomUtil.create('div', 'leaflet-time-slider-bar', sliderContainer);
-      var dateContainer = L.DomUtil.create('div', 'leaflet-time-slider-dates', sliderContainer);
-      L.DomUtil.create('div', 'leaflet-time-slider-from', dateContainer);
-      L.DomUtil.create('div', 'leaflet-time-slider-to', dateContainer);
-      var hideContainer = L.DomUtil.create('div', 'leaflet-time-slider-hide-container', sliderContainer);
-      var hideLink = L.DomUtil.create('a', 'leaflet-time-slider-hide-link', hideContainer);
-      L.DomUtil.create('span', 'fa fa-angle-double-right', hideLink);
-      var showContainer = L.DomUtil.create('div', 'leaflet-time-slider-show-container', controlContainer);
-      var showLink = L.DomUtil.create('a', 'leaflet-time-slider-show-link', showContainer);
-      L.DomUtil.create('span', 'fa fa-angle-double-left', showLink);
-      sliderContainer.title = 'change time range';
-      hideContainer.title = 'hide slider';
-      showContainer.title = 'show slider';
-      return controlContainer;
-    }
-  });
-  map.addControl(new MyControl());
-  document.getElementsByClassName('leaflet-time-slider-hide-link')[0].onclick = function(e) {
-    document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'none';
-    document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'block';
-  }
-  document.getElementsByClassName('leaflet-time-slider-show-link')[0].onclick = function(e) {
-    document.getElementsByClassName('leaflet-time-slider-show-container')[0].style.display = 'none';
-    document.getElementsByClassName('leaflet-time-slider')[0].style.display = 'block';
-  }
   // Emit "move" event when the map is moved
   mymap.on('move', function(e) {
     PokeMap.prototype.emitMove(mymap.getCenter(), mymap.getZoom());
@@ -104,21 +73,23 @@ PokeMap.prototype.setUpMap = function(tileLayer) {
   });
 
 
-}
+};
 
 
 PokeMap.prototype.goTo = function({coordinates, zoomLevel}) {
   //mymap.panTo([params.coordinates.latitude, params.coordinates.longitude],params.zoomLevel);
   mymap.setView([coordinates.latitude, coordinates.longitude],zoomLevel);
-}
+};
 
 PokeMap.prototype.emitMove = function(coordinates,zoomLevel) {
+  console.log("Move emitted");
     this.emit('move', {coordinates,zoomLevel});
-}
+};
 
 PokeMap.prototype.emitClick = function(pokePOI) {
+  console.log("Click emitted!", "Sending data: ", pokePOI);
   this.emit('click', pokePOI);
-}
+};
 
 PokeMap.prototype.filter = function({pokemonIds, sightingsSince, predictionsUntil}) {
   if(sightingsSince > 0) {
@@ -150,7 +121,17 @@ function setPokemonOnMap() {
 
   pokemonLayer = L.geoJson(pokemonMapData, {
 
-    onEachFeature: onEachFeature,
+    onEachFeature: function onEachFeature(feature, layer) {
+      layer.on({
+        click: function(e) {
+          var URL= apiEndpoint + "/pokemon/id/" + feature.id;
+          functions.loadJson(URL, function(pokePOI) {
+            PokeMap.prototype.emitClick(pokePOI);
+          });
+
+        }
+      });
+    },
 
     pointToLayer: function(feature, latlng) {
       var pokemon = new pokemonIcon({
@@ -172,7 +153,7 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
   var dateNow = new Date();
   var startingDate = functions.subtractSeconds(dateNow, sightingsSince);
  // var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
-   var URL= "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/sighting/source/TWITTER";
+   var URL=  apiEndpoint + "/pokemon/sighting";
   console.log("Fetching data from ", URL);
   functions.loadJson(URL, function(response) {
     console.log("Data fetched. Generating map data.");
@@ -180,7 +161,7 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
     pokemonMapData = PokeMap.prototype.generatePokemonSightingsMapData(sightingsData);
     setPokemonOnMap();
   });
-}
+};
 
 // Not implemented! Copy Timo's or Elma's data from one of the previous commits
 PokeMap.prototype.showPokemonPredictions = function(predictionsUntil) {
@@ -190,10 +171,10 @@ PokeMap.prototype.showPokemonPredictions = function(predictionsUntil) {
 //    pokemonMapData = PokeMap.prototype.generatePokemonPredictionsMapData(predictedData);
 //    setPokemonOnMap();
 //  });
-}
+};
 
 PokeMap.prototype.showPokemonMobs = function() {
-}
+};
 
 PokeMap.prototype.updateTimeRange = function(timeRange) {
   this.sliderFrom = timeRange.from;
@@ -201,9 +182,10 @@ PokeMap.prototype.updateTimeRange = function(timeRange) {
 
   this.showPokemonSightings();
   this.showPokemonPrediction();
-}
+};
 
 PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
+  console.log("Generating pokemon sightings map data");
   var pokemonMapData = {
     "type": "FeatureCollection",
     "features": []
@@ -217,47 +199,47 @@ PokeMap.prototype.generatePokemonSightingsMapData = function(sightingsData) {
 
     pokemonMapData.features.push({
       "id": sightingsData[i].pokemonId,
+      "pokePOI": sightingsData[i],
       "type": "Feature",
       "geometry": {
         "type": "Point",
         "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
       },
       "properties": {
-        "img": "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/pokemon/id/" + sightingsData[i].pokemonId +"/icon",
+        "img": apiEndpoint + "/pokemon/id/" + sightingsData[i].pokemonId +"/icon/gif",
         "time": sightingsData[i].appearedOn
       }
     });
   }
 
   return pokemonMapData
-}
+};
 
 
-var pokemonForSidebar = {};
-function onEachFeature(feature, layer) {
-  var popupContent = "<div>";
-  popupContent += "<div class='pokemonInfo'><div class='pokemonname'></div>" + "<span class=''></span><button class='pokemonmore fa fa-book' ";
-  popupContent += "onclick='showSideBar(" + ")'></button>";
-  popupContent += "</div><div class='allinfo'>";
-  popupContent += "<div class='pokemontime'><span class='poklabel'>Time of appearance: </span> " + new Date(feature.properties.time).toLocaleString() + "</div>";
-  popupContent += "</div></div>";
-  layer.bindPopup(popupContent);
 
-  layer.on({
-    click: function(e) {
-      functions.loadJson(apiURL + getPokemonById + feature.id, function(response) {
-        var pokemonData = ((JSON.parse(response))["data"]);
-        layer._popup._contentNode.getElementsByClassName("pokemonname")[0].innerHTML = pokemonData[0].name;
+var route;
+PokeMap.prototype.navigate = function(start, destination) {
+  route = L.Routing.control({
+    waypoints: [{
+      lat: start.latitude,
+      lng: start.longitude
+    }, {
+      lat: destination.latitude,
+      lng: destination.longitude
+    }],
+    geocoder: L.Control.Geocoder.nominatim()
+  }).addTo(map);
+};
 
-        pokemonForSidebar = new Pokemon.PokemonSighting(pokemonData[0]);
-        console.log("Pop up for pokemon: " + pokemonForSidebar.pokemon);
-      });
-    }
-  });
-}
-
-function showSideBar() {
-  PokeMap.prototype.emitClick(pokemonForSidebar);
-}
+PokeMap.prototype.clearRoutes = function() {
+  if(typeof route !== 'undefined') {
+    route.setWaypoints([]);
+    var routingContainer = document.getElementsByClassName('leaflet-routing-container')[0];
+    routingContainer.parentNode.removeChild(routingContainer);
+    console.log('Success: cleared route.');
+  } else {
+    console.log('Error: no route defined.');
+  }
+};
 
 module.exports = PokeMap;
