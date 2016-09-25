@@ -8,6 +8,9 @@ var Pokemon = require('./basictypes');
 var config = require('./config');
 require('leaflet.locatecontrol');
 
+// Include stylesheets
+require('../css/style.css');
+
 var mymap = null;
 var apiURL={};
 var getAllSightingsURL = "/api/pokemon/sighting";
