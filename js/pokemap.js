@@ -10,6 +10,7 @@ require('leaflet.locatecontrol');
 
 // Include stylesheets
 require('../css/style.css');
+require('leaflet/dist/leaflet.css');
 
 var mymap = null;
 var apiURL={};
