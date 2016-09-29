@@ -1,1 +1,6 @@
-/* Place styles here which should be included in the map bundle */
+#map {
+	height: 540px;
+	width:100%;
+	background-color:gray;
+	cursor: move;
+}
