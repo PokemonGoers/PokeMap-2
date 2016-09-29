@@ -9,6 +9,10 @@ require('leaflet.locatecontrol');
 require('leaflet-routing-machine');
 require('leaflet-control-geocoder');
 
+// Include stylesheets
+require('../css/style.css');
+require('leaflet/dist/leaflet.css');
+
 var mymap = null;
 var apiEndpoint=null;
 var getAllSightingsURL = "/api/pokemon/sighting";
