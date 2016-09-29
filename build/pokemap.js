@@ -9,15 +9,19 @@ require('leaflet.locatecontrol');
 require('leaflet-routing-machine');
 require('leaflet-control-geocoder');
 
+// Include stylesheets
+require('../css/style.css');
+require('leaflet/dist/leaflet.css');
+
 var mymap = null;
 var apiEndpoint = null;
-var getAllSightingsURL = "/api/pokemon/sighting";
-var getAllSightingsByTimeRangeURL = "/api/pokemon/sighting/ts/";
-var getAllPokemon = "/api/pokemon";
-var getPokemonById = "/api/pokemon/id/";
+var getAllPokemon = "pokemon/";
+var getAllSightings = getAllPokemon + "sighting/";
+var getAllSightingsByTime = getAllSightings + "ts/";
+var getPokemonById = getAllPokemon + "id/";
 var getAllPredictions = {};
 
-var PokeMap = function (htmlElement, options = { filter: { pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0 }, tileLayer: config.currentMap, apiEndpoint: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014' }) {
+var PokeMap = function (htmlElement, options = { filter: { pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0 }, tileLayer: config.currentMap, apiEndpoint: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/' }) {
   this.htmlElement = htmlElement;
   apiEndpoint = options.apiEndpoint;
 
@@ -39,7 +43,7 @@ util.inherits(PokeMap, EventEmitter);
 PokeMap.prototype.setUpMap = function (tileLayer) {
   L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
   mymap = L.map(this.htmlElement).fitWorld(); //.setView(this.coordinates, this.zoomLevel);
-  window.map = mymap; // Set map as a global variable
+  window.map = mymap;
 
   L.tileLayer(tileLayer, {
     maxZoom: 18
@@ -119,7 +123,7 @@ function setPokemonOnMap() {
     onEachFeature: function onEachFeature(feature, layer) {
       layer.on({
         click: function (e) {
-          var URL = apiEndpoint + "/pokemon/id/" + feature.id;
+          var URL = apiEndpoint + getPokemonById + feature.id;
           functions.loadJson(URL, function (pokePOI) {
             PokeMap.prototype.emitClick(pokePOI);
           });
@@ -146,8 +150,8 @@ PokeMap.prototype.showPokemonSightings = function (sightingsSince) {
   console.log("Lets show sightings.");
   var dateNow = new Date();
   var startingDate = functions.subtractSeconds(dateNow, sightingsSince);
-  // var URL = apiURL + getAllSightingsByTimeRangeURL + startingDate.toISOString() + "/range/" + sightingsSince + "s";
-  var URL = apiEndpoint + "/pokemon/sighting";
+  var URL_timerange = apiEndpoint + getAllSightingsByTime + startingDate.getTime() + "/range/" + Math.floor(sightingsSince / 60) + "m";
+  var URL = apiEndpoint + getAllSightings;
   console.log("Fetching data from ", URL);
   functions.loadJson(URL, function (response) {
     console.log("Data fetched. Generating map data.");
@@ -199,7 +203,7 @@ PokeMap.prototype.generatePokemonSightingsMapData = function (sightingsData) {
         "coordinates": [sightingsData[i].location.coordinates[0], sightingsData[i].location.coordinates[1]]
       },
       "properties": {
-        "img": apiEndpoint + "/pokemon/id/" + sightingsData[i].pokemonId + "/icon/gif",
+        "img": apiEndpoint + getPokemonById + sightingsData[i].pokemonId + "/icon/gif",
         "time": sightingsData[i].appearedOn
       }
     });
