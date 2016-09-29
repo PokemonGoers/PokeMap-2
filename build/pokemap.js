@@ -10,7 +10,6 @@ require('leaflet-routing-machine');
 require('leaflet-control-geocoder');
 
 // Include stylesheets
-require('../css/style.css');
 require('leaflet/dist/leaflet.css');
 require('font-awesome/css/font-awesome.min.css');
 
