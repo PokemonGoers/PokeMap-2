@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "browserify js/pokemap.js -o pokemap.bundle.js -t es6ify -t browserify-css --standalone PokeMap"
+    "postinstall": "browserify js/pokemap.js -o pokemap.bundle.js -t es6ify -t browserify-css -g browserify-css --standalone PokeMap"
   },
   "repository": {
     "type": "git",
