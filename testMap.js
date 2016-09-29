@@ -17,8 +17,8 @@ var options =
 {
     tileLayer: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
     filter : filter,
-    apiEndpoint: "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014"
-
+    apiEndpoint: "http://pokedata.c4e3f8c7.svc.dockerapp.io:65014",
+    websocketEndpoint: "http://pokedata.c4e3f8c7.svc.dockerapp.io:65024"
 };
 
 var poke = new PokeMap(map, options);

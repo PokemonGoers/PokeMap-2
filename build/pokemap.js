@@ -3,7 +3,7 @@ var EventEmitter = require('events').EventEmitter;
 var util = require('util');
 var L = require('leaflet');
 var io = require('socket.io-client');
-var socket = io.connect("http://localhost:3000");
+var socket;
 var config = require('./config');
 require('leaflet.locatecontrol');
 require('leaflet-routing-machine');
@@ -21,9 +21,18 @@ var getAllSightingsByTime = getAllSightings + "ts/";
 var getPokemonById = getAllPokemon + "id/";
 var getAllPredictions = {};
 
-var PokeMap = function (htmlElement, options = { filter: { pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0 }, tileLayer: config.currentMap, apiEndpoint: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/' }) {
+var PokeMap = function (htmlElement, options = {
+  filter: {
+    pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0
+  },
+  tileLayer: config.currentMap,
+  apiEndpoint: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014',
+  websocketEndpoint: 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65024'
+}) {
   this.htmlElement = htmlElement;
-  apiEndpoint = options.apiEndpoint;
+  apiEndpoint = options.apiEndpoint + '/api/';
+  websocketEndpoint = options.websocketEndpoint;
+  socket = io.connect(websocketEndpoint);
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
