@@ -21,9 +21,9 @@ var getAllSightingsByTime = getAllSightings + "ts/";
 var getPokemonById = getAllPokemon + "id/";
 var getAllPredictions = {};
 
-var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndpoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014/api/'}) {
+var PokeMap = function(htmlElement, options={filter : {pokemonIds: 0, sightingsSince: 0, predictionsUntil: 0}, tileLayer: config.currentMap,apiEndpoint : 'http://pokedata.c4e3f8c7.svc.dockerapp.io:65014'}) {
   this.htmlElement = htmlElement;
-  apiEndpoint = options.apiEndpoint;
+  apiEndpoint = options.apiEndpoint + '/api/';
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
   this.filterPokemons = null;
