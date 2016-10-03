@@ -104,6 +104,7 @@ PokeMap.prototype.emitClick = function(pokePOI) {
 };
 
 PokeMap.prototype.filter = function({pokemonIds, sightingsSince, predictionsUntil}) {
+  filterPokemons = pokemonIds;
   if(sightingsSince > 0) {
     console.log("Calling method to show sightings.");
     this.showPokemonSightings(sightingsSince);
