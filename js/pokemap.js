@@ -11,8 +11,8 @@ require('leaflet-control-geocoder');
 
 // Include stylesheets
 require('leaflet/dist/leaflet.css');
-require('font-awesome/css/font-awesome.min.css');
 
+var websocketEndpoint = null;
 var mymap = null;
 var apiEndpoint=null;
 var getAllPokemon = "pokemon/";
@@ -166,7 +166,7 @@ PokeMap.prototype.showPokemonSightings = function(sightingsSince) {
   var URL =  apiEndpoint + getAllSightings;
   console.log("Fetching data from ", URL);
   functions.loadJson(URL, function(response) {
-    console.log("Data fetched. Generating map data.");
+    console.log("Data fetched. Generating map data.", response);
     var sightingsData = (JSON.parse(response))["data"];
     pokemonMapData = PokeMap.prototype.generatePokemonSightingsMapData(sightingsData);
     setPokemonOnMap();

@@ -1,8 +1,4 @@
-
-var functions = require('./js/functions');
 var PokeMap = require('./js/pokemap');
-var pokeType = require('./js/basictypes');
-var io = require('socket.io-browserify');
 
 var map = document.getElementById('map');
 
