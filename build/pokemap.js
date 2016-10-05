@@ -11,8 +11,8 @@ require('leaflet-control-geocoder');
 
 // Include stylesheets
 require('leaflet/dist/leaflet.css');
-require('font-awesome/css/font-awesome.min.css');
 
+var websocketEndpoint = null;
 var mymap = null;
 var apiEndpoint = null;
 var getAllPokemon = "pokemon/";
@@ -20,6 +20,7 @@ var getAllSightings = getAllPokemon + "sighting/";
 var getAllSightingsByTime = getAllSightings + "ts/";
 var getPokemonById = getAllPokemon + "id/";
 var getAllPredictions = {};
+var filterPokemons = null;
 
 var PokeMap = function (htmlElement, options = {
   filter: {
@@ -35,7 +36,8 @@ var PokeMap = function (htmlElement, options = {
   socket = io.connect(websocketEndpoint);
 
   // which pokemons should be shown; if null show all pokemons; otherwise only pokemons with ids in the list
-  this.filterPokemons = null;
+  filterPokemons = options.filter.pokemonIds;
+  console.log("filter: ", filterPokemons);
 
   this.markers = [];
   this.currentOpenPokemon = null;
@@ -51,7 +53,10 @@ util.inherits(PokeMap, EventEmitter);
 
 PokeMap.prototype.setUpMap = function (tileLayer) {
   L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
-  mymap = L.map(this.htmlElement).fitWorld(); //.setView(this.coordinates, this.zoomLevel);
+  mymap = L.map(this.htmlElement, {
+    center: [48.132100, 11.546914],
+    zoom: 16
+  }); //.fitWorld(); //.setView([48.132100, 11.546914], 25);
   window.map = mymap;
 
   L.tileLayer(tileLayer, {
@@ -101,6 +106,7 @@ PokeMap.prototype.emitClick = function (pokePOI) {
 };
 
 PokeMap.prototype.filter = function ({ pokemonIds, sightingsSince, predictionsUntil }) {
+  filterPokemons = pokemonIds;
   if (sightingsSince > 0) {
     console.log("Calling method to show sightings.");
     this.showPokemonSightings(sightingsSince);
@@ -162,8 +168,9 @@ PokeMap.prototype.showPokemonSightings = function (sightingsSince) {
   var URL_timerange = apiEndpoint + getAllSightingsByTime + startingDate.getTime() + "/range/" + Math.floor(sightingsSince / 60) + "m";
   var URL = apiEndpoint + getAllSightings;
   console.log("Fetching data from ", URL);
+  console.log(filterPokemons);
   functions.loadJson(URL, function (response) {
-    console.log("Data fetched. Generating map data.");
+    console.log("Data fetched. Generating map data.", response);
     var sightingsData = JSON.parse(response)["data"];
     pokemonMapData = PokeMap.prototype.generatePokemonSightingsMapData(sightingsData);
     setPokemonOnMap();
@@ -199,7 +206,12 @@ PokeMap.prototype.generatePokemonSightingsMapData = function (sightingsData) {
   var now = new Date();
 
   for (var i = 0, n = sightingsData.length; i < n; ++i) {
-    if (this.filterPokemons != null && this.filterPokemons.indexOf(sightingsData[i].pokemonId) == -1) continue;
+    console.log(filterPokemons);
+    if (filterPokemons != null && filterPokemons.indexOf(sightingsData[i].pokemonId) == -1) {
+
+      console.log(sightingsData[i].pokemonId);
+      continue;
+    }
     //If there is no location, then don't show pokemon
     if (sightingsData[i].location == null) continue;
 

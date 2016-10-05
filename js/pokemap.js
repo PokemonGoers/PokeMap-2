@@ -53,7 +53,10 @@ util.inherits(PokeMap, EventEmitter);
 
 PokeMap.prototype.setUpMap = function(tileLayer) {
   L.Icon.Default.imagePath = 'node_modules/leaflet/dist/images/';
-  mymap = L.map(this.htmlElement).fitWorld();//.setView(this.coordinates, this.zoomLevel);
+  mymap = L.map(this.htmlElement, {
+    center: [48.132100, 11.546914],
+    zoom: 16
+  }); //.fitWorld(); //.setView([48.132100, 11.546914], 25);
   window.map = mymap;
 
   L.tileLayer(tileLayer, {

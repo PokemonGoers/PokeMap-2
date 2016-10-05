@@ -4,9 +4,9 @@ var map = document.getElementById('map');
 
 var filter =
     {
-       pokemonIds: [1],
-    sightingsSince: 100000,
-    predictionsUntil: 10
+        pokemonIds: null,
+        sightingsSince: 100000,
+        predictionsUntil: 10
     };
 
 var options =
