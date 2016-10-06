@@ -11,6 +11,7 @@ require('leaflet-control-geocoder');
 
 // Include stylesheets
 require('leaflet/dist/leaflet.css');
+require('../css/style.css');
 
 var websocketEndpoint = null;
 var mymap = null;
@@ -63,7 +64,7 @@ PokeMap.prototype.setUpMap = function(tileLayer) {
     maxZoom: 18
   }).addTo(mymap);
 
-  L.control.locate().addTo(map);
+  L.control.locate({iconElementTag: 'div', icon: 'location-pin', iconLoading: 'location-load'}).addTo(map);
 
   // Emit "move" event when the map is moved
   mymap.on('move', function(e) {
